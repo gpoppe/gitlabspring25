@@ -21,6 +21,10 @@ void room53game(void);
 void room6game(void);
 void FarStarTrader(void);
 
+void room17(void);
+
+
+
 
 void room8game(void);
 
@@ -133,6 +137,7 @@ int main(int argc, char *argv[])
 			case 17:
 			{
 				puts("room17");
+				room17();
 				break;
 			}
 			case 18:
@@ -370,6 +375,10 @@ void FarStarTrader(void)
 void omarsUniqueFn(void)
 {
 	printf("Omar");
+}
+void room17(void)
+{
+	puts("cscuser17");
 }
 
 
