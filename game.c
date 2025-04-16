@@ -1,6 +1,6 @@
 //contributors
 //GP
-//
+//Ryan A
 //
 
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 //place function prototypes here
-
+void room22RandomTime(void);
 
 void room53game(void);
 
@@ -158,6 +158,7 @@ int main(int argc, char *argv[])
 			case 22:
 			{
 				puts("room22");
+				room22RandomTime();
 				break;
 			}
 			case 23:
@@ -343,7 +344,10 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
-
+void room22RandomTime(void)
+{
+	printf("\nRyan - Room 22\n\n");
+}
 
 void room53game(void)
 {
