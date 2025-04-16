@@ -18,6 +18,8 @@ void FarStarTrader(void);
 
 void omarsUniqueFn(void);
 
+void carlosPettheBelly(void);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -313,6 +315,12 @@ int main(int argc, char *argv[])
 				omarsUniqueFn();
 				break;
 			}
+			case 63:
+			{
+				puts("room63");
+				carlosPettheBelly();
+				break;
+			}
 			case 99:
 			{
 				puts("You have escaped");
@@ -340,5 +348,8 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-
+void carlosPettheBelly(void)
+{
+	printf("carlos\n");
+}
 
