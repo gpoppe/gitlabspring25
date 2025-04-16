@@ -28,6 +28,9 @@ void room8game(void);
 
 void omarsUniqueFn(void);
 
+main
+void carlosPettheBelly(void);
+main
 
 int main(int argc, char *argv[])
 {
@@ -327,6 +330,12 @@ int main(int argc, char *argv[])
 				omarsUniqueFn();
 				break;
 			}
+			case 63:
+			{
+				puts("room63");
+				carlosPettheBelly();
+				break;
+			}
 			case 99:
 			{
 				puts("You have escaped");
@@ -372,7 +381,10 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-
+void carlosPettheBelly(void)
+{
+	printf("carlos\n");
+}
 
 
 
