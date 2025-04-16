@@ -15,6 +15,7 @@
 
 //place function prototypes here
 
+void joshRoom4(void);
 
 void room53game(void);
 
@@ -65,6 +66,7 @@ int main(int argc, char *argv[])
 			case 4:
 			{
 				puts("room4");
+				joshRoom4();
 				break;
 			}
 			case 5:
@@ -343,7 +345,10 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
-
+void joshRoom4(void)
+{
+	printf("cscuser4 \n");
+}
 
 void room53game(void)
 {
