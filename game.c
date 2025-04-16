@@ -20,7 +20,7 @@ void FarStarTrader(void);
 
 void room8game(void);
 
-
+void rayFunct(void);
 
 void omarsUniqueFn(void);
 
@@ -216,6 +216,12 @@ int main(int argc, char *argv[])
 				puts("room35");
 				break;
 			}
+			case 35:
+                        {
+                                puts("room35");
+				rayFunct();
+                                break;
+                        }
 			case 36:
 			{
 				puts("room36");
@@ -361,6 +367,9 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-
+void rayFunct(void)
+{
+	printf("Ray \n");
+}
 
 
