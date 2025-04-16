@@ -24,7 +24,7 @@ void FarStarTrader(void);
 
 void room8game(void);
 
-
+void brentTestRoom(void);
 
 void omarsUniqueFn(void);
 
@@ -327,6 +327,12 @@ int main(int argc, char *argv[])
 				omarsUniqueFn();
 				break;
 			}
+			case 62:
+			{
+				puts("room62");
+				brentTestRoom();
+				break;
+			}
 			case 99:
 			{
 				puts("You have escaped");
@@ -372,6 +378,10 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
+void brentTestRoom(void)
+{
+	printf("Brent's Room \n");
+}
 
 
 
