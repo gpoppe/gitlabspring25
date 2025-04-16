@@ -29,6 +29,9 @@ void room8game(void);
 void omarsUniqueFn(void);
 
 
+void Function23fbabonjo(void);
+
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -163,6 +166,7 @@ int main(int argc, char *argv[])
 			case 23:
 			{
 				puts("room23");
+				Function23fbabonjo();
 				break;
 			}
 			case 24:
@@ -372,7 +376,10 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-
+void Function23fbabonjo(void)
+{
+	printf("Episode 23: Fatoma Babonjo ");
+}
 
 
 
