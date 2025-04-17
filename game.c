@@ -23,7 +23,7 @@ void FarStarTrader(void);
 
 
 void room8game(void);
-
+void AzizHaouchineFn(void);
 
 
 void omarsUniqueFn(void);
@@ -283,6 +283,7 @@ int main(int argc, char *argv[])
 			case 48:
 			{
 				puts("room48");
+				AzizHaouchineFn();
 				break;
 			}
 			case 49:
@@ -371,7 +372,10 @@ void omarsUniqueFn(void)
 {
 	printf("Omar");
 }
-
+void AzizHaouchineFn(void)
+{
+	printf("Aziz\n");
+}
 
 
 
