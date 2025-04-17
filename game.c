@@ -1,7 +1,7 @@
 //contributors
 //GP
-//
-//
+//Joel Castro
+//CSC 321
 
 
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 //place function prototypes here
-
+void room25game(void);
 
 void room53game(void);
 
@@ -173,6 +173,7 @@ int main(int argc, char *argv[])
 			case 25:
 			{
 				puts("room25");
+				room25game();
 				break;
 			}
 			case 26:
@@ -343,6 +344,11 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+
+void room25game(void)
+{
+	printf("cscuser25\n");
+}
 
 
 void room53game(void)
