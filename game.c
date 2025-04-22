@@ -372,7 +372,10 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-
+void room5game(void)
+{
+	printf("cscuser5\n);
+}
 
 
 
