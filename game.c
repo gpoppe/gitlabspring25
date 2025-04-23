@@ -111,6 +111,8 @@ void Function23fbabonjo(void);
 
 void cscuser1(void);
 
+void user41Func(void);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -352,6 +354,7 @@ int main(int argc, char *argv[])
 			case 41:
 			{
 				puts("room41");
+				user41Func();
 				break;
 			}
 			case 42:
@@ -683,5 +686,9 @@ void lab13nanup(void)
 
 }
 
+void user41Func(void)
+{
+	printf("Henry Le \n");
+}
 
 
