@@ -28,6 +28,7 @@ void room8game(void);
 
 void omarsUniqueFn(void);
 
+void room18game(void);
 
 int main(int argc, char *argv[])
 {
@@ -372,6 +373,10 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
+void room18game(void)
+{
+	printf("cscuser18\n");
+}
 
 
 
