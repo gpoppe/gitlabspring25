@@ -615,8 +615,43 @@ void FarStarTrader(void)
 
 void omarsUniqueFn(void)
 {
-	printf("Omar");
+	printf("Welcome to Omar's Keyboard Challenge!\n");
+	printf("You will have 5 quick reaction rounds.\n");
+	printf("Press the correct key as fast as you can when prompted!\n");
+	printf("Let's begin!\n\n");
+
+	char keys[] = {'a', 's', 'd', 'f', 'j', 'k', 'l', ';'};
+	int numKeys = sizeof(keys) / sizeof(keys[0]); // Number of keys by diving the size of the array by the size of one element
+	int score = 0;
+	int round;
+
+	// Clear input buffer before starting
+	while (getchar() != '\n');
+
+	for (round = 1; round <= 5; ++round) {
+		int idx = rand() % numKeys; // Random index for the keys array, ensuring it's within bounds
+		char target = keys[idx];
+		char input[10]; // Buffer to store user input
+
+		printf("Round %d: Press the '%c' key and hit ENTER!\n", round, target);
+		fgets(input, sizeof(input), stdin);
+
+		// Remove newline if present
+		if (input[strlen(input)-1] == '\n') input[strlen(input)-1] = '\0'; // Replace newline with null terminator
+
+		// Check if the input is a single character and matches the target key
+		if (strlen(input) == 1 && input[0] == target) {
+			printf("Correct!\n");
+			score++;
+		} else {
+			printf("Oops! You pressed '%s'. The correct key was '%c'.\n", input, target);
+		}
+	}
+
+	printf("\nGame Over! Your score: %d out of 5.\n", score);
+	printf("Returning you to the main room...\n\n");
 }
+
 void AzizHaouchineFn(void)
 {
 	printf("Aziz\n");
