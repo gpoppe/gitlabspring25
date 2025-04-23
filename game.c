@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
 			case 3:
 			{
 				puts("room3");
+				room3game();
 				break;
 			}
 			case 4:
@@ -373,6 +374,11 @@ void room39game(void)
 {
 	printf("Jess\n");
 
+}
+
+void room3game(void)
+{
+	printf("cscuser3\n");
 }
 
 void room53game(void)
