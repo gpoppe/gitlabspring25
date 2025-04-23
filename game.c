@@ -17,7 +17,7 @@
 
 
 void room53game(void);
-
+void room5game(void);
 void room6game(void);
 void FarStarTrader(void);
 
@@ -70,6 +70,7 @@ int main(int argc, char *argv[])
 			case 5:
 			{
 				puts("room5");
+				room5game();
 				break;
 			}
 			case 6:
