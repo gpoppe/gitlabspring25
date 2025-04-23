@@ -55,6 +55,8 @@ void angelasRoom26(void);
 
 void lab13nanup(void);
 
+void room41(void);
+
 
 
 int main(int argc, char *argv[])
@@ -282,6 +284,7 @@ int main(int argc, char *argv[])
 			case 41:
 			{
 				puts("room41");
+				room41();
 				break;
 			}
 			case 42:
@@ -464,5 +467,10 @@ void lab13nanup(void)
 {
 	printf("nanu");
 
+}
+
+void room41(void)
+{
+	printf("Henry Le");
 }
 
