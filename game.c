@@ -24,7 +24,7 @@ void FarStarTrader(void);
 
 void room8game(void);
 
-
+void room10game(void);
 
 void omarsUniqueFn(void);
 
@@ -97,6 +97,7 @@ int main(int argc, char *argv[])
 			case 10:
 			{
 				puts("room10");
+				room10game();
 				break;
 			}
 			case 11:
@@ -361,6 +362,10 @@ void room8game(void)
 	printf("cscuser8 \n");
 }
 
+void room10game(void)
+{
+        printf("cscuser10\n");
+}
 
 void FarStarTrader(void)
 {
