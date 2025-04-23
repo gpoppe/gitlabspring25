@@ -1,6 +1,6 @@
 //contributors
 //GP
-//
+// Jessenia Hernandez Mora
 //
 
 
@@ -16,7 +16,10 @@
 //place function prototypes here
 
 
+void room39game(void);
+
 void room53game(void);
+
 
 void room6game(void);
 void FarStarTrader(void);
@@ -244,6 +247,7 @@ int main(int argc, char *argv[])
 			case 39:
 			{
 				puts("room39");
+				room39game();
 				break;
 			}
 			case 40:
@@ -349,7 +353,10 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
-
+void room39game(void)
+{
+	printf("Jess\n");
+}
 
 void room53game(void)
 {
