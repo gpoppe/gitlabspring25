@@ -55,7 +55,7 @@ void FarStarTrader(void);
 void room15game(void);
 void room17(void);
 
-
+void room55(void);
 void room8game(void);
 
 
@@ -385,6 +385,7 @@ int main(int argc, char *argv[])
 			case 55:
 			{
 				puts("room55");
+				room55();
 				break;
 			}
 
@@ -444,6 +445,11 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+
+void room55(void)
+{
+	printf("cscuser55\n");
+}
 
 void room30game(void)
 {
