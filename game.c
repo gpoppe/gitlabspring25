@@ -1,6 +1,9 @@
 //contributors
 //GP
 
+//Joel Castro
+
+
 //Ryan A
 
 //Yoonhong Min
@@ -9,6 +12,7 @@
 
 
 //
+
 
 
 
@@ -21,18 +25,31 @@
 #include <unistd.h>
 
 //place function prototypes here
+
+void room25game(void);
+
 void room57G(void);
 
 void user36room(void);
 
 void amoralesRoom9(void);
 
+void room30game(void);
+
+void joshRoom4(void);
+
+void room59game(void);
 
 void room22RandomTime(void);
 
+
 void userRoom50(void);
 
+
+void room12game(void);
+
 void room31(void);
+
 
 
 
@@ -47,20 +64,36 @@ void room6game(void);
 void FarStarTrader(void);
 
 
+void room15game(void);
+void room17(void);
+
+
 void room8game(void);
+void AzizHaouchineFn(void);
 
-
+void jessiesFunRoom(void);
+void vicCompRoom(void);
 
 void brentTestRoom(void);
 
 void omarsUniqueFn(void);
+void HubertRoom(void);
+
+void ryanRoom38(void);
+
 
 void angelasRoom26(void);
+
+
+void cameronDOOMFn(void);
 
 void lab13nanup(void);
 
 void pedroNumberRoom(void);
 
+
+
+void Function23fbabonjo(void);
 
 
 int main(int argc, char *argv[])
@@ -99,6 +132,7 @@ int main(int argc, char *argv[])
 			case 4:
 			{
 				puts("room4");
+				joshRoom4();
 				break;
 			}
 			case 5:
@@ -115,6 +149,7 @@ int main(int argc, char *argv[])
 			case 7:
 			{
 				puts("room7");
+				cameronDOOMFn();
 				break;
 			}
 			case 8:
@@ -143,6 +178,7 @@ int main(int argc, char *argv[])
 			case 12:
 			{
 				puts("room12");
+				room12game();
 				break;
 			}
 			case 13:
@@ -158,6 +194,7 @@ int main(int argc, char *argv[])
 			case 15:
 			{
 				puts("room15");
+				room15game();
 				break;
 			}
 			case 16:
@@ -168,6 +205,7 @@ int main(int argc, char *argv[])
 			case 17:
 			{
 				puts("room17");
+				room17();
 				break;
 			}
 			case 18:
@@ -199,6 +237,7 @@ int main(int argc, char *argv[])
 			case 23:
 			{
 				puts("room23");
+				Function23fbabonjo();
 				break;
 			}
 			case 24:
@@ -209,6 +248,7 @@ int main(int argc, char *argv[])
 			case 25:
 			{
 				puts("room25");
+				room25game();
 				break;
 			}
 			case 26:
@@ -236,6 +276,7 @@ int main(int argc, char *argv[])
 			case 30:
 			{
 				puts("room30");
+				room30game();
 				break;
 			}
 			case 31:
@@ -274,6 +315,7 @@ int main(int argc, char *argv[])
 			case 38:
 			{
 				puts("room38");
+				ryanRoom38();
 				break;
 			}
 			case 39:
@@ -305,6 +347,7 @@ int main(int argc, char *argv[])
 			case 44:
 			{
 				puts("room44");
+				HubertRoom();
 				break;
 			}
 			case 45:
@@ -320,16 +363,19 @@ int main(int argc, char *argv[])
 			case 47:
 			{
 				puts("room47");
+				jessiesFunRoom();
 				break;
 			}
 			case 48:
 			{
 				puts("room48");
+				AzizHaouchineFn();
 				break;
 			}
 			case 49:
 			{
 				puts("room49");
+				vicCompRoom();
 				break;
 			}
 			case 50:
@@ -365,6 +411,14 @@ int main(int argc, char *argv[])
 				break;
 			}
 
+			case 59:
+			{
+				puts("room59");
+				room59game();
+				break;
+			}
+
+
 			case 57:
 			{
 				puts("room57");
@@ -379,6 +433,7 @@ int main(int argc, char *argv[])
 				stevenFirst();
 				break;
 			}
+
 
 			case 61:
 			{
@@ -412,6 +467,31 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+void joshRoom4(void)
+{
+	printf("cscuser4 \n");
+}
+
+void room12game(void)
+{
+	printf("cscuser12 :)\n");
+}
+
+void room30game(void)
+{
+	printf("cscuser30\n");
+}
+
+void cameronDOOMFn(void)
+{
+	printf("cscuser7/ Cameron");
+}
+
+void room59game(void)
+{
+	printf("%s\n", "cscuser59");
+}
+
 
 void room57G(void) 
 {
@@ -459,6 +539,15 @@ void room39game(void)
 	printf("Jess\n");
 
 }
+void HubertRoom(void)
+{
+	printf("Hubert: hnguyen296 \n");
+}
+
+void room25game(void)
+{
+	printf("Joel - cscuser25\n");
+}
 
 
 void room53game(void)
@@ -477,6 +566,10 @@ void room8game(void)
 	printf("cscuser8 \n");
 }
 
+void room15game(void)
+{
+	printf("cscuser15 \n");
+}
 
 void FarStarTrader(void)
 {
@@ -487,6 +580,31 @@ void omarsUniqueFn(void)
 {
 	printf("Omar");
 }
+void AzizHaouchineFn(void)
+{
+	printf("Aziz\n");
+}
+
+void Function23fbabonjo(void)
+{
+	printf("Episode 23: Fatoma Babonjo ");
+}
+void room17(void)
+{
+	puts("cscuser17");
+}
+
+void vicCompRoom(void)
+{
+        printf("cscuser49");
+}
+
+void ryanRoom38(void)
+{
+	printf("Ryan cscuser38\n");
+}
+
+
 
 void brentTestRoom(void)
 {
@@ -496,13 +614,22 @@ void brentTestRoom(void)
 void angelasRoom26(void)
 {
 	printf("cscuser26\n");
+
 }
 
+
+
+void jessiesFunRoom(void)
+{
+        printf("cscuser47");
+}
 
 void lab13nanup(void)
 {
 	printf("nanu");
 
 }
+
+
 
 
