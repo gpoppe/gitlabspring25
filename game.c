@@ -25,6 +25,9 @@
 #include <unistd.h>
 
 //place function prototypes here
+void dairasBrain(void);
+
+void jovannyFunction(void);
 
 void room25game(void);
 
@@ -44,6 +47,7 @@ void room22RandomTime(void);
 
 
 void userRoom50(void);
+
 
 
 void room12game(void);
@@ -122,6 +126,7 @@ int main(int argc, char *argv[])
 			case 2:
 			{
 				puts("room2");
+				dairasBrain();
 				break;
 			}
 			case 3:
@@ -266,6 +271,7 @@ int main(int argc, char *argv[])
 			case 28:
 			{
 				puts("room28");
+				room28game();
 				break;
 			}
 			case 29:
@@ -337,6 +343,7 @@ int main(int argc, char *argv[])
 			case 42:
 			{
 				puts("room42");
+				jovannyFunction();
 				break;
 			}
 			case 43:
@@ -472,6 +479,11 @@ void joshRoom4(void)
 	printf("cscuser4 \n");
 }
 
+
+void dairasBrain(void)
+{
+	printf("cscuser2\n");
+}
 void room12game(void)
 {
 	printf("cscuser12 :)\n");
@@ -549,6 +561,11 @@ void room25game(void)
 	printf("Joel - cscuser25\n");
 }
 
+void jovannyFunction(void)
+{
+	printf("cscuser42\n");
+
+}
 
 void room53game(void)
 {
@@ -619,6 +636,12 @@ void angelasRoom26(void)
 
 
 
+
+void room28game(void)
+{
+	printf("Cscuser28: Arturo");
+}
+
 void jessiesFunRoom(void)
 {
         printf("cscuser47");
@@ -629,6 +652,7 @@ void lab13nanup(void)
 	printf("nanu");
 
 }
+
 
 
 
