@@ -27,7 +27,7 @@ void room8game(void);
 
 
 void omarsUniqueFn(void);
-void room50game(void);
+void room51game(void);
 
 int main(int argc, char *argv[])
 {
@@ -293,14 +293,14 @@ int main(int argc, char *argv[])
 			case 50:
 			{
 				puts("room50");
-				room50game();
-				break;
+                                break;
 			}
 			case 51:
 			{
+			
 				puts("room51");
-
-				break;
+                                room51game();
+                                break;
 			}
 			case 52:
 			{
@@ -374,9 +374,9 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
-void room50game(void)
+void room51game(void)
 {
-	printf("cscuser50\n");
+	printf("cscuser51\n");
 }
 
 
