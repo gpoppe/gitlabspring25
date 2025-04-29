@@ -111,6 +111,8 @@ void Function23fbabonjo(void);
 
 void cscuser1(void);
 
+void gameFuncHenry41(void);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -352,6 +354,7 @@ int main(int argc, char *argv[])
 			case 41:
 			{
 				puts("room41");
+				gameFuncHenry41();
 				break;
 			}
 			case 42:
@@ -683,5 +686,87 @@ void lab13nanup(void)
 
 }
 
+void gameFuncHenry41(void)
+{
+	int userInput;
+	srand(time(NULL));
 
+	printf("Welcome to Room 41 of this dungeon!\n");
+	printf("In front of you is 5 chests!\n");
+	printf("Which chest will you test your luck against?(1-5)\n");
+	printf("The first (1) chest contain a string of peculiar numbers\n");
+	printf("The second (2) chest contains a random equipments!\n");
+	printf("The second (3) chest  contains the wisdom of the acient time.\n");
+	printf("The second (4) chest contains a mystery.\n");
+	printf("The second (5) chest contains the remnant of an extinct creature of the old.\n");
+	scanf("%d", &userInput);
+	switch(userInput)
+	{
+		case 1:
+		{
+			int i;
+			int numbers[] = {1, 1, 2, 3, 5, 8, 13, 21, 34};
+			printf("Have you heard of the Fibonacci sequence? It is a series of numbers where each number is the sum of the two preceding ones, starting from 0 and 1.\n");
+			for( i = 0; i < 9; i++)
+			{
+				printf("%d ", numbers[i]);
+			}
+			printf("\n");
+			break;
+		}
+		case 2:
+		{
+			int randNum;
+			randNum = rand() % 4 + 1;
+
+			if(randNum = 1)
+			{
+				printf("You aquired a Scalled Skulledcap!\n");
+			}
+			else if(randNum = 2)
+			{
+				printf("You aquired a Cuirass With Falds!\n");
+			}
+			else if(randNum = 3)
+			{
+				printf("You aquired a Chainmail Gauntlets!\n");
+			}
+			else if(randNum = 4)
+			{
+				printf("You aquired a Bavarian Plate Legs!\n");
+			}
+			break;
+		}
+		case 3:
+		{
+			printf("Let justice be done, though the world perish.\n");
+			break;
+		}
+		case 4:
+		{
+			float randFloat = (float)rand() / RAND_MAX * 10.0f;
+			printf("A random goblin appeared! It lunged toward you and cleaved in your chest with a machete!\n");
+			printf("It dealt %.2f damage to you!\n",randFloat);
+		       break;	
+		}
+		case 5:
+		{
+			printf("Here's a defintely-not-Nintendo-license-infringed Pikachu!\n");
+	                printf("`;-.          ___,\n");
+			printf("  `.`\\_.  ._/`.-\"`\n");
+			printf("    \\        /      ,\n");
+			printf("    /()   () \\    .' `-._\n");
+			printf("   |)  .    ()\\  /   _.'\n");
+			printf("   \\  -'-     ,; '. <\n");
+			printf("    ;.__     ,;|   > \\\n");
+			printf("   / ,    / ,  |.-'.-'\n");
+			printf("  (_/    (_/ ,;|.<`\n");
+			printf("    \\    ,     ;-`\n");
+			printf("     >   \\    /\n");
+			printf("    (_,-'`> .'\n");
+			printf("         (_,'\n");
+			break;
+		}
+	}
+}
 
