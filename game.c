@@ -11,7 +11,7 @@
 // Jessenia Hernandez Mora
 
 
-//
+//Nicole Brooks
 
 
 
@@ -45,40 +45,31 @@ void room59game(void);
 
 void room22RandomTime(void);
 
-
 void userRoom50(void);
-
-
 
 void room12game(void);
 
 void room31(void);
 
-
-
-
 void room39game(void);
 
-
 void stevenFirst(void);
+
 void room53game(void);
 
-
 void room6game(void);
+
 void FarStarTrader(void);
 
-
-void room15game(void);
 void room17(void);
-
 
 void room8game(void);
 
 void room29game(void);
+
 void room28game(void);
+
 void AzizHaouchineFn(void);
-
-
 
 void room16game(void);
 
@@ -86,30 +77,27 @@ void jessiesFunRoom(void);
 
 void vicCompRoom(void);
 
-
-
 void brentTestRoom(void);
 
 void omarsUniqueFn(void);
+
 void HubertRoom(void);
 
 void ryanRoom38(void);
-
-
 
 void kobesRoom(void);
 
 void angelasRoom26(void);
 
-
 void cameronDOOMFn(void);
 
 void lab13nanup(void);
 
-
 void Function23fbabonjo(void);
 
 void cscuser1(void);
+
+void room15game(void);
 
 int main(int argc, char *argv[])
 {
@@ -210,7 +198,7 @@ int main(int argc, char *argv[])
 			}
 			case 15:
 			{
-				puts("room15");
+				printf("\n\n\nWELCOME TO NICOLE'S ROOM 15!\n\n\n");
 				room15game();
 				break;
 			}
@@ -493,11 +481,11 @@ void joshRoom4(void)
 	printf("cscuser4 \n");
 }
 
-
 void dairasBrain(void)
 {
 	printf("cscuser2\n");
 }
+
 void room12game(void)
 {
 	printf("cscuser12 :)\n");
@@ -517,8 +505,6 @@ void room59game(void)
 {
 	printf("%s\n", "cscuser59");
 }
-
-
 
 void kobesRoom(void)
 {
@@ -591,21 +577,14 @@ void room6game(void)
 	printf("cscuser6\n");
 }
 
-
 void room8game(void)
 {
 	printf("cscuser8 \n");
 }
 
-
 void room29game(void)
 {
 	printf("cscuser29\n");
-}
-void room15game(void)
-{
-	printf("cscuser15 \n");
-
 }
 
 void FarStarTrader(void)
@@ -617,6 +596,7 @@ void omarsUniqueFn(void)
 {
 	printf("Omar");
 }
+
 void AzizHaouchineFn(void)
 {
 	printf("Aziz\n");
@@ -626,6 +606,7 @@ void Function23fbabonjo(void)
 {
 	printf("Episode 23: Fatoma Babonjo ");
 }
+
 void room17(void)
 {
 	puts("cscuser17");
@@ -641,13 +622,10 @@ void room16game(void)
 	printf("cscuser16\n");
 }
 
-
 void ryanRoom38(void)
 {
 	printf("Ryan cscuser38\n");
 }
-
-
 
 void brentTestRoom(void)
 {
@@ -665,8 +643,6 @@ void room1game(void)
 	printf("cscuser1\n");
 }
 
-
-
 void room28game(void)
 {
 	printf("Cscuser28:did not compile and test his code before he made a pull request or he would have seen he did not define his function using a function prototype. This adds extra work for everyone else.");
@@ -683,5 +659,136 @@ void lab13nanup(void)
 
 }
 
+void room15game(void)
+{
+	char userChoice1;
+    	char userChoice2;
+    	char userChoice3;
+	char userChoice4;
+	char userChoice5;
 
+	int i;
+
+    	//for decision #4
+    	char *actions[] = { "Approach the red door kick it down!", "Find another way out."};
+	
+   	 //userChoice1
+	//decision #1
+	 printf("You see a bright light shining on a tiny box in the room. \n"); 
+	 printf("Press 'a' to open the box. \n");
+	 printf("Press 'b' to search for a light switch. \n");
+	 printf("What would you like to do? \n");
+	 scanf(" %c", &userChoice1);
+
+	 if (userChoice1 == 'a')
+	 {
+		 printf("\n");
+		 //continue with story
+		 //decision #2
+		 printf("You find a mysterious key! You also see a big red door. \n");
+		 printf("Press 'a' to approach the red door, use your key, and open it. \n");
+		 printf("Press 'b' to stay in the room, but the water is at your ankles! \n");
+		 printf("What would you like to do? \n");
+		 scanf(" %c", &userChoice2);
+		 
+		 if (userChoice2 == 'a')
+		 {
+			 printf("There is a light and a shadowy figure at the end of the hall. \n");
+		 }
+		 else if (userChoice2 == 'b') 
+		 {
+			 printf("The water is rising fast! You walk towards light. \n\n");
+		 }
+		
+		 //further continue
+		 //decision #3
+		 printf("\n");
+		 printf("You are at the end of the hallway and you see a snake!! \n");
+		 printf("Press 'a' to stay calm and wait. \n");
+		 printf("Press 'b' to try to catch the snake. \n");
+		 printf("What would you like to do? \n");
+		 scanf(" %c", &userChoice5);
+		 
+		 if (userChoice5 == 'a')
+		 {
+			printf("The snake moves past you and into the grass. \n");
+		 }
+		 else if (userChoice5 == 'b')
+		 {
+			printf("You get bit by the snake! You slowly fall asleep. \n");
+			for(i = 0; i < 3; i++)
+			{
+				printf("ZzzzzZZzzzZzzzz. \n");
+			}
+		 }
+
+		 printf("\nThanks for playing Nicole's adventure game! Try again and choose a different door! \n\n\n");
+	 }
+	
+	 else if (userChoice1 == 'b')
+	 {
+		 //continue the story
+		 //decision #4
+		 printf("\n");
+		 printf("You find the light switch and see a red painted door. \n");
+		 printf("Press 'a' %s \n", actions[0]);
+		 printf("Press 'b' %s \n", actions[1]);
+		 printf("What would you like to do? \n");
+		 scanf(" %c", &userChoice3);
+		 
+		 if (userChoice3 == 'a')
+		 {
+			 printf("You kick down the door and walk towards light at the end of the tunnel. \n\n");
+		 }
+		 else if (userChoice3 == 'b')
+		 {
+			 printf("Theres no way out. The water is now at an unsafe level! You karate chop down the door! \n\n");
+		 }
+		 
+		 //further continue the story
+		 //decision #5
+		 printf("\n");
+		 printf("You continue walking forward and you make it to the end of the tunnel. \n"); 
+		 printf("Press 'a' to make a run for it. \n");
+		 printf("Press 'b' to walk slow. \n");
+		 printf("What would you like to do? \n");
+		 scanf(" %c", &userChoice4);
+		 
+		 srand(time(NULL));
+		 int randomOutcome = rand() % 5 + 1;
+		 
+		 if (userChoice4 == 'a') 
+		 {
+			 if (randomOutcome == 1)
+			 {
+				 printf("The ground shakes and you fall through. You're trapped! \n");
+			 }
+			 else if (randomOutcome == 2)
+			 {
+				 printf("Your foot slips on loose stone! You fall to the ground. \n");
+			 }
+			 else if (randomOutcome == 3)
+			 {
+				 printf("You look back and see someone chasing you! \n");
+			 }
+			 else if (randomOutcome == 4)
+			 {
+				 printf("The walls start to close in! Your foot gets caught seconds before exiting. \n");
+			 }
+			 else
+			 {
+				 printf("You made it out safely, you can see a nearby town.");
+			 }
+		 }
+		 else if (userChoice4 == 'b')
+		 {
+			 printf("Poision darts shoot out and you get struck! *THUD* \n");
+			 for(i = 0; i < 3; i++)
+			 {
+				 printf("ZzzzzZZzzzZzzzz. \n");
+			 }
+		 }
+	printf("\nThanks for playing Nicole's adventure game! Try again and choose a different door! \n\n\n");
+	 }
+}
 
