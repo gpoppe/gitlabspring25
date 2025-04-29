@@ -557,7 +557,185 @@ void userRoom50(void)
 
 void room31(void)
 {
-	printf("Yoonhong Min ");
+	//stats for the player
+	int health = 70;         // player's HP
+	int courage = 50;        // player's “morale” gauge
+	int squire = 0;		 // player may get a squire
+	int cursed = 0;          // player may get cursed
+	
+	//player may get random treasure at the end from this array.
+	const char* loot[5] = {
+		"Sword of Doom",
+		"Eldritch Tome",
+		"Bag of Unlimited Gold",
+		"Whip of Hopelessness",
+		"Potion of Eternal Youth"
+	};
+
+	int choice;
+
+	printf("\n-- Entering Yoonhong's Room: Into the Silly Dungeon --\n");
+	printf("Starting HP: %d, Courage: %d\n\n", health, courage);
+
+	// Five decisions for the player
+	for (int step = 1; step <= 5; ++step)
+	{
+		switch (step)
+		{
+			case 1:
+				printf("You find a heavy armored man with a onion shaped helmet who is exhausted and barely conscious.\n");
+				printf(" (1) Offer him your bottle of water\n (2) Tiptoe a way around the stranger\nChoose: ");
+				scanf("%d", &choice);
+				if (choice == 1) 
+				{
+					squire = 1;
+					courage += 10;
+					printf("He declares you a knight and insists on becoming your squire, even if you protest.\n+10 courage\n\n");
+				}
+				else 
+				{
+					cursed = 1;
+					printf("He gets mad at you for leaving him then suddenly plays a weird flute at you.\nYou got cursed.\n\n");
+				}
+				break;
+
+			case 2:
+				printf("You come across a bridge guarded by a talking duck demanding the answer to a riddle.\nWhat has a bill but never pays?\n");
+				printf(" (1) Shout out \"A duck!\" and cross\n (2) Bribe the duck with a bread\nChoose: ");
+				scanf("%d", &choice);
+				if (choice == 1) 
+				{
+					printf("The duck shrugs and lets you pass.\n+5 courage\n\n");
+					courage += 5;
+				}
+				else 
+				{
+					printf("The duck eats your bread and still lets you pass. It seems confused about its job.\n-5 courage\n\n");
+					courage -= 5;
+				}
+				break;
+
+			case 3:
+				printf("A shady merchant offers you a ice cream that can make you sing better in the shower\n");
+				printf(" (1) Buy the ice cream\n (2) Buy bandages for your wounds instead\nChoose: ");
+				scanf("%d", &choice);
+				if (choice == 1) 
+				{
+					if (rand() % 100 < 65) 
+					{
+						printf("You feel like you could hit a high C! Your spirit soars (your wounds are still open though).\n-20 health\n+10 courage\n\n");
+						health -= 20;
+						courage += 10;
+					}
+					else 
+					{
+						printf("Oh no! It is mint chocolate chip ice cream! You don't feel so good.\n-30 health\n\n");
+						health -= 30;
+					}
+				}
+				else 
+				{
+					printf("Your wounds are treated, but you will never hit that high note.\n+15 health\n-15 courage\n\n");
+					health += 15;
+					courage -= 15;
+				}
+				break;
+
+			case 4:
+				printf("You spot a dragon wearing reading glasses, deeply focused in erotic novel.\n");
+				printf(" (1) Sneak past while it's swooning.\n (2) Randomly challenge the dragon who is having a good time\nChoose: ");
+				scanf("%d", &choice);
+				if (choice == 1) 
+				{
+					if (rand() % 100 < (45 + courage / 2)) 
+					{
+						printf("You tiptoe successfully. The dragon sighs dramatically, unaware.\n+10 courage\n\n");
+						courage += 10;
+					}
+					else 
+					{
+						printf("Your fat butt scrapes loudly against the wall. The dragon looks up, blushing furiously.\nYou run!\n-30 health\n\n");
+						health -= 30;
+					}
+				}
+				else 
+				{
+					printf("The dragon gets mad with shame and hurls a colossal book at you.\n-45 health\n\n");
+					health -= 45;
+				}
+				break;
+
+			case 5:
+				printf("Finally, you reach the end of the Silly Dungeon. You find a glittery treasure chest.\n");
+				printf(" (1) Open the chest\n (2) Be suspicious and walk away from free treasure\nChoose: ");
+				scanf("%d", &choice);
+				if (choice == 1) 
+				{
+					if (cursed && rand() % 2 == 0) 
+					{
+						printf("The chest belches glitter in your face! It's very traumatic and disappointing.\n-30 health\n\n");
+						health -= 30;
+					}
+					else 
+					{
+						int treasure = rand() % 5;
+						printf("You find the legendary %s! Also, a coupon for free pizza in your favorite pizzeria!\n\n", loot[treasure]);
+					}
+				}
+				else 
+				{
+					printf("You walk away from a free treasure, what a wuss!\n-20 courage\n\n");
+					courage -= 20;
+				}
+				break;
+		}
+
+		if (health <= 0) 
+		{
+			printf("You collapse, forever trapped in the Silly Dungeon.\nHowever, the time somehow rewinds back for you.\n\n");
+			health = 70;
+			courage = 50;
+			squire = 0;
+			cursed = 0;
+			step = 0;
+			continue;
+		}
+	}
+
+	printf("-- You have survived Yoonhong's Silly Dungeon! Final HP: %d, Courage: %d --\n\n", health, courage);
+
+	//unique feature: player gets awarded with a title based on their final stats
+	const char* title;
+
+	if (cursed) 
+	{
+		if (health > 50)
+			title = "The Cursed Abandoner";
+		else
+			title = "The Bedazzled";
+	}
+	else if (health > 90 && courage > 60) 
+	{
+		title = "The Anti Risk Taker";
+	}
+	else if (health < 50 && courage > 60) 
+	{
+		title = "The Fearless Disaster";
+	}
+	else if (health < 50 && courage < 40) 
+	{
+		title = "Faltering Knight";
+	}
+	else if (health < 20) 
+	{
+		title = "The Walker on Razor's Edge";
+	}
+	else 
+	{
+		title = "Seasoned Adventurer";
+	}
+
+	printf("You are henceforth known as: %s!\n\n", title);
 }
 
 void room39game(void)
