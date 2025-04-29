@@ -10,8 +10,7 @@
 
 // Jessenia Hernandez Mora
 
-
-//
+// Stanley
 
 
 
@@ -95,7 +94,7 @@ void HubertRoom(void);
 
 void ryanRoom38(void);
 
-
+void stanleysRoom(void);
 
 void kobesRoom(void);
 
@@ -314,6 +313,7 @@ int main(int argc, char *argv[])
 			case 33:
 			{
 				puts("room33");
+				stanleysRoom();
 				break;
 			}
 			case 34:
@@ -684,4 +684,236 @@ void lab13nanup(void)
 }
 
 
+void stanleysRoom(void)
+{
+	printf("Welcome to Stanley's Adventure Room!\n");
+	int keepPlaying = 1;
+	int choice;
+	int randomNumber;
+	int coins = 0;
+	int inventory[5] = {0, 0, 0, 0, 0};
+	char* itemNames[5] = {"Sword", "Shield", "Potion", "Key", "Treasure"};
+	while(keepPlaying)
+	{
+		printf("\nYou have %d coins.\n", coins);
+		printf("Your inventory: ");
+		for(int i = 0; i < 5; i++)
+		{
+			if(inventory[i])
+				printf("%s, ", itemNames[i]);
+		}
+		printf("\n\n");
+		printf("What would you like to do?\n");
+		printf("1. Search for treasure\n");
+		printf("2. Fight a monster\n");
+		printf("3. Buy an item\n");
+		printf("4. Solve a riddle\n");
+		printf("5. Leave the room\n");
+		scanf("%d", &choice);
+		switch(choice)
+		{
+			case 1:
+				randomNumber = rand() % 10 + 1;
+				if(randomNumber > 7)
+				{
+					printf("You found a treasure chest! You gain 10 coins.\n");
+					coins += 10;
+					if(!inventory[4])
+					{
+						printf("You also found a rare treasure for your inventory!\n");
+						inventory[4] = 1;
+					}
+				}
+				else
+				{
+					printf("You searched but found nothing of value.\n");
+				}
+				break;
+				
+			case 2:
+				randomNumber = rand() % 10 + 1;
+				if(inventory[0])
+				{
+					printf("You use your sword to fight the monster!\n");
+					if(randomNumber > 3)
+					{
+						printf("You defeated the monster and gained 5 coins!\n");
+						coins += 5;
+					}
+					else
+					{
+						printf("The monster was too strong! You lost 2 coins running away.\n");
+						if(coins >= 2)
+							coins -= 2;
+						else
+							coins = 0;
+					}
+				}
+				else
+				{
+					printf("You don't have a sword to fight with!\n");
+					if(randomNumber > 7)
+					{
+						printf("You managed to escape unharmed.\n");
+					}
+					else
+					{
+						printf("You got injured and lost 3 coins.\n");
+						if(coins >= 3)
+							coins -= 3;
+						else
+							coins = 0;
+					}
+				}
+				break;
+				
+			case 3:
+				printf("What would you like to buy?\n");
+				printf("1. Sword (5 coins)\n");
+				printf("2. Shield (3 coins)\n");
+				printf("3. Potion (2 coins)\n");
+				printf("4. Key (7 coins)\n");
+				printf("5. Cancel\n");
+				
+				int buyChoice;
+				scanf("%d", &buyChoice);
+				
+				switch(buyChoice)
+				{
+					case 1:
+						if(coins >= 5 && !inventory[0])
+						{
+							printf("You bought a sword!\n");
+							inventory[0] = 1;
+							coins -= 5;
+						}
+						else if(inventory[0])
+						{
+							printf("You already have a sword!\n");
+						}
+						else
+						{
+							printf("Not enough coins!\n");
+						}
+						break;
+					case 2:
+						if(coins >= 3 && !inventory[1])
+						{
+							printf("You bought a shield!\n");
+							inventory[1] = 1;
+							coins -= 3;
+						}
+						else if(inventory[1])
+						{
+							printf("You already have a shield!\n");
+						}
+						else
+						{
+							printf("Not enough coins!\n");
+						}
+						break;
+					case 3:
+						if(coins >= 2 && !inventory[2])
+						{
+							printf("You bought a potion!\n");
+							inventory[2] = 1;
+							coins -= 2;
+						}
+						else if(inventory[2])
+						{
+							printf("You already have a potion!\n");
+						}
+						else
+						{
+							printf("Not enough coins!\n");
+						}
+						break;
+					case 4:
+						if(coins >= 7 && !inventory[3])
+						{
+							printf("You bought a key!\n");
+							inventory[3] = 1;
+							coins -= 7;
+						}
+						else if(inventory[3])
+						{
+							printf("You already have a key!\n");
+						}
+						else
+						{
+							printf("Not enough coins!\n");
+						}
+						break;
+					case 5:
+						printf("Purchase canceled.\n");
+						break;
+					default:
+						printf("Invalid choice.\n");
+				}
+				break;
+				
+			case 4:
+				randomNumber = rand() % 3;
+				printf("Solve this riddle:\n");
+				
+				switch(randomNumber)
+				{
+					case 0:
+						printf("I'm tall when I'm young, and short when I'm old. What am I?\n");
+						printf("1. A human\n2. A candle\n3. A tree\n");
+						int answer;
+						scanf("%d", &answer);
+						if(answer == 2)
+						{
+							printf("Correct! You earned 3 coins.\n");
+							coins += 3;
+						}
+						else
+						{
+							printf("Wrong! The answer was: A candle\n");
+						}
+						break;
+					case 1:
+						printf("What has keys but no locks, space but no room, and you can enter but not go in?\n");
+						printf("1. A keyboard\n2. A map\n3. A dream\n");
+						scanf("%d", &answer);
+						if(answer == 1)
+						{
+							printf("Correct! You earned 3 coins.\n");
+							coins += 3;
+						}
+						else
+						{
+							printf("Wrong! The answer was: A keyboard\n");
+						}
+						break;
+					case 2:
+						printf("What gets wetter as it dries?\n");
+						printf("1. Ice\n2. A sponge\n3. A towel\n");
+						scanf("%d", &answer);
+						if(answer == 3)
+						{
+							printf("Correct! You earned 3 coins.\n");
+							coins += 3;
+						}
+						else
+						{
+							printf("Wrong! The answer was: A towel\n");
+						}
+						break;
+				}
+				break;
+				
+			case 5:
+				printf("Thanks for visiting Stanley's Room! You leave with %d coins and some items.\n", coins);
+				keepPlaying = 0;
+				break;
+				
+			default:
+				printf("Invalid choice. Please try again.\n");
+		}
+	}
+	
+	printf("Returning to the main hall...\n");
+}
 
