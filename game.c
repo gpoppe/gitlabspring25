@@ -714,7 +714,7 @@ void room31(void)
 		else
 			title = "The Bedazzled";
 	}
-	else if (health > 90 && courage > 60) 
+	else if (health > 80 && courage < 40) 
 	{
 		title = "The Anti Risk Taker";
 	}
