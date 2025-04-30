@@ -511,7 +511,7 @@ void room3game(void)
     };
 
     int choices[5];
-    int outcomes[5]; // 1 = success, 0 = fail
+    int outcomes[5];
     int successCount = 0;
 
     for (int i = 0; i < 5; i++) {
@@ -532,13 +532,13 @@ void room3game(void)
         outcomes[i] = success;
 
         if (success) {
-            printf("✅ Success! Jorgito's choice '%s' kept the egg safe.\n\n", actions[choice - 1]);
+            printf("Alright you did it! Jorgito's choice '%s' kept the egg safe.\n\n", actions[choice - 1]);
             successCount++;
         } else {
-            printf("❌ Oh no! '%s' didn’t work and the egg is in danger.\n\n", actions[choice - 1]);
+            printf("Oh no that sucks dino bro! '%s' didn’t work and the egg is in danger.\n\n", actions[choice - 1]);
         }
 
-        sleep(1);  // pause for effect
+        sleep(1);
     }
 
     printf("\n🦖 Final Report: Jorgito’s Egg Watch\n");
