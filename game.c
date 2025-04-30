@@ -712,7 +712,7 @@ void room31(void)
 		if (health > 50)
 			title = "The Cursed Abandoner";
 		else
-			title = "The Bedazzled";
+			title = "The Unlucky";
 	}
 	else if (health > 80 && courage < 40) 
 	{
