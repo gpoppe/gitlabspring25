@@ -29,6 +29,8 @@ void dairasBrain(void);
 
 void jovannyFunction(void);
 
+void room3game(void);
+
 void room25game(void);
 
 void room57G(void);
@@ -144,6 +146,7 @@ int main(int argc, char *argv[])
 			case 3:
 			{
 				puts("room3");
+				room3game();
 				break;
 			}
 			case 4:
@@ -493,6 +496,51 @@ void joshRoom4(void)
 	printf("cscuser4 \n");
 }
 
+void room3game(void)
+{
+    printf("Welcome to Room 3 - The Dinosaur Egg Keeper!\n");
+    printf("You’ve discovered 5 rare dinosaur eggs. Your goal is to keep them safe until they hatch.\n");
+
+    const char* actions[] = {
+        "Hide the egg in a cave",
+        "Keep the egg warm with leaves",
+        "Guard the egg from predators",
+        "Move the egg to higher ground",
+        "Camouflage the egg with mud"
+    };
+
+    int choices[5];
+    int i;
+
+    for (i = 0; i < 5; i++) {
+        printf("\nEgg %d - What will you do?\n", i + 1);
+        for (int j = 0; j < 5; j++) {
+            printf("%d. %s\n", j + 1, actions[j]);
+        }
+
+        int choice;
+        do {
+            printf("Enter your choice (1-5): ");
+            scanf("%d", &choice);
+        } while (choice < 1 || choice > 5);
+
+        choices[i] = choice;
+
+        
+        int success = rand() % 2;
+        if (success)
+            printf("Success! %s was a smart move.\n", actions[choice - 1]);
+        else
+            printf("Uh-oh! %s didn't work out this time.\n", actions[choice - 1]);
+    }
+
+    printf("\nYour Dinosaur Egg Survival Report:\n");
+    for (i = 0; i < 5; i++) {
+        printf("Egg %d: %s\n", i + 1, actions[choices[i] - 1]);
+    }
+
+    printf("You've completed the Dino Egg Challenge!\n\n");
+}
 
 void dairasBrain(void)
 {
