@@ -87,7 +87,7 @@ void HubertRoom(void);
 
 void ryanRoom38(void);
 
-
+void stanleyRoom(void);
 
 void kobesRoom(void);
 
