@@ -498,8 +498,9 @@ void joshRoom4(void)
 
 void room3game(void)
 {
-    printf("Welcome to Room 3 - The Dinosaur Egg Keeper!\n");
-    printf("You’ve discovered 5 rare dinosaur eggs. Your goal is to keep them safe until they hatch.\n");
+    printf("=== Room 3 - Jorgito, the Dinosaur Egg Keeper ===\n");
+    printf("You are Jorgito, guardian of five mysterious dinosaur eggs.\n");
+    printf("Your mission: protect them through trials of nature and fate.\n\n");
 
     const char* actions[] = {
         "Hide the egg in a cave",
@@ -510,12 +511,13 @@ void room3game(void)
     };
 
     int choices[5];
-    int i;
+    int outcomes[5]; // 1 = success, 0 = fail
+    int successCount = 0;
 
-    for (i = 0; i < 5; i++) {
-        printf("\nEgg %d - What will you do?\n", i + 1);
+    for (int i = 0; i < 5; i++) {
+        printf("🌿 Egg %d: What will Jorgito do?\n", i + 1);
         for (int j = 0; j < 5; j++) {
-            printf("%d. %s\n", j + 1, actions[j]);
+            printf("  %d. %s\n", j + 1, actions[j]);
         }
 
         int choice;
@@ -526,21 +528,37 @@ void room3game(void)
 
         choices[i] = choice;
 
-        
         int success = rand() % 2;
-        if (success)
-            printf("Success! %s was a smart move.\n", actions[choice - 1]);
-        else
-            printf("Uh-oh! %s didn't work out this time.\n", actions[choice - 1]);
+        outcomes[i] = success;
+
+        if (success) {
+            printf("✅ Success! Jorgito's choice '%s' kept the egg safe.\n\n", actions[choice - 1]);
+            successCount++;
+        } else {
+            printf("❌ Oh no! '%s' didn’t work and the egg is in danger.\n\n", actions[choice - 1]);
+        }
+
+        sleep(1);  // pause for effect
     }
 
-    printf("\nYour Dinosaur Egg Survival Report:\n");
-    for (i = 0; i < 5; i++) {
-        printf("Egg %d: %s\n", i + 1, actions[choices[i] - 1]);
+    printf("\n🦖 Final Report: Jorgito’s Egg Watch\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Egg %d: %-30s - %s\n", i + 1, actions[choices[i] - 1], outcomes[i] ? "Safe" : "Lost");
     }
 
-    printf("You've completed the Dino Egg Challenge!\n\n");
+    printf("\n🎉 Jorgito protected %d out of 5 eggs!\n", successCount);
+
+    if (successCount == 5) {
+        printf("🏆 Perfect! A legendary keeper is born.\n");
+    } else if (successCount >= 3) {
+        printf("💪 Good job! Jorgito earns the respect of the hatchlings.\n");
+    } else {
+        printf("😢 A tough day for Jorgito. Perhaps fate will be kinder next time.\n");
+    }
+
+    printf("\nReturning to the main room...\n\n");
 }
+
 
 void dairasBrain(void)
 {
