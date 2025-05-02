@@ -85,7 +85,7 @@ void vicCompRoom(void);
 
 
 
-void brentTestRoom(void);
+void brentRoom(void);
 
 void omarsUniqueFn(void);
 void HubertRoom(void);
@@ -1194,7 +1194,7 @@ int main(int argc, char *argv[])
 			case 62:
 			{
 				puts("room62");
-				brentTestRoom();
+				brentRoom();
 				break;
 			}
 
@@ -2894,9 +2894,123 @@ void carlosroom60(void)
 }
 
 
-void brentTestRoom(void)
+void brentRoom(void)
 {
-	printf("Brent's Room \n");
+	/*printf("\n-------------------------------------------------------------------------------------------------------------------------\n");
+        printf("\nYou stumble into a fog-choked forest clearing. The air is thick, unnaturally silent—like the world is holding its breath.\n");
+        printf("Your heart pounds. Something is following you. Something ancient, malevolent... It doesn't walk. It watches.\n");
+        printf("They say if you see its faceless head, it's already too late. But you’re not ready to die. Not tonight.\n\n");
+        printf("You only have so much energy. Every move drains your strength.\n");
+        printf("Make the wrong decision—or rest too long—and it will catch up to you.\n");
+        printf("Lose it in the woods, or be dragged into the dark, screaming.\n\n");
+        printf("Choose your next action wisely. The forest is vast, but it’s watching you too...\n");
+        */
+
+        printf("\n\n==============================================\n");
+        printf("       WELCOME TO THE DARK FOREST ESCAPE\n");
+        printf("==============================================\n\n");
+        printf("You are being hunted by a faceless horror.\n");
+        printf("Every action you take affects your energy and the distance between you and the Entity.\n");
+        printf("Survive by keeping your energy above 0 and increasing the Entity's distance to 100 or more.\n");
+        printf("If your energy drops to 0 or the Entity catches you (distance reaches 0), you lose.\n");
+        printf("Choose actions wisely. Some bring risk. Some bring reward.\n");
+        printf("Good luck. The forest is listening...\n\n");
+
+        int energy = 100;
+        int distance = 65;
+        bool gameOver = false;
+        int positiveChanges[3] = {3, 5, 7};
+	int negativeChanges[3] = {-3, -5, -7};
+        srand(time(NULL));
+        while(!gameOver) {
+                printf("You have this much energy left: %d\n", energy);
+                printf("The Entity's Distance: %d", distance);
+                printf("\n\n1 - Hide \n2 - Run \n3 - Distract \n4 - Rest \n5 - Search for Items\n");
+                int choice;
+                do {
+                        printf("\nChoose an action (1-5): ");
+                        scanf("%d", &choice);
+                        if (choice < 1 || choice > 5) {
+                                printf("Invalid input. Please enter a number between 1 and 5.\n");
+                        }
+                } while (choice < 1 || choice > 5);
+
+                int randIndex;
+                int effect;
+
+
+                switch (choice) {
+                        case 1: // Hide
+                                energy -= 5;
+                                randIndex = rand() % 3;
+                                effect = negativeChanges[randIndex];
+                                distance += effect;
+                                break;
+                        case 2: // Run
+                                energy -= 15;
+                                randIndex = rand() % 3;
+                                effect = positiveChanges[randIndex];
+                                distance += effect;
+                                break;
+                        case 3: // Distract
+                                energy -= 10;
+                                randIndex = rand() % 3;
+                                effect = positiveChanges[randIndex];
+                                distance += effect - 2;
+                                break;
+                        case 4: // Rest
+                                energy += 10;
+                                randIndex = rand() % 3;
+                                effect = negativeChanges[randIndex];
+                                distance += effect;
+                                break;
+                        case 5: //Search
+                                energy -= 10;
+                                effect = -(rand()%10);
+                                distance += effect;
+                                break;
+                }
+	//CHOICES
+                if (distance <= 0) {
+                        printf("\n\n==============================================\n");
+                        printf("       The Entity caught you. Game Over.\n");
+                        printf("==============================================\n\n");
+                        gameOver = true;
+                        break;
+                } else if (distance > 100) {
+                        printf("\n\n==============================================\n");
+                        printf("       You escaped the forest. You win.\n");
+                        printf("==============================================\n\n");
+                        gameOver = true;
+                        break;
+                }
+                else if (energy <= 0) {
+                        printf("\n\n==============================================\n");
+                        printf("       You collapsed from exhaustion. Game Over.\n");
+                        printf("==============================================\n\n");
+                        gameOver = true;
+                        break;
+                }
+
+                switch(choice) {
+                        case 1: // Hide
+                                printf("\nYou crouch behind a fallen log, holding your breath. The trees creak... but is it the wind?\n");
+                                break;
+                        case 2: // Run
+                                printf("\nYou sprint through the undergrowth, branches slashing at your face. You hear footsteps behind you—closer or farther?\n");
+                                break;
+                        case 3: // Distract
+                                printf("\nYou throw a rock into the dark. A distant rustle. Maybe it worked... or maybe it's angrier now.\n");
+                                break;
+                        case 4: // Rest
+                                printf("\nYou collapse beside a tree, trying to steady your breathing. Every heartbeat feels louder than a scream.\n");
+                                break;
+                        case 5: //Search
+                                printf("\nYou fumble through the leaves for anything useful. Twigs snap. Are those your footsteps—or someone else's?\n");
+                                break;
+
+                }
+        }
 }
 
 void angelasRoom26(void)
