@@ -2896,16 +2896,6 @@ void carlosroom60(void)
 
 void brentRoom(void)
 {
-	/*printf("\n-------------------------------------------------------------------------------------------------------------------------\n");
-        printf("\nYou stumble into a fog-choked forest clearing. The air is thick, unnaturally silent—like the world is holding its breath.\n");
-        printf("Your heart pounds. Something is following you. Something ancient, malevolent... It doesn't walk. It watches.\n");
-        printf("They say if you see its faceless head, it's already too late. But you’re not ready to die. Not tonight.\n\n");
-        printf("You only have so much energy. Every move drains your strength.\n");
-        printf("Make the wrong decision—or rest too long—and it will catch up to you.\n");
-        printf("Lose it in the woods, or be dragged into the dark, screaming.\n\n");
-        printf("Choose your next action wisely. The forest is vast, but it’s watching you too...\n");
-        */
-
         printf("\n\n==============================================\n");
         printf("       WELCOME TO THE DARK FOREST ESCAPE\n");
         printf("==============================================\n\n");
@@ -2970,7 +2960,7 @@ void brentRoom(void)
                                 distance += effect;
                                 break;
                 }
-	//CHOICES
+	
                 if (distance <= 0) {
                         printf("\n\n==============================================\n");
                         printf("       The Entity caught you. Game Over.\n");
