@@ -2269,120 +2269,138 @@ void HubertRoom(void)
 void room25game(void)
 {
 	int choice25 = 0;
+	int lives = 5;
 	srand(time(NULL));
-	puts("You chose Room 25, good choice\n");
-	puts("But I hope your swimming is good\n");
-	puts("You have 3 pools to choose from\n");
-	puts("1. Shallow, 2. Normal, 3. Deep\n");
-	scanf("%d", &choice25);
-	switch(choice25)
+	while(lives > 0)
 	{
-		case 1:
+		printf("You have %d lives left\n", lives);
+		puts("You chose Room 25, good choice\n");
+		puts("But I hope your swimming is good\n");
+		puts("You have 3 pools to choose from\n");
+		puts("1. Shallow, 2. Normal, 3. Deep\n");
+		scanf("%d", &choice25);
+		switch(choice25)
 		{
-			puts("Shallow");
-			puts("Perfect, you can stand in this water!");
-			puts("You make your way to the end of the pool and make it to a completely empty room.");				
-			puts("You see a door at the end of the room, and a ladder on the other side");
-			puts("Do you 1. Climb up the Ladder, or 2. Walk out of the door: ");
-			scanf("%d", &choice25);
-			switch(choice25)
+			case 1:
 			{
-				case 1:
+				puts("Shallow");
+				puts("Perfect, you can stand in this water!");
+				puts("You make your way to the end of the pool and make it to a completely empty room.");				
+				puts("You see a door at the end of the room, and a ladder on the other side");
+				puts("Do you 1. Climb up the Ladder, or 2. Walk out of the door: ");
+				scanf("%d", &choice25);
+				switch(choice25)
 				{
-					int randy = (rand()%1)+1;
-					puts("You went up the ladder and you're outside now but you don't know where.");
-					puts("You are at a crossroads, Go 1.Left or Right:");
-					scanf("%d", &choice25);
-					switch(1)
+					case 1:
 					{
-						case 1:
+						int randy = (rand()%1)+1;
+						puts("You went up the ladder and you're outside now but you don't know where.");
+						puts("You are at a crossroads, Go 1.Left or Right:");
+						scanf("%d", &choice25);
+						switch(1)
 						{
-							puts("HAH! You fell for it, Your life now depends on one choice.");
-							puts("Take 1. Blue Pill or 2. Red Pill:");
-							scanf("%d", &choice25);
-							switch(choice25)
+							case 1:
 							{
-								case 1:
+								puts("HAH! You fell for it, Your life now depends on one choice.");
+								puts("Take 1. Blue Pill or 2. Red Pill:");
+								scanf("%d", &choice25);
+								switch(choice25)
 								{
-									puts("YOU WON! You get to live your Utopian Life, for now\n");
-									return;
+									case 1:
+									{
+										puts("You Lost! The easiest shallow path is not the best\n");
+										lives--;
 											
-								}
-								case 2:
-								{
-									puts("You Lost, your life\n");
-									return;
-							
+									}
+									break;
+									case 2:
+									{
+										puts("You Lost, your life\n");
+										lives--;
+									}
+									break;
 								}
 							}
+							break;
 						}
 					}
-				}
-				case 2:
-				{
-					puts("You went out of the door, but were met with a door out of a skyscraper. Goodbye World!\n");
-					return;
-				}
-			}
-		}
-		case 2:
-		{
-			puts("Normal");
-			puts("Perfect you can swim your way to the end of this");
-			puts("You make your way to the end of the pool and see 2 slides to choose from");
-                        puts("1. A spiral slide with no light, or 2. A straight downward slide: ");
-                        scanf("%d", &choice25);
-                        switch(choice25)
-                        {
-                                case 1:
-                                {
-					puts("You went down the slide and now must go through one of two doors");
-					puts("A door starts pulling you in to it");
-                                	int options[] = {-30, 130};
-                                	int randy = (rand()%2);
-					int choiceNew = options[randy];
-					switch(choiceNew)
+					break;
+					case 2:
 					{
-						case -30:
-						{
-							puts("You have gone in to a land of freezing cold and will be gone soon, Goodbye.\n");
-							return;
-    						}
-    						case 130:
-    						{
-        						puts("You have gone in to a land of burning hot and will be dehydrated soon, Goodbye\n");
-    							return;
-						}
+						puts("You went out of the door, but were met with a door out of a skyscraper. Goodbye World!\n");
+						lives--;
 					}
 				}
-				case 2:
-					puts("You make it down the slide and are met with a rabid dog staring at you!");
-					puts("You love dogs, but don't love rabid ones");
-					puts("Do you 1. Choose to be friendly and see what happens or 2. Attack it and run away after:");
-					scanf("%d", &choice25);
-					switch(choice25)
-					{
-						case 1:
-						{
-							puts("Being nice pays off, The dog leads you to your way out and you get to live your life again!\n");
-							return;
-						}
-						case 2:
-						{
-							puts("The dog continues to chase you till you can't run any longer, Goodbye World.\n");
-							return;
-						}
-					}
+				break;
 			}
-		}
-		case 3:
-		{
-			puts("Deep");
-			for(int i=0;i<5;i++)
+			case 2:
 			{
-				puts("You start drowning! And You don't make it long.\n");
+				puts("Normal");
+				puts("Perfect you can swim your way to the end of this");
+				puts("You make your way to the end of the pool and see 2 slides to choose from");
+                        	puts("1. A spiral slide with no light, or 2. A straight downward slide: ");
+                        	scanf("%d", &choice25);
+                        	switch(choice25)
+                        	{
+                                	case 1:
+                                	{
+						puts("You went down the slide and now must go through one of two doors");
+						puts("A door starts pulling you in to it");
+                                		int options[] = {-30, 130};
+                                		int randy = (rand()%2);
+						int choiceNew = options[randy];
+						switch(choiceNew)
+						{
+							case -30:
+							{
+								puts("You have gone in to a land of freezing cold and will be gone soon, Goodbye.\n");
+								lives--;
+    							}
+							break;
+    							case 130:
+    							{
+        							puts("You have gone in to a land of burning hot and will be dehydrated soon, Goodbye\n");
+    								lives--;
+							}
+							break;
+						}
+					}
+					break;
+					case 2:
+					{
+						puts("You make it down the slide and are met with a rabid dog staring at you!");
+						puts("You love dogs, but don't love rabid ones");
+						puts("Do you 1. Choose to be friendly and see what happens or 2. Attack it and run away after:");
+						scanf("%d", &choice25);
+						switch(choice25)
+						{
+							case 1:
+							{
+								puts("Being nice pays off, The dog leads you to your way out and you get to live your life again!\n");
+								return;
+							}
+							case 2:
+							{
+								puts("The dog continues to chase you till you can't run any longer, Goodbye World.\n");
+								lives--;
+							}
+							break;
+						}
+					}
+					break;
+				}
+				break;
 			}
-			return;
+			case 3:
+			{
+				puts("Deep");
+				for(int i=0;i<5;i++)
+				{
+					puts("You start drowning! And You don't make it long.\n");
+				}
+				lives--;
+				break;
+			}
 		}
 	}
 
