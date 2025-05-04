@@ -12,7 +12,7 @@
 
 // carlos acevedo
 
-
+// Raymond Lee
 
 //Jesse Navarro
 
@@ -109,6 +109,14 @@ void cscuser1(void);
 
 void PedroFunctionRoom(void);
 void gameFuncHenry41(void);
+
+//room 35
+void rayFunct(void);
+int rayFourDirect(int option, int count, int hp);
+int rayDice(int dice);
+int rayBattle(int option, int count, int hp);
+int rayFight(int hp);
+
 
 int main(int argc, char *argv[])
 {
@@ -319,6 +327,12 @@ int main(int argc, char *argv[])
 				puts("room35");
 				break;
 			}
+			case 35:
+                        {
+                                puts("room35");
+                                rayFunct();
+				break;
+                        }
 			case 36:
                         {
                                 puts("Entering Cafe 36! :)");
@@ -3357,4 +3371,428 @@ void gameFuncHenry41(void)
 		}
 	}
 	EXIT_SUCCESS;
+}
+
+void rayFunct(void)
+{
+	int hp = 100;	
+	int option = 0;	
+	int count = 0;
+	char equip[7][30]={"Sword", "Light Armour", "Compass", "Map", "Ring of Str", "Ring of Agi", "two Potions"};
+	bool next = true;
+	bool condition = false;
+
+
+	
+	printf("You open the door only to see pitch black, unable to make out anything you hesitate\n");
+
+	printf("feeling unnerved from being unable to see anything, you quickly shut the door.\n");
+	printf("Atleast you try to close the door, but it wont budge.");
+	printf("Before you can react a shadowy ropelike tendril wraps around your waist and upbruptly pulls you in.");
+
+	printf("As you step into the darkness, your conciousness begins to fade.\n \n");
+
+	printf("You feel something wet against your face. \nYou brush it off with your hands. \n");
+	printf("The wetness is back, it feels like something is licking you. \n");
+	printf("Your eyes snap open and in your view is a small wolf cub. \n");
+	printf("You scramble to your feet, while the cub sits down staring up at you.\n");
+	printf("-woof- -woof- \n \n");
+
+	printf("Staring at the cub, you suddenly hear a voice in your head.\n \n");
+
+	printf("Welcome to the trial, adventurer. \n");
+	printf("Your objective is to gather 4 magic crystal to activate the portal in the center.\n");
+	printf("You have been granted equipment, supplies and help\n");
+	printf("Good Luck.\n \n");
+
+	while(next)
+	{
+		printf("1. Pet the dog \n2. Check your stuff \n"); 
+		printf("3. Check your surroundings \n4. Explore \n \n");
+
+		printf("Choice: ");
+		scanf("%d", &option);
+		printf(" \n");
+		switch(option)
+		{
+			case 1:
+
+			printf("You reach your hand out to pet the doggo.\n");
+			printf("The cub wags it's tail then licks your hand.\n \n");
+			break;
+
+			case 2:
+			printf("You begin to assess your gear \n\n");
+			
+			for(int i = 0; i < 4; i++)
+			{
+				printf("%d. %s\n", i, equip[i]);
+			}
+
+        		break;
+		
+			case 3:
+
+			printf("You discover you are in a clearing surrounded by trees.\n ");
+			printf("Nearby is the portal the voice told you about, its currently inactive. \n ");
+			printf("Next to the portal is a pedestal with four slots.\n\n");
+			break;
+
+			case 4:
+
+			next = false;
+		 	break;
+		}
+
+	}
+                                                                                                             
+	hp = rayFourDirect(option, count, hp);
+
+	
+
+	printf("Now that you have gotten all 4 crystals, you reassess your items\n\n");
+
+	for(int k = 0; k < 7; k++)
+	{
+		printf("%d. %s\n", k, equip[k]);
+	}
+
+	printf("Now all that is left is to return to the center and active the portal\n");
+	printf("Upon reaching the clearing you noticed something is different. \n");
+	printf("There is now an Orc standing infront of pedestal of the portal. He is blocking your way \n");
+	printf("He must be the guardian of this trial, beating him seems to be the only option. Prepare for a fight!\n\n");
+	
+	//printf("Hp : %d\n",hp);
+	hp = rayFight(hp);
+
+	if(hp < 1)
+	{
+		printf("Unfortunately the orc has proved too much for you. You have succumb to your wounds\n");
+		printf("Before the darkness over takes your vision, you hear the voice again\n\n");
+		printf("Trial Failed, you will be sent back shortly.... loser\n\n");
+	}
+	else
+	{	
+		printf("Congratulations, you have defeated the Orc guardian. Now insert those magic crystal and complete the trial.");
+		printf("You quickly insert the crystals, the portal shimmers to life. You pat the doggo goodbye and thank it for the help\n");
+		printf("You walk through the portal and arrived in a familiar place. A room filled with doors...\n\n");
+	}
+
+}
+int rayFourDirect(int option, int count, int hp)
+{
+	int tempHp = 0;	
+	bool slime = false;
+	bool rabbit = false;
+	bool rat = false;
+	bool goblin = false;
+
+	while(count < 4)                                                                                                      		
+	{       
+		
+	    //	printf("Count: %d \n",count);	
+		printf("1. Ruins (West) \n2. Abandon House (south) \n");
+		printf("3. A spring (East) \n4. A Cave (North) \n \n"); 
+		printf("Choice: ");
+		scanf("%d", &option);                                                                                
+		printf(" \n");
+           	
+		switch(option)
+		{
+			case 1:				
+				if(!slime)
+				{	
+				printf("You start heading to the ruins. After some time you come across a group of slime \n");
+				printf("They seem to be guarding a chest. What will you do?\n\n"); 
+				printf("1. Attack \n2. Distract \n3. Sneak Attack \n4. Go back \n");
+                        	printf("Choice: ");       
+				scanf("%d", &option);
+                        	printf(" \n");
+				
+                       		hp = rayBattle(option, count, hp);
+
+                       		printf("You open the chest and acquire a ring of agility, granting you faster attack\n\n");
+
+				count++;
+				//printf("Count: %d \n",count);
+                        	slime = true;
+                       	        break;
+				}
+				else
+				{
+					printf("You already got this crystal, pick a different spot\n\n");
+					hp = rayFourDirect(option, count, hp);
+				}
+			case 2:
+				if(!rabbit)
+				{
+                                printf("You start heading to the House. After some distance you see the house \n");
+                                printf("Upon entering the house you see Giant rats surrounding a chest. What will you do?\n\n");
+                                printf("1. Attack \n2. Distract \n3. Sneak Attack \n4. Go back \n");
+                                printf("Choice: ");
+				scanf("%d", &option);                                                                                          
+				printf(" \n");
+				
+				hp = rayBattle(option, count, hp);
+				printf("You open the chest and acquire a ring of strength, granting you greater attack\n");
+				count++;
+				//printf("Count: %d \n",count);
+                                rabbit = true; 
+				break;
+				}
+				else
+				{
+					printf("You already got this crystal, pick a different spot\n\n");
+					rayFourDirect(option, count, hp);
+				}
+			case 3:
+				if(!rat)
+				{
+                                printf("You start heading to the spring. After a trek you see the spring in the distance \n");
+                                printf("On the west side of the spring you see the chest. It is surrounded by horn rabbits\n");
+                                printf("What will you do?\n\n");
+                                printf("1. Attack \n2. Distract \n3. Sneak Attack \n4. Go back \n");
+                                printf("Choice: ");
+                                scanf("%d", &option);
+                                printf(" \n");
+				
+                               	hp = rayBattle(option, count, hp);
+
+                                printf("You open the chest and acquire a scroll of sharpness. Your sword is now sharper\n\n");
+
+				count++;
+				//printf("Count: %d \n",count);
+                                rat = true;
+				break;
+				}
+				else
+                                {
+                                        printf("You already got this crystal, pick a different spot\n\n");
+					hp = rayFourDirect(option, count, hp);
+                                }
+			case 4:
+				if(!goblin)
+				{
+                                printf("You start heading to the caves. Time ticks by until you reach the caves. \n");
+                                printf("You see a bunch of goblins guarding the entrance. \n");
+                                printf("Maybe the chest is inside. What will you do?\n\n");
+                                printf("1. Attack \n2. Distract \n3. Sneak Attack \n4. Go back \n");
+                                printf("Choice: ");
+                                scanf("%d", &option);
+                                printf(" \n");
+				
+                                hp = rayBattle(option, count, hp);
+
+                                printf("You open the chest and acquire a scroll of weapon enchantment and two potions of healing");
+			        printf("Your sword is now sharper\n\n");
+
+				count++;
+				//printf("Count: %d \n",count);
+                                goblin = true;
+                                break;
+				}
+				else
+                                {
+                                        printf("You already got this crystal, pick a different spot\n\n");             
+					hp = rayFourDirect(option, count, hp);
+                                }
+                        default:
+                                printf("Choice invalid, Try again\n\n");
+
+			
+		}
+	}
+	//printf("Hp: %d\n",hp);
+	return hp;
+}
+int rayDice(int dice)
+{
+	
+	int min = 1;
+	int max = 20;
+	int roll = 0;
+
+	switch (dice)
+	{
+		case 4:
+			max = 4;
+			printf("D4");
+			roll = (rand() % (max - min +1)) +min;
+			printf("Dice roll: %d \n \n", roll);
+			break;
+		case 6:
+			max = 6;
+                        printf("D6 ");
+                        roll = (rand() % (max - min +1)) +min;
+                        printf("Dice roll: %d \n \n", roll);
+                        break;
+		case 8:
+                        max = 8;
+                        printf("D8 ");
+                        roll = (rand() % (max - min +1)) +min;
+                        printf("Dice roll: %d \n \n", roll);
+                        break;
+		case 10:
+                        max = 10;
+                        printf("D10 ");
+                        roll = (rand() % (max - min +1)) +min;
+                        printf("Dice roll: %d \n \n", roll);
+                        break;
+		case 12:
+                        max = 12;
+                        printf("D12 ");
+                        roll = (rand() % (max - min +1)) +min;
+                        printf("Dice roll: %d \n \n", roll);
+                        break;
+		case 20:
+                        max = 20;
+                        printf("D20 ");
+                        roll = (rand() % (max - min +1)) +min;
+                        printf("Dice roll: %d \n \n", roll);
+                        break;
+
+	
+	}
+	return roll;
+}
+int rayBattle(int option, int count, int hp)
+{
+	
+	int roll = 0;
+	int tempHp = hp;
+	
+
+	//printf("Choice: ");
+	//scanf("%d", &option);
+	//printf(" \n");
+      
+	
+	//printf("RayBattle HP: %d\n", tempHp);
+
+	switch(option)
+	{
+		case 1:
+			printf("Attacking head on seemed to be a great idea \n");
+			roll = rayDice(20);
+			if(roll > 15)
+			{
+				printf("The battle was a breeze. No hp lost, go claim your prize\n\n");
+			}
+			else if(roll > 10)
+			{
+				printf("The battle took some time but overall was okay. Lose 5 hp \n\n");
+				hp = hp- 5;
+			}
+			else
+			{
+				printf("It was a hard battle, you took some hits. Lose 10 hp \n\n");
+				hp = hp- 10;
+			}
+			break;
+		case 2:
+			printf("You plan to distract the creatures with some nearby rocks \n");
+			roll = rayDice(20);
+
+			if(roll > 15)
+			{
+				printf("Success \n");
+				printf("You have sucessfully distracted the monsters. Go claim your prize \n");
+			}
+			else
+			{
+				printf("Failure \n");
+				printf("Instead of throwing the rock away from the monster, you threw it at the monsters. Lose 5 hp \n\n");
+				hp = hp - 5;
+			}
+			break;
+		case 3:
+			printf("You plan to sneak attack \n");
+			roll = rayDice(20);
+
+                        if(roll > 10)
+                        {
+                                printf("Success \n");
+                                printf("You have sucessfully sneak attacked the monsters. No health lost. Go claim your prize \n\n");
+                        }
+                        else
+                        {
+                                printf("Failure \n");
+                                printf("As you move in for a sneak attack you stepped on a twig, alerting the monster to your presence. \n");
+				printf("After a long battle, you prevailed in your fight. Lose 5 hp. \n\n");
+                        	hp = hp- 5;
+			}
+                        break;
+		case 4: //go back
+			hp = rayFourDirect(option, count, hp);
+
+		default:
+			printf("Invalid choice, Try again\n\n");
+
+	}
+	return hp;
+}
+int rayFight(int hp)
+{
+	int orcHp = 100;
+	int count = 0;
+	int opt = 0;	
+	int roll = 0;
+
+	while(orcHp > 0 && hp > 0)
+	{	
+		
+		printf("-------------------------------\n\n");
+		printf("Orc HP: %d \n\n\n", orcHp);
+		printf("HP: %d \n\n",hp);
+		printf("-------------------------------\n\n");
+
+		printf("1. Attack\n2. Use potion\n");
+		printf("Choice: ");
+		scanf("%d", &opt);
+		printf("\n\n");	
+	
+		switch(opt)
+		{
+			case 1:
+			{
+				printf("2 attacks\n");
+				roll = rayDice(8);
+				orcHp = orcHp - roll;
+				roll = rayDice(8);
+				orcHp = orcHp - roll;
+
+				printf("Doggo attacks\n");
+				roll = rayDice(4);
+				orcHp = orcHp - roll;
+
+				printf("Orc attacks\n");
+				roll = rayDice(8);
+				hp = hp - roll;
+				break;
+			}
+			case 2:
+			{
+				if(count < 2)
+				{
+					printf("You down a potion\n");
+					roll = rayDice(20);
+					hp = hp + roll;
+
+					printf("Orc attacks\n");
+					roll = rayDice(10);
+					hp = hp - roll;
+					//break;
+					count++;
+				}
+				else
+				{
+					printf("No more potions left\n\n");
+					
+				}
+				break;
+			}
+		}
+	
+	}
+	return hp;
 }
