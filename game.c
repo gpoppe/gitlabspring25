@@ -69,8 +69,15 @@ void checkInventory17(char *arr[]);
 int whatToDo17(char location[], bool tableSeen, bool tableChecked, bool windowSeen);
 int coinToss17(void);
 //end room 17
+//room8
 void room8game(void);
-
+void room8game(void);
+void room8part1(void);
+void room8part2(void);
+void room8part3(void);
+void room8part4(void);
+void room8part5(int choice);
+//end room8
 void room29game(void);
 void room28game(void);
 void AzizHaouchineFn(void);
@@ -2431,7 +2438,309 @@ void room6game(void)
 
 void room8game(void)
 {
-	printf("cscuser8 \n");
+    printf("\nOliver's Room\n");
+    int choice = 0;
+    srand(time(NULL));
+    int random = rand() % 3 + 1;
+    puts("Type 99 to exit game.");
+
+    puts("Your body was destroyed and cloned into room 8!");
+    puts("The room is well lit and you notice three vases on pedestals.");
+    puts("The room is starting to warp! A ghastly voice tells you to choose a vase. Which vase do you choose?");
+    printf("Hint: The random number is %d\n", random);
+    printf("Please choose 1, 2, or 3: ");
+    scanf("%d", &choice);
+    if (choice == 99)
+    {
+        puts("The Emperor blesses you, guardsman!");
+        puts("Returning to main menu...\n");
+        return;
+    }
+    else if (choice < 0 || choice > 3)
+    {
+        puts("Number out of range, Please choose 1, 2, or 3:");
+    }
+    else if (choice == random)
+    {
+        room8part1();
+    }
+    else
+    {
+        puts("\nTHE VASE GREW TEETH AND ATE YOU!\n");
+        sleep(2);
+        room8game();
+    }
+}
+void room8part1(void)
+{
+    int choice1 = 0;
+    puts("\t\t\t\t\t\t+OPEN YOUR EYES+\n");
+    puts("*You were teleported to a new land!*");
+    puts("*You are greeted by an alien speaking perfect English. Something about a 'Greater Good'...*");
+    puts("1. I'd like to know more!");
+    puts("2. *Take the xenos' hand* Please get me out of here!");
+    puts("3. Where are we?");
+    printf("What do you say?\n");
+    printf("Your choice: ");
+    scanf("%d", &choice1);
+    if (choice1 == 99)
+    {
+        puts("The Emperor blesses you, guardsman!");
+        puts("Returning to main menu...\n");
+        return;
+    }
+    else if (choice1 < 0 || choice1 > 3)
+    {
+        puts("Number out of range, Please choose 1, 2, or 3:");
+    }
+    else if (choice1 == 1)
+    {
+        puts("*You hear heavy, like REALLY HEAVY footsteps behind you*");
+        sleep(2);
+        puts("YOU SPEAK WITH XENOS! THE ONLY RESPITE FOR YOU IS THE EMPERORS MERCY!");
+        puts("*You were blasted apart.*\n");
+        sleep(2);
+        room8part1();
+    }
+    else if (choice1 == 2)
+    {
+        puts("*The alien is obliterated in front of your eyes*");
+        sleep(2);
+        puts("WHY DID YOU GRAB THE XENOS' HAND!?!");
+        puts("YOU MUST BE IN COLLUSION WITH THE XENOS! MAY THE EMPERORS MERCY REDEEM YOU!\n");
+        puts("*You were blasted apart.*\n");
+        sleep(2);
+        room8part1();
+    }
+    else if (choice1 == 3)
+    {
+        int choice2 = 0;
+        puts("\nThis used to be a paradise world...Follow me, I will take you somewhere safe.");
+        puts("You notice two weapons in the vicinity; An alien rifle and a shovel.");
+        puts("What will you do?\n1. Use the alien rifle.\n2. Use the shovel.\n3. Follow the alien.");
+        while (choice2 < 1 || choice2 > 3)
+        {
+            printf("Choose 1, 2, or 3: ");
+            scanf("%d", &choice2);
+            if (choice2 < 1 || choice2 > 3)
+            {
+                puts("Number out of range, Please choose 1, 2, or 3:");
+            }
+        }
+        if (choice2 == 1)
+        {
+            puts("*You attack the alien, instantly riping a hole through him*");
+            puts("*You hear heavy footsteps come behind you*");
+            sleep(2);
+            puts("WELL DONE GUARDSMA....DID YOU USE A XENOS RIFLE? MAY THE EMPERORS MERCY GIVE YOU PEACE!");
+            puts("*You were blasted apart*\n");
+            sleep(2);
+            room8part1();
+        }
+        else if (choice2 == 2)
+        {
+            puts("*You attack the alien, instantly delivering the Emperors Mercy.*");
+            puts("*You hear heavy footsteps come behind you*");
+            sleep(2);
+            puts("WELL DONE KREIGSMAN! YOUR COMMISSAR WILL GIVE YOU EXTRA RATIONS TONIGHT!\n");
+            sleep(2);
+            room8part2();
+        }
+        else if (choice2 == 3)
+        {
+            puts("*You hear heavy, like REALLY HEAVY footsteps behind you*");
+            sleep(2);
+            puts("YOU SPEAK WITH XENOS! THE ONLY RESPITE FOR YOU BOTH IS THE EMPERORS MERCY!");
+            puts("*You were both blasted apart*\n");
+            sleep(2);
+            room8part1();
+        }
+    }
+}
+void room8part2(void)
+{
+    int choice = 0;
+    puts("\t\t\t\t\t\t+KEEP GOING+\n");
+    puts("*You follow the giant robot who insists hes a man back to what looks like a bunker*");
+    sleep(2);
+    puts("THIS GUARDSMAN WILL BE GIVEN EXTRA RATIONS FOR HIS HEROIC ACTION IN THE NAME OF THE EMPEROR.");
+    puts("Guardsman, take 2 rations and get ready for the next charge. This planet will be taken in the name of the Emperor.");
+    puts("1. Take both rations.\n2. Take 3 rations.\n3. I'm not hungry actually.");
+    printf("Your choice: ");
+    scanf("%d", &choice);
+    sleep(1);
+    if (choice == 99)
+    {
+        puts("The Emperor blesses you, guardsman!");
+        puts("Returning to main menu...\n");
+        return;
+    }
+    else if (choice < 0 || choice > 3)
+    {
+        puts("\nNumber out of range, Please choose 1, 2, or 3:");
+    }
+    else if (choice == 1)
+    {
+        puts("\n\nTHE EMPEROR BLESSES YOU TODAY GUARDSMAN. YOU ARE TO RETURN TO THE BATTLE BARGE AND MEET THE EMPERORS FINEST.");
+        puts("*You are taken to a what looks like a metal slab on the floor and instantly teleported to a massive spaceship*\n");
+        room8part3();
+    }
+    else if (choice == 2)
+    {
+        puts("\n\n*After eating your 3 rations, you are told to charge your powerpack in anticipation of the charge.");
+        puts("...");
+        puts("GET DOWN! ARTILLERY BARRA------");
+        puts("*The bombardment destroyed the bunker, alongside yourself*\n");
+        sleep(2);
+        room8part2();
+    }
+    else if (choice == 3)
+    {
+        puts("\n\nToo good for rations huh? AFFIX BAYONETS! THIS GUARDSMAN WANTS TO CHARGE EARLY!");
+        puts("*You are placed on the frontlines. In the distance you see what looks like a mountain shift*");
+        puts("FOR THE EMPEROR! CHAAAAAARGE!");
+        puts("*You are frozen in place, a man with a cape and a red metallic eye looks at you from above*");
+        puts("COWARD!");
+        puts("*You have been executed for your hesitance in the charge*\n");
+        sleep(2);
+        room8part2();
+    }
+}
+void room8part3(void)
+{
+    int choice = 0;
+    puts("\t\t\t\t\t\t+THEY WILL BRING YOU TO ME+\n");
+    puts("*You have been teleported to a baroque and dark spaceship surrounded by incredibly large men in blinding golden armor*");
+    puts("*You are awestruck. You feel dread and the need to drop to your knees and avert your gaze*");
+    puts("THE EMPEROR HAS REQUESTED YOUR PRESENCE GUARDSMAN. COME WITH US.");
+    puts("1. Follow them.\n2. Follow them.\n3. Follow them. ");
+    printf("Your choice: ");
+    scanf("%d", &choice);
+    sleep(1);
+    if (choice == 99)
+    {
+        puts("The Emperor blesses you, guardsman!");
+        puts("Returning to main menu...\n");
+        return;
+    }
+    else if (choice < 0 || choice > 3)
+    {
+        puts("Please choose 1, 2, or 3:");
+    }
+    room8part4();
+}
+void room8part4(void)
+{
+    puts("\t\t\t\t\t\t+DECIDE+\n");
+    puts("*The golden warrior leads you to a dark room*");
+    puts("LOOK AND REACH INTO THE DARKNESS AND PULL OUT WHATEVER YOU FIND. HE HAS ASKED THIS OF YOU.");
+    puts("*Feeling as though you have no choice, you do as you are told*\n");
+    char *Array[] = {"\t\tA glowing shard", "\t\t\t\tA stone blade", "\t\t\tAn empty vial"};
+    for (int i = 0; i < sizeof(Array) / sizeof(Array[0]); i++)
+    {
+        printf("%s\n\n", Array[i]);
+    }
+
+    srand(time(NULL));
+    int selected = rand() % 3;
+    sleep(2);
+    puts("Reaching...");
+    sleep(2);
+    puts("Grasping...");
+    sleep(2);
+    puts("You pull out...");
+    sleep(2);
+
+    printf("%s\n\n", Array[selected]);
+
+    switch (selected)
+    {
+    case 0:
+        sleep(2);
+        puts("\t\t\t\t\t\t+HOPE+\n");
+        puts("*A blinding golden light shines on you*");
+        room8part5(0);
+        break;
+    case 1:
+        sleep(2);
+        puts("\t\t\t\t\t\t+DEATH+\n");
+        puts("*You see the golden warriors struggling*");
+        puts("You... are to be... brought... before... him...");
+        room8part5(1);
+        break;
+    case 2:
+        sleep(2);
+        puts("\t\t\t\t\t\t+CHANGE+\n");
+        puts("*The golden giants kneel before you*");
+        puts("We will deliver you safely to him.");
+        room8part5(2);
+        break;
+    }
+
+    puts("The Emperor blesses you, guardsman!");
+    puts("Returning to main menu...\n");
+    return;
+}
+void room8part5(int choice)
+{
+    puts("You are brought before what looks like a corpse.\nYou can feel a titanic energy. Infinite power resides on that throne.");
+    switch (choice)
+    {
+    case 0:
+        sleep(2);
+        puts("*The shard is magically taken from your grasp*");
+        puts("*The corpse begins to reconstruct itself. A tide of energy overwhelms the room.");
+        puts("A golden barbarian king of old rises from the throne.\n");
+        sleep(1);
+        puts("\t\t\t\t\t+NOW WE WILL MAKE THEM OBEY+\n");
+        break;
+    case 1:
+        sleep(2);
+        puts("*You lose control of yourself. The golden warriors are pointing weapons at you, shaking and screaming in their armor.*\n");
+        puts("\t\t\t\t\t+THEY WILL NOT HARM YOU+\n");
+        puts("*You walk up to the corpse, blade in hand. Without thinking, you drive it into the corpses heart*\n");
+        puts("\t\t\t\t\t*BLINDING LIGHT ENVELOPS THE ROOM*\n");
+        sleep(1);
+        puts("*As the room darkens, a single ember rises from the throne...*");
+        break;
+    case 2:
+        sleep(2);
+        puts("What am I to do with this vial?");
+        puts("\t\t\t\t\t\t+AN OFFERING+\n");
+        puts("To who?");
+        puts("\t\t\t\t\t\t+YOU DECIDE+\n");
+        puts("*The vial is taken and when returned, you notice a single drop of blood*");
+        sleep(1);
+        int x = 0;
+        while (x != 1 && x != 2)
+        {
+            sleep(2);
+            puts("1. Follow a faint voice. It speaks of power.");
+            puts("2. Follow the familiar voice. It feels like hope.");
+            printf("Your choice: ");
+            scanf("%d", &x);
+
+            if (x == 1)
+            {
+                puts("\n*You step into the dark, drawn by the faint voice.*");
+                puts("It promises you the galaxy. You disappear from history... but not from legend.");
+                sleep(1);
+            }
+            else if (x == 2)
+            {
+                puts("\n*You walk into the light, toward the familiar voice.*");
+                puts("It feels like home.");
+                sleep(1);
+            }
+            else
+            {
+                puts("Please choose 1 or 2.");
+            }
+        }
+        break;
+    }
+    puts("\n\t\t\t\t\t\t+Thank you+");
+    return;
 }
 
 
