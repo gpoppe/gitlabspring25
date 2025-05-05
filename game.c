@@ -7,7 +7,7 @@
 //Yoonhong Min
 // Jessenia Hernandez Mora
 //Gerard McCallion
-
+//Jared Hernandez
 // Nanu Panchamurthy
 
 // carlos acevedo
@@ -2437,8 +2437,94 @@ void room8game(void)
 
 void room29game(void)
 {
-	printf("cscuser29\n");
+	int userChoice = 0;
+	printf("You chose room 29 and the door closes behind you.\n");
+	printf("In front of you are three different colored doors.");
+	printf("There is a green door on your left, an orange door straight ahead, and a yellow door on the right\n");
+	printf("Select one of the doors to enter: 1.Green 2.Orange 3.Yellow: ");
+	scanf("%d", &userChoice);
+
+	if (userChoice == 1)
+	{
+		printf("\nYou choose the green door and enter the room.\n");
+		printf("In the green, room there you are met with a ladder and stairs.\n");
+		printf("You can select to use either the 1.Ladder or 2.Stairs.\n");
+		scanf("%d", &userChoice);
+
+		if (userChoice == 1)
+		{
+			int array[] = {0,1};
+			int random = rand()%sizeof(array);
+
+			if (random == 0)
+			{
+				printf("As you climb the ladder, it seems that it goes on forever.\n");
+				printf("You being to become to fatigued, and begin to worry.\n");
+				printf("The stress gets to you and your hand slips, and you fall back to the room from a massive height.");
+				return;
+			}
+
+			else if(random == 1)
+			{
+				printf("Despite the long way up, you manage to climb the ladder and reach the top.\n");
+				printf("You look back down and can't see the bottom of the ladder.\n");
+				printf("However, there is another door in front of you. As you open it you realize you've made it out!");
+				return;
+			}
+		}
+
+		else if(userChoice == 2)
+		{
+			printf("As you take the stairs, you notice a reflection near the bottom of the stairs\n.");
+				printf("You soon realize the room is flooding and the stairwell is filling up.\n");
+				printf("You run back to the room depserately looking for a way out.\n");
+				printf("You take a big breath as the room fills with water with no way out.\n");
+				return;
+		}
+		
+	}
+
+	else if(userChoice == 2)
+	{
+		printf("\nYou choose the orange door and enter the room.\n");
+		printf("As you enter the orange room, the door slams shut beind you as the room slowly beings to heat up");
+		printf("You notice this room has a small heavy box that can be used.\n");
+		printf("You can select to either 1.Break the window or 2.Break the door");
+		scanf("%d", &userChoice);
+
+		if (userChoice == 1)
+		{
+			printf("You grab the small box and throw it at the window.\n");
+			printf("However, to your surprise the window doesn't break. The window seems to be reinforced.\n");
+			printf("You begin to tire yourself out and the room reaches an unbearable heat as everything goes black.\n");
+			return;
+		}
+
+		else if(userChoice ==2)
+		{
+			printf("You grab the small box and begin to hit the door.\n");
+			printf("The door begins to budge ande eventually you create a hole in the door.\n");
+			printf("You eventually make a hole through the door and try the same on the previous door.\n");
+			printf("Eventually you break through the previous door as well and escape room 29.\n");
+			return;
+		}
+	}
+	else if(userChoice == 3)
+	{
+		printf("\nYou choose the yellow door and enter the room.\n");
+		printf("The room is seemingly empty with nothing but a small light bulb illuminating the yellow room.\n");
+		printf("Suddenly the walls of the room begin to move.\n");
+		printf("As you begin to look for a way out, you realize you can't open the door from inside the room\n");
+
+		for(int i = 0; i < 4; i ++)
+		{
+			printf("The walls continue to close in...\n");
+		}
+		printf("With no exit, you walls slowly crush you.\n");
+		return;
+	}
 }
+
 void room15game(void)
 {
 	char userChoice1;
