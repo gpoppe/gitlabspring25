@@ -1217,6 +1217,153 @@ int main(int argc, char *argv[])
 void joshRoom4(void)
 {
 	printf("cscuser4 \n");
+	int choices[5];
+	int decision;
+	int selection;
+	int i;
+
+	printf("\n You step into Room 4: Elder Scrolls V: The Skyrimer: Wild Hunt \n");
+
+	for(int i = 0; i < 5; i++)
+	{
+		printf("\nWhat to choose? (%d of 5)\n", i + 1);
+		printf(" 1) The tunnel forks into two paths ahead\n");
+		printf(" 2) A giant, flowing river blocks your path\n");
+		printf(" 3) A mountain guardian appears to defend its trail\n");
+		printf(" 4) You encounter a princess slumbering on a glowing pedestal\n");
+		printf(" 5) You spot a treasure chest buried in the sand ahead\n");
+
+		do
+		{
+			printf("Choose a path(1-5): ");
+			scanf("%d", &selection);
+		}
+		while(selection < 1 || selection > 5);
+
+		switch(selection)
+		{
+			case 1: 
+				printf("The tunnel forks into two paths ahead:\n");
+				printf(" 1) Take the path on the left\n");
+				printf(" 2) Take the path on the right\n");
+				printf("Your choice: ");
+				scanf("%d", &decision);
+				if(decision == 1)
+				{
+					printf("You mindfully stealth along the left path.");
+				}
+				else
+				{
+					printf("You throw caution to the wind and sprint the path on the right.");
+				}
+				break;
+			
+			case 2:
+				printf("A giant, flowing river blocks your path:\n");
+				printf(" 1) Swim across\n");
+				printf(" 2) Use nearby wood to build a raft\n");
+				printf("Your choice: ");
+				scanf("%d", &decision);
+				if(decision == 1)
+				{
+					printf("The current is too strong, forcing you to go to the river's end with the taste of river in your mouth.");
+				}
+				else
+				{
+					printf("Your makeshift raft creaks, but continues to stay afloat. You manage the raft down the river.");
+				}
+				break;
+
+			case 3:
+				printf("\nA mountain gurdian appears to defend its trail!\n");
+				printf("\n  /\\_____/\\\n");
+				printf("   (  o   o  ) \n");
+				printf("    \\  ^  // \n");
+				printf("       |||||      \n\n");
+				printf(" 1) Stay and defend your honor against the guardian\n");
+				printf(" 2) Sprint away with your tail tucked\n");
+				printf("Your choice: ");
+				scanf("%d", &decision);
+				if(decision == 1)
+				{
+					int outcome = rand() % 50;
+					if(outcome < 10)
+					{
+						printf("You land a lucky blow on the guardian with a strike to its weak spot!");
+					}
+					else
+					{
+						printf("The guardian overwhelms you with a flurry of moves, you escape but are wounded and have a broken ego.");
+					}
+				}
+				else
+				{
+					printf("You sprint away with your tail tucked\n");
+				}
+				break;
+
+			case 4:
+				printf("You encounter a princess slumbering on a glowing pedestal: \n");
+				printf(" 1) Smooch the princess to awake her\n");
+				printf(" 2) Leave her be and continue moving on\n");
+				printf("Your choice: ");
+				scanf("%d", &decision);
+				if(decision == 1)
+				{
+					printf("She awakes from your kiss and turns into a giant river troll! She takes a bite out of you for not respecting consent.");
+				}
+				else
+				{
+					printf("You slowly walk around the obstacle, in fear of women.");
+				}
+				break;
+
+			case 5:
+				printf("You spot a treasure chest buried in the sand ahead of you:\n");
+				printf(" 1) Break it open\n");
+				printf(" 2) Move along\n");
+				printf("Your choice: ");
+				scanf("%d", &decision);
+				if(decision == 1)
+				{
+					printf("Gold, jewels, and a deed to a nearby castle spill forth. You're rich and set for life!");
+				}
+				else
+				{	
+					printf("You get scared that the chest is made of wood and decide some secrets are best left untouched. You're safe and secure but you continue wondering what could have been.");
+				}
+				break;
+			}
+			choices[i] = decision;
+			}
+			{
+				int score = 0;
+				for(i = 0; i < 5; i++)
+				{
+					if(choices[i] == 1)
+					{
+						score += 10;
+					}
+					else
+					{
+						score += 5;
+					}
+				}
+				printf("\nScore: %d\n", score);
+				if(score > 40)
+				{
+					printf("You are as brave a hero as they come. Your name will echo amongst the greatest to ever do it!\n");
+				}
+				else if(score > 25)
+				{
+					printf("You were a valiant adventurer and have proven your worth!\n");
+				}
+				else
+				{
+					printf("Get braver, kid.\n");
+				}
+				printf(" You exit Room 4: Elder Scrolls V: The Skyrimer: Wild Hunt and return to the main menu. ");
+			}
 }
 
 
