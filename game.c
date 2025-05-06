@@ -2838,7 +2838,7 @@ void room16game(void)
 {
 	srand(time(NULL));
 
-	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings"};
+	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings", "PEDs"};
 	int numOfIngredients = 6;
 	int attemptsBeforeDrowning = 4;
 	
@@ -2861,7 +2861,7 @@ void room16game(void)
 
 		if (userChoice == 6)
 		{
-			printf("Returning to main room, hope you know how to swim!\n");
+			printf("\nReturning to main room, hope you know how to swim!\n\n");
 			break;
 		}
 
@@ -2870,12 +2870,60 @@ void room16game(void)
 			case 1:
 			{
 				int pickedVial = rand() % numOfIngredients;
-				printf("There's something off about this vial, must be a clue!\n");
+				printf("\nThere's something off about this '%s' vial, must be a clue!\n\n", ingredients[pickedVial]);
+				break;
 			}
-
+			
+			case 2:
+			{
+				printf("\nLook! It's Phil Jackson's playbook. Open it, it looks like there's a note inside:\n\'You know MJ played clean, no ehnancements!\'\n\n");
+				break; 
+				
+			}
+			
+			case 3:
+			{
+				int willScottiePickUp = rand() % 2;
+				if (willScottiePickUp == 0)
+				{
+					printf("\nOf course Scottie didn't pick up, I know Rodman would've.\n\n");
+				}
+				else
+				{	
+					printf("\nMJ loved his Gatorade, try that.\n\n");
+				}
+				break;
+			}
+			
+			case 4:
+			{
+				printf("\nNow we're getting somewhere. Take a look at what you're working with: \n");
+				
+				for (int i = 1; i <= numOfIngredients; i++)
+				{
+					if (i == numOfIngredients)
+					{
+						printf("%d. '%s'\n\n", i, ingredients[numOfIngredients]);
+						break;
+					}
+					printf("%d. '%s'\n", i, ingredients[i]);
+				}
+				
+				break;
+			}
+			
+			case 5:
+			{
+				if (attemptsBeforeDrowning == 0)
+				{
+					printf("\nYou've ran out attempts at a winning mixture. DROWN!\n\n");
+					break;
+				}
+			}
 			default:
 			{
 				printf("Incorrect choice, try again\n");
+				break;
 			}
 	
 		}
