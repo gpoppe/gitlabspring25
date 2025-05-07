@@ -114,7 +114,7 @@ void cameronDOOMFn(void);
 
 void lab13nanup(void);
 void Function23fbabonjo(void);
-void cscuser1(void);
+void room1game(void);
 
 
 void PedroFunctionRoom(void);
@@ -146,8 +146,8 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+				room1game();
 				break;
-				cscuser1();
 			}
 			case 2:
 			{
@@ -3573,15 +3573,65 @@ void angelasRoom26(void)
 
 void room1game(void) 
 {
-	printf("cscuser1\n");
+
+    srand(time(NULL));
+
+    char* inventory[] = {"Star Map", "Laser Cutter", "Jetpck", "Flashlight", "Oxygen Tank"};
+    int num = 5;
+
+    printf("\nYou land your spaceship at a strange red space station.\n");
+
+    while (1) {
+        printf("\nWhat do you want to do next?:\n");
+        printf("1. Search the storage room\n");
+        printf("2. Scan for alien signals\n");
+        printf("3. Look through the telescope\n");
+        printf("4. Run diagnostics on your ship\n");
+        printf("5. Open the locked door\n");
+        printf("6. I’ve seen enough. Take me back.\n");
+        printf("Enter your choice: ");
+
+        int choice;
+        scanf("%d", &choice);
+
+        if (choice == 6) {
+            printf("\nA portal opens behind you. You're sucked back into the mysterious room...\n");
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+                printf("You found %s in the storage room!\n", inventory[rand() % num]);
+                break;
+            case 2:
+                if (rand() % 2 == 0)
+                    printf("You found an alien signal!\n");
+                else
+                    printf("Signal scan complete. Just static noise.\n");
+                break;
+            case 3:
+                printf("You see a purple planet nearby and a strange ship heading towards you.\n");
+                break;
+            case 4:
+                printf("Your ships is working good. Shields: 100%%. Engine is fully charged.\n");
+                break;
+            case 5:
+                printf("The door is secured tight You hear a door slam shut behind you.....\n");
+                break;
+            default:
+                printf("Choose a number from 1 to 6.\n");
+        }
+    }
 }
+
+
 
 void PedroFunctionRoom(void)
 {
 	int opt37 = 0;
 	puts("You have picked room 37, Pedro's room\n");
 	puts("Let's start by visiting some planets in our solar system\n");
-	puts("You have 3 planets to visit from\n");
+	puts("You have 3 planets to visit fom\n");
 	puts("1. Mercury, 2. Mars, 3. Saturn");
 	scanf("%d", &opt37);
 
