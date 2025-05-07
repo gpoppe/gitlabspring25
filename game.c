@@ -47,7 +47,13 @@ void room59game(void);
 
 void room22RandomTime(void);
 
+
 void stanleysRoom(void);
+
+//room3
+void room3(void);
+void encounterPredator(char name[], int dangerType);
+//room3 end
 
 void userRoom50(void);
 void userRoom50Ending1Path(int choices[], int index);
@@ -144,6 +150,7 @@ int main(int argc, char *argv[])
 			case 3:
 			{
 				puts("room3");
+				room3();
 				break;
 			}
 			case 4:
@@ -1230,6 +1237,128 @@ void room12game(void)
 {
 	printf("cscuser12 :)\n");
 }
+void encounterPredator(char name[], int dangerType)
+{
+    char *dangers[] = {
+        "a sneaky pack of velociraptors",
+        "a towering T-Rex",
+        "a swooping Pteranodon",
+        "a lurking Dilophosaurus",
+        "a charging Triceratops"
+    };
+
+    printf("\n%s encounters %s!\n", name, dangers[dangerType]);
+
+    int reaction = rand() % 3;
+    if (reaction == 0)
+        printf("You evade just in time!\n");
+    else if (reaction == 1)
+        printf("You hide in thick foliage and hold your breath...\nIt works!\n");
+    else
+        printf("You distract it with a flare and run!\n");
+}
+
+void room3(void)
+{
+    char name[30];
+    int steps = 0, health = 100, decision;
+    srand(time(NULL));
+
+    printf("Enter your name, dinosaur keeper: ");
+    scanf("%s", name);
+
+    printf("\nWelcome, %s. You're lost in the jungle after a containment breach.\n", name);
+    printf("Your mission: survive the jungle and return to Camp Saurus.\n");
+
+    while (health > 0 && steps < 5)
+    {
+        printf("\n%s's Health: %d | Progress to camp: %d/5\n", name, health, steps);
+        printf("Choose your next move:\n");
+        printf("1. Move through the dense jungle\n");
+        printf("2. Climb a hill to scout\n");
+        printf("3. Check your gear\n");
+        printf("4. Hide and rest\n");
+        printf("5. Try calling for help\n");
+        printf("6. Give up and exit\n");
+
+        scanf("%d", &decision);
+
+        if (decision == 6)
+        {
+            printf("\nYou sit down and accept your fate... The jungle is quiet now.\n");
+            break;
+        }
+
+        int danger = rand() % 5;
+
+        switch (decision)
+        {
+            case 1:
+                printf("\nYou push through thick vines...\n");
+                encounterPredator(name, danger);
+                health -= rand() % 15;
+                steps++;
+                break;
+            case 2:
+                printf("\nYou climb a rocky ridge to spot the camp...\n");
+                if (rand() % 2)
+                {
+                    printf("You spot smoke! You're heading the right way!\n");
+                    steps++;
+                }
+                else
+                {
+                    printf("The view is blocked by fog.\n");
+                }
+                break;
+            case 3:
+            {
+                char *gear[] = {"flare gun", "medkit", "knife", "radio (broken)", "dino whistle"};
+                printf("You check your pack:\n");
+                for (int i = 0; i < 5; i++)
+                    printf("- %s\n", gear[i]);
+                printf("Using medkit to heal 10 health.\n");
+                health += 10;
+                if (health > 100) health = 100;
+                break;
+            }
+            case 4:
+                printf("\nYou find a bush to hide and rest...\n");
+                health += 5;
+                if (health > 100) health = 100;
+                printf("Recovered some strength.\n");
+                if (rand() % 3 == 0)
+                {
+                    printf("But a predator finds you while resting!\n");
+                    encounterPredator(name, danger);
+                    health -= rand() % 20;
+                }
+                break;
+            case 5:
+                printf("\nYou try the broken radio...\n");
+                if (rand() % 4 == 0)
+                {
+                    printf("A faint signal responds: 'We’re coming for you, hang on!'\n");
+                    steps += 2;
+                }
+                else
+                {
+                    printf("Static. Nothing...\n");
+                }
+                break;
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+
+    if (health <= 0)
+        printf("\nYou collapse... the jungle claims another victim.\n");
+    else if (steps >= 5)
+        printf("\nYou break through the trees and see Camp Saurus ahead!\nYou survived, %s!\n", name);
+
+    printf("\nReturning to the main menu...\n");
+}
+
 
 void room30game(void)
 {
