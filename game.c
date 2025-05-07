@@ -2425,8 +2425,138 @@ void room53game(void)
 
 void room6game(void)
 {
-	printf("cscuser6\n");
-}
+        printf("You choose to enter door number 6. \nImmediately after entering, you notice the door behind you disappear\nYou look around and find yourself in a forest.\nTo your right, there seems to be a clearing in the distance, to the left it's more forest, but behind you where the door used to be there is a cliff.\nWhich way do you choose? \n1. Right towards the clearing\n2. Left towards the Forest\n3. Backwards towards the cliff\n(Please Use Numbers to select): ");
+        int current=0;
+        int nextchoice=0;
+        char itsname[50];
+        scanf("%d", &current);
+        //printf("%d", current);
+
+        int random_number = (rand() % 20) + 1;
+
+        switch(current)
+        {
+                case 1:
+                {//clearing
+                        printf("You head towards the clearing. As you walk, you feel more and more unsafe despite how open it is. Like, there are creatures at the forest's edge watching him, waiting for him to get too close.\n");
+
+                printf("That’s when you hear a thump at the base of your foot. You look down and see this weird texture that replaces the soil.\n");
+
+                printf("A small pause, followed by a rumbling on the ground, then the texture gets up to reveal itself as a large bug-like creature. Fight or flight. It’s your choice.\n");
+ break;
+                }
+                case 2:
+                {
+                         printf("You walk into the forest and notice how it’s not like our own. It feels prehistoric. Suddenly, out jumps a massive bug-like monster.\n");
+                        printf("You turn tail and run back to where you came from. With no other choice, you decide to jump down the cliff where there’s a river below.\n");
+                        break;
+                }
+                case 3:
+                {                                                                                   printf("You peer over the edge of the cliff. At the bottom is a river, but before you can think of what to do next, you’re pushed off by a powerful gust of wind.\n");
+                        printf("As you fall, you see a giant bug-like creature.\n");
+
+                        break;                                                              }
+        }                                                                   
+        if(current == 1)
+        {
+                printf("Which way do you choose? \n1. Fight\n2. Run\n(Please Use Numbers to select):");
+                scanf("%d", &nextchoice);
+                switch(nextchoice)
+                {                                                                                   case 1:
+                        {
+                                printf("You raise your fists to fight. Terrible idea.\n");
+                                break;
+                        }                                                                           case 2:
+                        {
+ printf("You dash in the other direction. This is short-lived, though, as the creature flies after you.\n");
+                                break;
+                        }
+                }
+        }
+
+        else if(current > 1)
+        {
+                //river
+                printf("You fall into the river and begin to be swept down the rapids. You grab onto the edge of the river and are stuck between two options.\n");                                                                                  printf("Either swim with the flow and reach the end, or try your best to climb up the cliff.\n");                                                                                                                                   printf("Which way do you choose? \n1. Go with the flow\n2. Climb up the cliff\n(Please Use Numbers to select):");                                       scanf("%d", &nextchoice);                                   
+                switch(nextchoice)
+                {
+                        case 1:
+                        {
+                                printf("You choose to swim with the river. Luckily for you, there seems to be a river back, but the creature is close behind. \n");
+                                                                                                            printf("You get out and turn around to see the creature right behind you.\n");
+                                                                                                            break;
+                        }
+ case 2:
+                        {
+                                printf("You choose to climb up the cliff. With adrenaline pumping through your veins, you are able to reach the top, but the creature is flying right behind you.\n");
+                                break;
+                        }
+                }
+        }
+
+        printf("You’re hit by the creature and are launched into a pile of rocks. You look down and see these glowing gems beside you. You feel an energy coming off them, urging you to pick one of them up. \nWhich do you pick up? \n1. The red game shaped like a star. \n2. The turquoise gem shaped like a teardrop. \n3. The black gem shaped in an almost perfect circle.\n(Please Use Numbers to select):");
+                                                                                    scanf("%d", &nextchoice);                                                   printf("After picking it up, you hear a voice in your head telling you to call its name. [Enter a Name]\n");                                            scanf("%s", itsname);
+        //printf("%s", itsname);
+
+        switch(nextchoice)
+        {
+                case 1:
+                {
+                        printf("From the gem appears a creature that looks like a blood-red, dog-sized scorpion. Immediately, %s shoots a ball of fire from its tail at the bug creature.\n", itsname);
+                        break;                                                              }                                                                           case 2:
+                {
+                        printf("From the gem appears a creature that looks like a turquoise fox. Immediately, %s spits a stream of water from its mouth at the bug creature.\n", itsname);
+ break;
+                }
+                case 3:
+                {                                                                                   printf("From the gem appears a creature that looks like a midnight-colored owl. Immediately, %s throws sharp midnight colored feathers at the bug creature.\n",itsname);
+                        break;
+                }
+        }
+
+        for(int i = 0; i < (current + nextchoice+ 3);i++)
+        {
+                printf("bam \t");
+        }
+
+        printf("\nQuick on your feet, you use this instant to think of what to do next. You come up with two ideas, one more risky than the other. Which do you choose?\n1. Risky\n2. Safe\n");
+        scanf("%d", &current);
+
+        switch(current)
+        {
+                case 1:
+                {
+ printf("You call %s to attack the creature in the eyes. %s nods and jumps onto the creature, tearing apart its eyes.", itsname, itsname);
+                        break;
+                }
+                case 2:
+                {
+                        printf("You call %s and run away to a rock structure you’ve seen nearby. The bug creature chases after you two. Once you reach the structure, you call on %s to blast away at its base. %s uses its power and breaks the bottom of the structure. The structure tips over and falls, crushing the creature right before it reaches you.", itsname, itsname, itsname);
+                        break;
+                }
+
+        }
+
+        if(random_number < 10 && current == 1)
+        {
+                printf("The plan was risky, and you pay for it as you watch the bug creature grab %s and throw them at you, dropping you both to the ground. \n%s is knocked out and you have two options: run away, leaving %s for dead, or fight, protecting %s till your last breath.", itsname, itsname, itsname, itsname);                                                                             printf("Which do you choose?\n1. Run\n2. Fight\n");                         scanf("%d", &nextchoice);                                                                                                                               switch(nextchoice)                                                          {
+                        case 1:
+                        {  
+ printf("You choose to run away and don’t look back. You feel this heartbreak and guilt, like your soul is being ripped from your body, but you press on. In the distance is another door, and with tears in your eyes, you reach it, open the door, and escape.");
+                                return;
+                        }                                                                           case 2:
+                        printf("You stand up, yelling with all your might. This energy flows through your body. The bug creature flies at you, and as you throw your punch, your arm is engulfed in the same color as %s. You punch the monster, sending it back, then look down to see %s at your side. You feel a warmth knowing %s is by your side, and with a final war cry, you launch an iridescent beam of energy at the creature; nothing is left but ash.",itsname,itsname,itsname);
+                       break;                                                               }                                                                   }                                                                           else if(random_number >= 10 && current == 1);                               {                                                                                   printf("%s releases a beam of energy directly into the creatures head, killing it instantly. ",itsname);
+        }
+
+        printf("With the creature dead, you look down at %s. It feels like they’re telling you to follow them into the forest. After what you just went through, do you really trust them, though? Do you follow them or head in the other direction?",itsname);
+        printf("Which do you choose?\n1. Follow\n2. Walk away\n");
+        scanf("%d", &nextchoice);                                                   switch(nextchoice)                                                          {                                                                                   case 1:
+                        printf("You follow %s and find that he’s leading you to a mural. The mural looks like you and %s. You stand there with %s feeling warm and safe, but it’s time to go. \nYou look to %s and say you have to go, but that you hope to see them again. %s nods, then unleashes a blinding energy. You open your eyes.",itsname,itsname,itsname,itsname,itsname);  
+  break;                                                              case 2:
+                        printf("You turn and walk away from %s. You feel this heartbreak and guilt, like your soul is being ripped from your body, but you press on. In the distance is another door; you reach it, open the door, and escape.",itsname);                                                                               break;                                                      }
+}                                                  
+
 
 
 void room8game(void)
