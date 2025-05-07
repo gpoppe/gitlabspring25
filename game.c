@@ -8,6 +8,9 @@
 // Jessenia Hernandez Mora
 //Gerard McCallion
 
+//Fatoma Babonjo
+
+
 //Alex Pham
 
 
@@ -17,6 +20,7 @@
 // Omar Salem
 
 // Stanley Navarrete
+
 
 
 // Nanu Panchamurthy
@@ -5051,7 +5055,143 @@ void AzizHaouchineFn(void)
 
 void Function23fbabonjo(void)
 {
-	printf("Episode 23: Fatoma Babonjo ");
+	{
+    int option1, option2, option3, option4, option5;
+    int i;
+
+    printf("Episode 23: Fatoma Babonjo\n");
+    printf("In this room, you find yourself surrounded by what seems to be a large corridor. Shadowy columns litter your surroundings; no light shining on them to be distinctive. A plethora of windows spread across the walls, but it's impossible to see anything beyond them, aside from the almost blinding sunlight.\n");
+    printf("Type in the corresponding number to make your choice:\n");
+    printf("1. Continue walking down the room\n");
+    printf("0. 'Yeah, no.' Turn 180 degrees and leave the room\n");
+    scanf("%d", &option1);
+
+    if (option1 == 1) {
+        printf("You take no more than half a dozen steps until you stumble across a figure on the floor.\n");
+        printf("They look...odd.\n");
+        printf("At a first glance, it just looks like an unconscious young lady in her late teens, with messy blond hair hastily tied into a ponytail of sorts. Normal skin tone, average height...\n");
+        printf("That's when the normalcy ends, however.\n");
+        printf("You notice giant blotches of moles across her skin, making a bizarre mix of dark gray skin and normal beige skin across her entire form. Her hands and feet weren't human...they were paws. Paws that had claws like a mole, or a gopher, or some rodent that digs through dirt.\n");
+        printf("Not only that, but there were very faint whiskers across this girl's face area...\n");                                                              printf("This is quite literally a mole person. What to do...?\n");
+        printf("1. Try to wake her up\n");
+        printf("2. Leave her be and continue by yourself\n");
+        printf("0. Bail (Leave the room)\n");
+        scanf("%d", &option2);
+
+        if (option2 == 1) {
+            printf("You gently slap the girl's cheek in quick succession.\n");
+            printf("It doesn't take long for her to stir awake...\n");
+            printf("'Maaauh?'\n");
+            printf("She can't speak your language, but she seems to understand you.\n");
+            printf("1. Try to work out some form of communication\n");
+            printf("2. 'She gives me the heebie-jeebies...!' Knock her out out of fear\n");
+            printf("0. Bail (Leave the room)\n");
+            scanf("%d", &option3);
+if (option3 == 1) {
+                printf("The odd mole girl stares at you, blinking multiple times in confusion. After a moment, however, she snaps up to attention. You can see the metaphorical lightbulb flash above her head.\n");
+                printf("'T-Tillage! Am...am Tillage...!'\n");
+                printf("So you can understand her. Tillage grabs your arm and points towards the area you just came from.\n");
+                printf("'Go bac?'\n");
+                printf("Via body language, she asks you if you can go back via the exit. You tell her it's flooded.\n");
+                printf("Despite the situation, Tillage gives you a determined nod.\n");
+                printf("'O-kaye! Will...will find neu way out! Togetther!'\n");
+                printf("This girl, who despite very clearly being a different species from you, shares your drive to see this through the end. The simple knowledge that you aren't alone fills you with hope, even against the unknown…\n");
+                printf("END\n");
+                printf("Now let's rewind time to before you picked a room! Thanks for playing!\n");
+            } else if (option3 == 2) {
+                printf("Flight or fight kicks in, and you choose fight out of instinct! You smack her with enough force to knock her out cold again.\n");
+                printf("...You see a hole in the ceiling. Did this mole girl make it?  Maybe you can reach it...\n");
+                printf("1. Climb the walls with nothing but arm strength\n");
+                printf("2. Continue down the corridor in hopes of finding an item to help climb\n");
+                printf("0. Bail (Leave the room)\n");
+                scanf("%d", &option4);
+
+                if (option4 == 1) {
+                    printf("Gotta climb! You make purchase on the dusty walls and pull yourself up.\n");
+                    printf("You climb up...\n");
+
+                    for (i = 0; i < 6; i++) {
+                        printf("...and up...\n");
+                    }
+
+                    printf("The ceiling's wider than you thought, but you reach the hole...! There's a very small speck of light through said hole, which means that there IS an exit!\n");
+                    printf("It will be a tight fit, and an arduous climb, but sunk cost fallacy has already kicked in at this point, and you find yourself willing to clamor upwards, no matter how hard it may be.\n");
+                    printf("You feel bad for leaving the mole girl behind, but it's you or her, and if you want to get out of here, it has to be you...!\n");
+                    printf("As you squeeze through, you pray that you don't slip and fall...!\n");
+                    printf("END\n");
+                    printf("Now let's rewind time to before you picked a room! Thanks for playing!\n");
+                } else if (option4 == 2) {
+                    printf("You continue down the hall and find an illuminated staircase and a floating door, attached to no walls. That CAN’T be good..\n");
+                    printf("1. Play it safe and take the staircase\n");
+                    printf("2. Change things up and enter the geometrically impossible door\n");
+                    printf("0. Bail (Leave the room)\n");
+                    scanf("%d", &option5);
+if (option5 == 1) {
+                        printf("As you climb the staircase, you start to notice how...divine everything looks.\n");
+                        printf("A small pit in your stomach forms, as you feel that you are about to stumble into something even more grand than you ever imagined...\n");
+                        printf("Despite that gut feeling, you also have full confidence that you're closer to the end than you think.  Your wits got you this far, so why not just a little bit further...?\n");
+                        printf("END\n");
+                        printf("Now let's rewind time to before you picked a room! Thanks for playing!\n");
+                    } else if (option5 == 2) {
+                        printf("Figuring that you have nothing else to lose, you enter the impossible door.\n");
+                        printf("...Not a smart move.\n");
+                        printf("You come face to face with a mysterious, tall, bald man with a long nose in a blue velvet room.\n");
+                        printf("'Welcome, dear guest...I've been expecting your arrival for quite some time.'\n");
+                        printf("Seems like you're out of the dungeon... but now you’re into something deeper...\n");
+                        printf("END\n");
+                        printf("Now let's rewind time to before you picked a room! Thanks for playing!\n");
+                    } else if (option5 == 0) {
+                        printf("You dipped real quick. But the first room is still flooding!\n");
+                        printf("Better pick another door...and FAST!\n");
+                    }
+                } else if (option4 == 0) {
+                    printf("You dipped real quick. But the first room is still flooding!\n");
+                    printf("Better pick another door...and FAST!\n");
+                }
+            } else if (option3 == 0) {
+                printf("You dipped real quick. But the first room is flooding!\n");
+                printf("Better pick another door...and FAST!\n");
+            }
+        } else if (option2 == 2) {
+            printf("Boy, I sure am glad I'm not her.\n");
+            printf("You ignore the girl and continue down the corridor.\n");
+            printf("A glowing object catches your eye! Upon getting closer, you find out that it's...\n");
+
+            const char *weapon[] = {
+                "The Sword of Seals", "an Agate Megaaxe", "A Power Pole", "A Photon Saber",
+                "A keyblade", "Dual Pistols, Ebony and Ivory", "A Stand Arrow", "A boot",
+                "Five dollars", "The Power of Love", "Car keys", "A magical ring", "Exodia the Forbidden One"
+            };
+            int randomIndex = rand() % 13;
+            printf("%s!\n", weapon[randomIndex]);
+            printf("NOW we're cookin'!\n");
+
+            printf("The moment you celebrate, however, you get attacked by a...Paradox Pokemon!?\n");
+const char *pokemon[] = {
+                "Great Tusk", "Scream Tail", "Brute Bonnet", "Flutter Mane", "Slither Wing", "Sandy Shocks",
+                "Roaring Moon", "Winged King", "Walking Wake", "Raging Bolt", "Gouging Fire", "Iron Treads",
+                "Iron Bundle", "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Iron Valiant",
+                "Iron Serpent", "Iron Leaves", "Iron Crown", "Iron Boulder"
+            };
+            int randomMon = rand() % 22;
+            printf("It's %s!\n", pokemon[randomMon]);
+            printf("WATCH OUT!\n");
+            printf("Using the tool you just acquired, you somehow managed to fell the time displaced pocket monster!\n");
+            printf("However, roars could be heard in the distance...if you already encountered one, then more are bound to be further down...\n");
+            printf("This weapon was here for a reason...looks like you don't just have to find your way out, but fight your way out...\n");
+            printf("END\n");
+            printf("Now let's rewind time to before you picked a room! Thanks for playing!\n");
+        } else if (option2 == 0) {
+            printf("You dipped real quick. But the first room is still flooding!\n");
+            printf("Better pick another door...and FAST!\n");
+        }
+    } else if (option1 == 0) {
+        printf("You dipped real quick. But the first room is still flooding!\n");
+        printf("Better pick another door...and FAST!\n");
+    }
+}
+
+
 }
 void room17(void)
 {
