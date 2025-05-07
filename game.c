@@ -4463,15 +4463,9 @@ void room16game(void)
 {
 	srand(time(NULL));
 
-	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings", "PEDs"};
-	char* knownCorrectGuesses[3] = {NULL, NULL, NULL};
-
-	int numOfIngredients = sizeof(ingredients) / sizeof(*ingredients);
-	int attemptsBeforeDrowning = 6;
-
-	char* winningIngredient1 = ingredients[rand() % numOfIngredients];
-	char* winningIngredient2 = ingredients[rand() % numOfIngredients];
-	char* winningIngredient3 = ingredients[rand() % numOfIngredients];
+	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings"};
+	int numOfIngredients = 6;
+	int attemptsBeforeDrowning = 4;
 	
 	printf("\nYou've entered Elon Musk's Lab Room!\n");
 	printf("To have a chance at escaping, you must recreate 'Michael's Secret Stuff'\n\n");
@@ -4492,7 +4486,7 @@ void room16game(void)
 
 		if (userChoice == 6)
 		{
-			printf("\nReturning to main room, hope you know how to swim!\n\n");
+			printf("Returning to main room, hope you know how to swim!\n");
 			break;
 		}
 
@@ -4501,124 +4495,14 @@ void room16game(void)
 			case 1:
 			{
 				int pickedVial = rand() % numOfIngredients;
-				printf("\nThere's something off about this '%s' vial, must be a clue!\n\n", ingredients[pickedVial]);
-				break;
+				printf("There's something off about this vial, must be a clue!\n");
 			}
-			
-			case 2:
-			{
-				printf("\nLook! It's Phil Jackson's playbook. Open it, it looks like there's a note inside:\n\'You know MJ played clean, no ehnancements!\'\n\n");
-				break; 
-				
-			}
-			
-			case 3:
-			{
-				int willScottiePickUp = rand() % 2;
-				if (willScottiePickUp == 0)
-				{
-					printf("\nOf course Scottie didn't pick up, I know Rodman would've.\n\n");
-				}
-				else
-				{	
-					printf("\nMJ loved his Gatorade, try that.\n\n");
-				}
-				break;
-			}
-			
-			case 4:
-			{
-				printf("\nNow we're getting somewhere. Take a look at what you're working with: \n");
-				
-				for (int i = 1; i <= numOfIngredients; i++)
-				{
-					if (i == numOfIngredients)
-					{
-						printf("%d. '%s'\n\n", i, ingredients[i - 1]);
-						break;
-					}
-					printf("%d. '%s'\n", i, ingredients[i - 1]);
-				}
-				
-				break;
-			}
-			
-			case 5:
-			{
-				int playerGuess1, playerGuess2, playerGuess3;
 
-				printf("\nThese are the known ingredients: ");
-				for (int i = 0; i < 3; i++)
-				{
-					if (knownCorrectGuesses[i] != NULL)
-					{
-						printf("'%s' ", knownCorrectGuesses[i]);
-					}
-					else
-					{
-						printf("'???' ");
-					}
-				}
-
-				printf("\nNow that you've seen what you're working with, pick 3 ingredients to mix!\n\n");
-				printf("Ingredient 1: ");
-				scanf("%d", &playerGuess1);
-
-				printf("Ingredient 2: ");
-				scanf("%d", &playerGuess2);
-
-				printf("Ingredient 3: ");
-				scanf("%d", &playerGuess3);
-
-				printf("\nYou mixed: '%s', '%s', '%s'. Could it be the winning mix?\n\n", ingredients[playerGuess1 - 1],
-				ingredients[playerGuess2 - 1], ingredients[playerGuess3 - 1]);
-
-				char* guess1 = ingredients[playerGuess1 - 1];
-				char* guess2 = ingredients[playerGuess2 - 1];
-				char* guess3 = ingredients[playerGuess3 - 1];
-
-				if ( strcmp(winningIngredient1, guess1) == 0 )
-				{
-					printf("You guessed '%s' correctly!\n", winningIngredient1);
-					knownCorrectGuesses[0] = winningIngredient1;
-				}
-
-				if ( strcmp(winningIngredient2, guess2) == 0 )
-				{
-					printf("You guessed '%s' correctly!\n", winningIngredient2);
-					knownCorrectGuesses[1] = winningIngredient2;
-				}
-
-				if ( strcmp(winningIngredient3, guess3) == 0 )
-				{
-					printf("You guessed '%s' correctly!\n", winningIngredient3);
-					knownCorrectGuesses[2] = winningIngredient3;
-				}
-
-				if ( strcmp(winningIngredient1, guess1) == 0 && strcmp(winningIngredient2, guess2) == 0 && strcmp(winningIngredient3, guess3) == 0 )
-				{
-					printf("\nYou've recreated 'Michael's Secret Stuff' and saved yourself from drowning!\n\n");
-					return;
-				}
-				else
-				{
-					attemptsBeforeDrowning--;
-					printf("Oh no, that is the wrong mix. You've got %d attempts left!\n", attemptsBeforeDrowning);
-					if (attemptsBeforeDrowning == 0)
-					{
-						printf("\n\nYou've ran out of attempts at a winning mixture. DROWN!\n\n");
-						return;
-					}
-					break;
-				}
-
-				break;
-			}
 			default:
 			{
 				printf("Incorrect choice, try again\n");
-				break;
 			}
+	
 		}
 	}
 }
