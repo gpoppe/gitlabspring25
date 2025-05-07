@@ -33,7 +33,7 @@ void jovannyFunction(int jovannyNum);
 
 void room25game(void);
 
-void room57G(void);
+void room57G(char *name);
 
 void user36Cafe(void);
 
@@ -1171,7 +1171,7 @@ int main(int argc, char *argv[])
 			case 57:
 			{
 				puts("room57");
-				room57G();
+				room57G(name);
 				break;
 			}
 
@@ -1823,9 +1823,287 @@ void kobesRoom(void)
 	printf("CSCUSER24\n");
 }
 
-void room57G(void) 
+void room57G(char *name)
 {
-	printf("\ncscuser57 ");
+	printf("\n%s, you enter and all you find is a table with a 6 sided dice with a paper next to it. It reads: \n", name);
+	sleep(2);
+	printf("***Behold adventurer! You will now embark on a thrilling and harrowing journey to claim \ntreasure of " 
+			"your wildest dreams! Make careful decisions because one wrong move could be the end for you, "  
+			"stay safe and hope you have some luck...***\n");
+	sleep(2);
+	printf("\nAfter reading, you wonder what to do next as you're looking at the dice. There are no instructions " 
+			"or any sort of description.\nYou look back and see that the door you came in from has disappeared "
+			"and all there is left is a wall.\nRealizing the only way out is to go through with "  
+			"the adventure, you pick up the dice to throw.\n");
+	sleep(4);
+	printf("\nSuddenly, a floating screen appears in front of you.\nIt reads: ***Dice roll dictates your starting class and weapon.\nPossible classes:\n"
+			"1:WARRIOR(SWORD)\n2:ARCHER(BOW)\n3:MAGE(STAFF)\n4:ROGUE(DAGGERS)\n5:BERSERKER(AXE)\n6:BRUISER(HAMMER)\n\n" "You only have 1 reroll. " 
+			"You can choose to reroll or stay with the result. Continue.***\nWith that, you roll the dice. " 
+			"Press Enter to continue...");
+	getchar();
+	getchar();
+	srand(time(NULL));
+	char reroll;
+
+	int diceResult = (rand() % 6) + 1;
+	do 
+	{
+		printf("Dice result: %d \nReroll?(Y/N): ", diceResult);
+		scanf(" %s", &reroll);
+		reroll = toupper(reroll);
+	} while (reroll != 'Y' && reroll != 'N');
+	
+	if (reroll == 'Y') 
+	{
+		diceResult = (rand() % 6) + 1;
+		printf("You chose to reroll.\nNew result: %d\n", diceResult);
+	} else {
+		printf("No reroll. Continuing...\n");	
+	}
+
+	sleep(2);
+
+	printf("\n\nA screen appears...\nIt shows your health and inventory space\n-----------------------------------------\nHEALTH: 100\n"
+			"INVENTORY: [ ] [ ] [ ] [ ] [ ]\n-----------------------------------------\n\n\n");
+	int playerHealth = 100;
+	char *inventory[5] = {"", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
+	char ability[20];
+	
+	switch(diceResult)
+	{
+		case 1:
+			printf("Your number was 1.\nDesignated class: [WARRIOR]\nYou have received: SWORD\n"
+					"Abilities: OVERHEAD SLASH\n");
+			inventory[0] = "Sword";
+			strcpy(ability, "OVERHEAD SLASH");
+			break;
+		case 2: 
+			printf("Your number was 2.\nDesignated class: [ARCHER]\nYou have received: BOW\n"
+					"Abilities: HEAVY SHOT\n");
+			inventory[0] = "Bow";
+			strcpy(ability,"HEAVY SHOT");
+			break;
+		case 3:
+			printf("Your number was 3.\nDesignated class: [MAGE]\nYou have received: STAFF\n"
+					"Abilities: FIREBALL\n");
+			inventory[0] = "Staff";
+			strcpy(ability, "FIREBALL");
+			break;
+		case 4:
+			printf("Your number was 4.\nDesignated class: [ROUGE]\nYou have received: DAGGERS\n"
+					"Abilities:  BACKSTAB\n");
+			inventory[0] = "Daggers";
+			strcpy(ability, "BACKSTAB");
+			break;
+		case 5:
+			printf("Your number was 5.\nDesignated class: [BERSERKER]\nYou have received: AXE\n"
+					"Abilities: ANGRY CLEAVE\n");
+			inventory[0] = "Axe";
+			strcpy(ability, "ANGRY CLEAVE");
+			break;
+		case 6:
+			printf("Your number was 6.\nDesignated class: [BRUISER]\nYou have received: HAMMER\n"
+					"Abilities: SMASH\n");
+			
+			inventory[0] = "Hammer";
+			strcpy(ability, "SMASH");
+			break;
+
+	}
+	
+	char dir[10];
+	printf("\n\nAmazed, you hold out your hand on the first slot of your inventory where your weapon is:\n[%s] and you grab and pull. Your %s appears. ", inventory[0], inventory[0]);
+	printf("With weapon in hand, you see a flash of light as you are teleported out of the room with the table\nand immediately appear in front of twin passageways."
+			" A fork in the road.\nDo you go left or right?: ");
+	scanf("%s", dir);
+	if (strcmp(dir, "left") == 0) 
+	{
+		printf("Chose to go left...\nYou fell into a pit of lava and died!\n");
+		playerHealth = 0;
+		sleep(1);
+		return;
+	} else if (strcmp(dir, "right") == 0) 
+	{
+		printf("Chose to go right...\nYou encounter a monster gorilla wielding brass knuckles. There is no turning back. You have to fight!\n");
+		printf("You use %s to kill the gorilla while sustaining some damage(-25), good job on surviving.\nYou received: DIAMOND\n", ability);
+		playerHealth -= 25;
+		printf("HEALTH: %d\n",playerHealth);
+		inventory[1] = "Diamond";
+		int i;
+		printf("----INVENTORY----\n");
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(1);
+	}
+	
+	char choice;
+	printf("You move forward in and find a large room with a golden chest in the middle and a passageway behind it. You don't know if you should open it or keep it closed and continue...\n");
+	printf("Do you open it?(Y/N): ");
+	scanf("%s", &choice);
+	choice = toupper(choice);
+	
+	if (choice == 'Y') 
+	{
+		printf("\nYou open the chest and received ENCHANTED AMULET(Raises your health to 150)\n");
+		playerHealth = 150;
+		printf("HEALTH: %d\n",playerHealth);
+		inventory[2] = "Enchanted Amulet";
+		printf("----INVENTORY----\n");
+		int i;
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(1);
+
+		sleep(1);
+	} else 
+	{
+		printf("\nYou leave the chest alone and continue onwards, having felt that you may have missed out on something important...\n");
+		sleep(1);
+	}
+	
+	
+	printf("\nAs you continue through the dungeonlike adventure, the air turns cold...\n");
+	sleep(1);
+	printf("A congregation of dark clouds appear in front of you and a hooded being emerges from them, effectively blocking your path\n");
+	sleep(1);
+	printf("It says: ***Answer me this, mortal...\n");
+	sleep(1);
+	
+	printf("You're driving your car late at night. Suddenly, an old man and a child both step onto the road.\n" 
+		"What do you hit first? Answer wisely, mortal***\n");
+	getchar();
+	char response[100];
+	fgets(response, sizeof(response), stdin);
+	
+	int j;
+	for (j = 0; response[j]; j++)
+	{
+		response[j] = tolower(response[j]);
+	}
+
+	if (strstr(response, "brakes") != NULL) 
+	{
+		printf("\nThe entity nods approvingly.\nENTITY:***Correct. Wow finally someone with some common sense\n");
+		sleep(1);
+		printf("Here you go.***\n It holds out its frail ghastly hand and in its palm, contains a key. You take it.\n");
+		printf("RECEIVED: NECROTIC KEY\n");
+		inventory[3] = "Necrotic Key";
+		printf("----INVENTORY----\n");
+		int t;
+		for (t = 0; t < 5; t++) 
+		{
+			if(inventory[t][0] != '\0') 
+			{
+				printf("[%s] ", inventory[t]);
+			}
+		}
+		printf("\n");
+		sleep(1);
+	} else
+	{
+		printf("\nThe entity scoffs in disgust.\n ENTITY:***You hit the brakes...psycho***\n");
+		printf("It flashes its hand at you, making you feel weaker as it takes away 75 of your health and disappears.\n");
+		playerHealth -= 70;
+		printf("HEALTH: %d\n",playerHealth);
+		sleep(2);
+	
+	}
+	
+	int spikeChoice;
+	printf("Continuing onwards, you find a door. Hoping that this would be the last part of your adventure, you open it...\n");
+	sleep(1);
+	printf("The door reveals a large chamber. You see a line running from the right side to the left side of the room a couple feet ahead of you."
+		"\nThere is another line a few feet as well in front of the door out of the room on the other side."
+		"\nWhat could that mean, you wonder? As you approach the line, suddenly the room starts shaking.\n"
+		"You stop in your tracks as the floor past the line drops, revealing a chasm of spikes rising. The chasm separates you from the door ahead.\n");
+	sleep(1);
+	printf("You look behind you and see the door behind you disappeared and a wall of spikes is closing in on you.\n\n");
+	sleep(1);
+	printf("You only have mere seconds to act. You have 3 choices: \n");
+	printf("1) Attempt a running jump across the gap\n");
+	printf("2) Shimmy carefully along a narrow ledge on the side wall\n");
+	printf("3) Use the grooves on the wall high above the ledge to climb to cross the chasm\n");
+	printf("What will you do?: ");
+	scanf("%d", &spikeChoice);
+
+	switch(spikeChoice) 
+	{
+		case 1:
+			printf("\nYou try for a sprinting jump but can't clear the chasm, falling to a spikey death\n"
+			"YOU DIED!\n");
+			sleep(2);
+			return;
+		case 2:
+			printf("\nYou inch sideways across the thin ledge on the wall, death gripping every crack you can...\n");
+			sleep(1);
+			printf("You slip once, cutting your arm and catching a spike on your foot but you make it across\n-20 HP\n");
+			playerHealth -= 20;
+			printf("HEALTH: %d\n", playerHealth);
+			break;
+		case 3:
+			printf("\nYou grab hold of the grooves and pull yourself along above the chasm...\n");
+			sleep(1);
+			printf("Your arms scream in pain, eventually cutting your palms on some sharp grooves,"
+				 "but you make it across without touching the floor\n-15 HP\n");
+			playerHealth -= 15;
+			printf("HEALTH: %d\n", playerHealth);
+			break;
+		default:
+			printf("\nYou freeze in terror. The spikes don't freeze.\n");
+			printf("YOU DIED!\n");
+			sleep(2);
+			return;
+	}
+	
+	if(playerHealth == 0) 
+	{
+		printf("Your injuries were too severe!\n YOU DIED!");
+		sleep(2);
+		return;	
+	} else
+	{
+		printf("\nYou survived - barely. You open the door to finally escape that hellhole.\n");
+		printf("You received: BAG OF GOLD COINS \n");
+		inventory[4] = "Bag of Gold Coins";
+		printf("----INVENTORY----\n");
+		int i;
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(2);
+	}
+
+	
+	printf("Forging ahead, you find a giant, ivory door. This had to be the last room, right?\n");
+	sleep(2);
+	printf("Pushing the doors open, you find a big golden chest, a lot more welcoming than the last chest.\n");
+	sleep(2);
+	printf("Realizing this had to be the end, a screen appears.\n");
+	sleep(2);
+	printf("***Congratulations! You have successfully survived the dungeon. Open the chest to receive your reward!***\n");
+	sleep(1);
+	printf("\nYou open the chest. Within contains a ROPE! You can use it to get out of the dungeon.\n");
+	printf("Yep. Your final reward is simply your FREEDOM! Oh, and your inventory also escapes with you transforming into real life items/currency.\n");
+	printf("YOU WON and are transported back into reality.\n\n");
+	sleep(3);
+
 }
 
 void user36Cafe(void)
