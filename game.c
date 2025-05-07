@@ -26,7 +26,7 @@
 // Raymond Lee
 
 //Jesse Navarro
-
+// Aziz Haouchine
 
 
 #include <stdlib.h>
@@ -4019,6 +4019,274 @@ void omarsUniqueFn(void)
 void AzizHaouchineFn(void)
 {
 	printf("Aziz\n");
+	// Arrays to store story elements
+	char* forestLocations[] = {"Dense Woods", "Misty Clearing", "Ancient Ruins", "Underground Cave", "Enchanted Lake"};
+	char* companions[] = {"a wise old owl", "a mischievous fox", "a loyal wolf", "a magical butterfly", "none"};
+	char* treasures[] = {"a glowing crystal", "an ancient tome", "a golden amulet", "a magical staff", "a silver dagger"};
+
+	// Variables to track progress
+	int choice = 0;
+	int pathTaken = 0;
+	int currentLocation = 0;
+	int companionIndex = 4; // Default: no companion
+	int treasureFound = -1; // -1 means no treasure found
+	int playerHealth = 100;
+	int enemyEncounters = 0;
+
+	// Story introduction
+	printf("\n=== THE FORGOTTEN FOREST ===\n");
+	printf("You awaken in a strange forest with no memory of how you arrived.\n");
+	printf("The trees loom overhead, their branches creating eerie shadows.\n");
+	printf("You must find your way out before nightfall...\n\n");
+
+	// First decision - Choose initial direction
+	printf("Which direction will you go?\n");
+	printf("1. Follow the narrow path to the east\n");
+	printf("2. Head north toward the sound of running water\n");
+	printf("3. Venture west into the darker parts of the forest\n");
+	printf("Your choice (1-3): ");
+	scanf("%d", &choice);
+
+	// Process first choice
+	switch(choice) {
+		case 1:
+			printf("\nYou follow the narrow path eastward.\n");
+			printf("After walking for some time, you discover %s.\n", forestLocations[0]);
+			currentLocation = 0;
+			pathTaken = 1;
+			break;
+		case 2:
+			printf("\nYou head north toward the sound of water.\n");
+			printf("The path leads you to %s.\n", forestLocations[4]);
+			currentLocation = 4;
+			pathTaken = 2;
+			break;
+		default:
+			printf("\nYou venture into the darker western forest.\n");
+			printf("The trees grow denser until you find yourself in %s.\n", forestLocations[2]);
+			currentLocation = 2;
+			pathTaken = 3;
+			break;
+	}
+
+	// Second decision - Encounter
+	printf("\nAs you explore %s, you notice movement nearby.\n", forestLocations[currentLocation]);
+	printf("What do you do?\n");
+	printf("1. Hide and observe\n");
+	printf("2. Approach cautiously\n");
+	printf("3. Call out a greeting\n");
+	printf("Your choice (1-3): ");
+	scanf("%d", &choice);
+
+	// Random encounter result
+	srand(time(NULL));
+	int encounterResult = rand() % 5;
+
+	switch(choice) {
+		case 1:
+			printf("\nYou hide behind some foliage and observe...\n");
+			if (encounterResult < 3) {
+				printf("You spot %s watching you from nearby. It seems friendly.\n", companions[encounterResult]);
+				companionIndex = encounterResult;
+			} else {
+				printf("You see nothing of interest. It must have been the wind.\n");
+			}
+			break;
+		case 2:
+			printf("\nYou approach carefully...\n");
+			if (encounterResult < 2) {
+				printf("You discover %s. It decides to join you on your journey.\n", companions[encounterResult]);
+				companionIndex = encounterResult;
+			} else {
+				printf("A wild creature lunges at you! You barely escape, but suffer some scratches.\n");
+				playerHealth -= 15;
+				enemyEncounters++;
+			}
+			break;
+		default:
+			printf("\nYou call out a friendly hello...\n");
+			if (encounterResult < 1) {
+				printf("To your surprise, %s responds and offers to guide you.\n", companions[encounterResult]);
+				companionIndex = encounterResult;
+			} else {
+				printf("Your voice echoes through the forest. Something growls in response.\n");
+				printf("You should probably move on quickly!\n");
+				enemyEncounters++;
+			}
+			break;
+	}
+
+	// Status update
+	printf("\nStatus: You're in %s", forestLocations[currentLocation]);
+	if (companionIndex < 4) {
+		printf(" with %s as your companion", companions[companionIndex]);
+	}
+	printf(". Health: %d%%\n", playerHealth);
+
+	// Third decision - Obstacle
+	printf("\nYou continue your journey and encounter an obstacle.\n");
+
+	// Different obstacles based on location
+	if (currentLocation == 0 || currentLocation == 1) {
+		printf("A deep ravine blocks your path with a fragile rope bridge crossing it.\n");
+		printf("What do you do?\n");
+		printf("1. Cross the bridge carefully\n");
+		printf("2. Look for another way around\n");
+		printf("3. Try to jump across a narrow part\n");
+	} else if (currentLocation == 2 || currentLocation == 3) {
+		printf("A strange magical barrier glows before you, blocking further progress.\n");
+		printf("What do you do?\n");
+		printf("1. Touch the barrier\n");
+		printf("2. Search for a way to disable it\n");
+		printf("3. Try to go around it\n");
+	} else {
+		printf("The path ahead is flooded with fast-moving water.\n");
+		printf("What do you do?\n");
+		printf("1. Try to swim across\n");
+		printf("2. Look for a fallen tree to cross\n");
+		printf("3. Follow the water's edge to find a crossing\n");
+	}
+
+	printf("Your choice (1-3): ");
+	scanf("%d", &choice);
+
+	// Process third choice
+	int obstacleRoll = rand() % 10;
+
+	// Modify outcome based on companion
+	if (companionIndex < 2) {
+		obstacleRoll += 3; // Better odds with a helpful companion
+	}
+
+	printf("\n");
+	if (obstacleRoll > 7) {
+		printf("With surprising luck, you overcome the obstacle easily!\n");
+		printf("You even find %s hidden nearby.\n", treasures[rand() % 5]);
+		treasureFound = rand() % 5;
+		currentLocation = (currentLocation + 2) % 5; // Move to a new area
+	} else if (obstacleRoll > 3) {
+		printf("After some effort, you manage to get past the obstacle.\n");
+		currentLocation = (currentLocation + 1) % 5;
+	} else {
+		printf("You struggle with the obstacle and hurt yourself in the process.\n");
+		playerHealth -= 25;
+		printf("You're forced to take a different path.\n");
+		currentLocation = (currentLocation + 3) % 5;
+	}
+
+	printf("You find yourself in %s.\n", forestLocations[currentLocation]);
+
+	// Fourth decision - Mysterious encounter
+	printf("\nNight begins to fall. You notice a strange glow between the trees.\n");
+	printf("What do you do?\n");
+	printf("1. Investigate the glow\n");
+	printf("2. Set up camp for the night\n");
+	printf("3. Continue moving, avoiding the glow\n");
+	printf("Your choice (1-3): ");
+	scanf("%d", &choice);
+
+	printf("\n");
+	switch(choice) {
+		case 1:
+			printf("You cautiously approach the mysterious glow...\n");
+			if (rand() % 10 > 5) {
+				printf("It's a circle of magical mushrooms! They seem to restore your energy.\n");
+				playerHealth += 30;
+				if (playerHealth > 100) playerHealth = 100;
+			} else {
+				printf("It's a trap! Spirit wisps surround you, draining your energy!\n");
+				playerHealth -= 20;
+				if (companionIndex < 4) {
+					printf("Your companion %s helps drive them away before it gets worse.\n", companions[companionIndex]);
+				}
+			}
+			break;
+		case 2:
+			printf("You set up a small camp for the night.\n");
+			printf("The rest does you good, but strange noises keep you from sleeping deeply.\n");
+			playerHealth += 15;
+			if (playerHealth > 100) playerHealth = 100;
+			
+			// Random night encounter
+			if (rand() % 10 < 3) {
+				printf("You wake to find something going through your belongings!\n");
+				if (treasureFound >= 0) {
+					printf("Your %s is missing! It was stolen while you slept.\n", treasures[treasureFound]);
+					treasureFound = -1;
+				} else {
+					printf("Luckily, you had nothing valuable to take.\n");
+				}
+			}
+			break;
+		default:
+			printf("You decide to keep moving through the darkness.\n");
+			printf("It's difficult to navigate, and you stumble several times.\n");
+			playerHealth -= 10;
+			
+			// Find a new location
+			int newLocation = rand() % 5;
+			printf("After hours of wandering, you find yourself in %s.\n", forestLocations[newLocation]);
+			currentLocation = newLocation;
+			break;
+	}
+
+	// Status update
+	printf("\nStatus: You're in %s", forestLocations[currentLocation]);
+	if (companionIndex < 4) {
+		printf(" with %s", companions[companionIndex]);
+	}
+	if (treasureFound >= 0) {
+		printf(", carrying %s", treasures[treasureFound]);
+	}
+	printf(". Health: %d%%\n", playerHealth);
+
+	// Fifth decision - Final choice
+	printf("\nAs dawn breaks, you see multiple paths that might lead out of the forest.\n");
+	printf("Which path will you take?\n");
+	printf("1. The wide path that seems well-traveled\n");
+	printf("2. The overgrown path with strange markings on the trees\n");
+	printf("3. The narrow path that follows a stream\n");
+	printf("4. Climb a tall tree to get a better view first\n");
+	printf("Your choice (1-4): ");
+	scanf("%d", &choice);
+
+	// Final outcome based on all previous choices
+	printf("\n");
+	int finalScore = playerHealth;
+	if (companionIndex < 4) finalScore += 20;
+	if (treasureFound >= 0) finalScore += 25;
+	finalScore -= (enemyEncounters * 10);
+	finalScore += (pathTaken * 5);
+
+	// Different endings
+	if (finalScore > 120) {
+		printf("You chose wisely! The path leads you safely out of the forest.\n");
+		if (treasureFound >= 0) {
+			printf("The %s you found grants you special powers in the outside world.\n", treasures[treasureFound]);
+		}
+		if (companionIndex < 4) {
+			printf("%s accompanies you to the edge of the forest before bidding farewell.\n", companions[companionIndex]);
+		}
+		printf("You emerge as a hero with tales to tell!\n");
+	} else if (finalScore > 70) {
+		printf("After a challenging journey, you finally find your way out of the forest.\n");
+		printf("You survived, though not without some hardship.\n");
+		if (treasureFound >= 0) {
+			printf("At least the %s will fetch a good price in the nearby village.\n", treasures[treasureFound]);
+		}
+	} else if (playerHealth > 0) {
+		printf("Exhausted and wounded, you barely crawl out of the treacherous forest.\n");
+		printf("It will take time to recover from this ordeal.\n");
+		if (companionIndex < 4) {
+			printf("If not for %s, you might not have made it at all.\n", companions[companionIndex]);
+		}
+	} else {
+		printf("Your strength fails you. The forest claims another victim...\n");
+		printf("Perhaps another adventurer will find your remains someday.\n");
+	}
+
+	printf("\n=== THE END ===\n");
+	printf("\nReturning to the main hall...\n");
 }
 
 void Function23fbabonjo(void)
