@@ -1971,6 +1971,79 @@ void user36Cafe(void)
 void stevenFirst(void)
 {
 	printf("Steven >_< \n");
+	int coins = 420;
+    	char inventory[2][20] = {"Iron Sword", ""};
+    	int decision;
+    	bool exitRoom = false;
+    	char *itemsInRoom[3] = {"Notch Apple", "Torch", "Diamond"};
+    	bool itemTaken[3] = {false, false, false};
+    	int trapTriggered = rand() % 2; // 0 or 1
+
+    	printf("You enter Steven's Evil Lair: A dim chamber with walls made out of mossy cobblestone.\n");
+    	printf("There are some items scattered, and strange noises echo around.\n");
+
+    	while (!exitRoom) {
+        	printf("\nWhat do you want to do?\n");
+        	printf("1: Look around the room\n");
+        	printf("2: Pick up an item\n");
+        	printf("3: Open the old wooden chest\n");
+        	printf("4: Check Inventory\n");
+        	printf("5: Leave through the door\n");
+        	printf("Enter your choice: ");
+        	scanf("%d", &decision);
+
+        	switch(decision) {
+            	case 1:
+                	printf("You spot a Notch Apple, a Torch, and a Diamond.\n");
+                	break;
+            	case 2: {
+			int itemChoice;
+                	printf("Which item do you want to pick up?\n");
+                	for (int i = 0; i < 3; i++) {
+                    	if (!itemTaken[i])
+                        	printf("%d: %s\n", i+1, itemsInRoom[i]);
+                	}
+                	scanf("%d", &itemChoice);
+                	if (itemChoice >= 1 && itemChoice <= 3 && !itemTaken[itemChoice - 1]) {
+                    		strcpy(inventory[1], itemsInRoom[itemChoice - 1]);
+                    		itemTaken[itemChoice - 1] = true;
+                    		printf("You picked up: %s\n", inventory[1]);
+                	}
+			else {
+                    		printf("Invalid choice or item already taken.\n");
+                	}
+                	break;
+            	}
+            	case 3:
+                	if (trapTriggered) {
+                    		printf("A dart shoots out from the chest! You lose 100 coins.\n");
+                    		coins -= 100;
+                    		if (coins < 0) coins = 0;
+                	} else {
+                    		printf("You found 69 coins inside the chest!\n");
+                    		coins += 69;
+                	}
+                	break;
+            	case 4:
+                	printf("Inventory:\n- %s\n", inventory[0]);
+                	if (strlen(inventory[1]) > 0) printf("- %s\n", inventory[1]);
+			// itemTaken means you took the item from the room so that means you have it 
+			for (int u = 0; u < 3; u++)
+			{
+				if (itemTaken[u]) {
+            				printf("- %s\n", itemsInRoom[u]);
+        			}
+			}
+                	printf("Coins: %d\n", coins);
+                	break;
+            	case 5:
+                	printf("You exit the room and return to the hallway...\n");
+                	exitRoom = true;
+                	break;
+            	default:
+                	printf("Invalid choice. Try again.\n");
+		}
+	}
 }
 
 void amoralesRoom9(void)
