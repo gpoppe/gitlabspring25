@@ -116,7 +116,11 @@ void cscuser1(void);
 
 void PedroFunctionRoom(void);
 void gameFuncHenry41(void);
+
+void room51game(void);
+
 void room34game(void);
+
 
 int main(int argc, char *argv[])
 {
@@ -1136,6 +1140,7 @@ int main(int argc, char *argv[])
 			case 51:
 			{
 				puts("room51");
+				room51game();
 				break;
 			}
 			case 52:
@@ -3503,6 +3508,122 @@ void jessiesFunRoom(void)
 {
         printf("cscuser47");
 }
+
+
+
+
+
+
+void room51game(void)
+{
+	int input1 = 0;
+    int input2 = 0;
+    int input3 = 0;
+    int input4 = 0;
+    int input5;
+   
+	char *inputs[] = {"blue", "green", "orange"}; // Array to store inputs
+    int randomEvent = 0;
+    int i = 0;
+
+    printf("You were teleported to a cliff, press 1 to keep climbing and 2 to jump into the river?\n");
+    scanf("%d", &input1);
+	
+	//Input 1, there is a input 2 nested
+    if(input1 == 1) 
+    {
+      	printf("\nYou kept climbing the cliff only to find a dragon waiting at the top\n");
+     		printf("\n Press 1 to slay the dragon and press 2 to give it an oreo cookie?\n");
+      		scanf("%d", &input2);
+     
+      		//Input 2 there is an input 3 nested
+			if(input2 == 1)
+      		{
+        	printf("The dragon breathed fire on you and burnt your expensive shoes\n");
+        		printf("\n Press 1 to extinguish the fire and press 2 to jump into a puddle of water\n");
+        		scanf("%d", &input3);
+				
+				//Input 3 there is an input 4 nested
+				if (input3 == 1)
+				{
+					printf("You extinguish the fire and did not lose any damage because of your armor\n");
+				}
+			
+				else
+				{
+					printf("You caught salmonella from the dirty water and were bed ridden for a week");
+				} 
+      		}
+      
+     
+	 		 if(input2 == 2)
+     		 {
+        		printf("The dragon loved the oreo cookie and flew you back to town\n");
+      		 }
+    }
+
+	if(input1 == 2)
+    {
+        printf("You jumped into the water and a pirate saved you. Press 1 to have thank the pirate, Press 2 to steal the golden eagle egg?\n");
+        scanf("%d", &input3);
+
+        if(input3 == 1)
+        {
+            printf("The pirate thought you were cool and showed you where to find the ostrich that layed golden eggs\n");
+                        printf("The pirate asks if you would like to guess the jelly beans, press 1 for yes and 2 for no.\n");
+                scanf("%d", &input4);
+
+                        srand(time(NULL));
+                        randomEvent = rand() % 3; // Random number 0, 1, or 2
+                        if(input4 ==1)
+                        {
+                                if(randomEvent == 0)
+                                {
+                                        printf("You won a jelly bean\n");
+                                }
+                                if(randomEvent == 1)
+                                {
+                                        printf("You won a spatula\n");
+                                }
+                                if(randomEvent == 2)
+                                {
+                                        printf("You won a box of boston baked beans\n");
+                                }
+                                else if (input4 == 2)
+                                {
+                                        printf("You declined the game and the pirate shrugged and walked away");
+                                }
+
+								printf("\nThe pirate offers you a magical cloak, but you must choose its color.\n");
+								printf("\nChoose a color: 0 for blue, 1 for green, 2 for orange:\n");
+								scanf("%d", &input5);
+
+								if(input5 >= 0 && input5 <= 2)
+								{
+									printf("You have selected the color: %s\n", inputs[input5]);
+								}
+							    else 
+								{
+									printf("That color does not exist in this realm.\n");
+								}
+
+
+                        }
+
+                        }
+            
+        }
+
+        else
+        {
+            for(int i = 0; i < 3; i++)
+                {
+                printf("The pirate was mad and he did not share where to find the ostrich cave with golden eggs\n");
+                }
+        }
+}
+
+
 
 
 // --- Room 27 Implementation START ---
