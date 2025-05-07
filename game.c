@@ -39,6 +39,7 @@
 
 //place function prototypes here
 void dairasBrain(void);
+void response(int choice);
 
 void jovannyFunction(int jovannyNum);
 
@@ -1279,8 +1280,92 @@ void joshRoom4(void)
 
 void dairasBrain(void)
 {
-	printf("cscuser2\n");
+        char userChoice;
+        int choice;
+        int leaver = 0;
+
+                printf("\nTHANK YOU FOR COMING I NEED YOUR HELP\n");
+                printf("I have to go run an errand real quick and since I trust you...\n");
+                printf("I have a special task for you\n");
+                printf("I will be back soon..\n\n");
+                while(leaver != 99) // while loop
+        {
+                printf("c - to continue\t");
+                scanf(" %c",&userChoice);
+
+                if(userChoice == 'c')
+        {
+                printf("\nYou are now in charge of my 3 year old chubby bunny..\n");
+                printf("                      /|      __\n");
+                printf("*             +      / |   ,-~ /             +\n");
+                printf("     .              Y :|  //  /                .         *\n");
+                printf("         .          | jj /( .^     *\n");
+                printf("               *    >-'~'-v'              .        *        .\n");
+                printf("*                  /       Y\n");
+                printf("   .     .        jo  o    |     .            +\n");
+                printf("                 ( ~T~     j                     +     .\n");
+                printf("      +           >._-' _./         +\n");
+
+
+                printf("\nPLEASE DO NOT FEED HIM # STRICTDIET\n\n");
+                printf("What should you do next?\n\n"); //one. feed it two. pet him gently three. play with him four. refill & clean his cage five. nothing because you hate bunnies
+                printf("1. get settled and feed him\n");
+                printf("2. pet him gently\n");
+                printf("3. get settled and refill & clean his cage\n");
+                printf("4. play with him since you see toys\n");
+                printf("5. nothing because now you realized you hate bunnies\n");
+                printf("(Reminder: you can press 9 at any time to EXIT)\n");
+                scanf("%d", &choice);
+
+                if (choice != 9)
+                {
+                printf("\n");
+                response(choice);
+                }
+                else if (choice == 9)
+                {
+                printf("THANK YEWW FOR TAKING CARE OF MY BUNNY! C U SOON >.<\n");
+                return;
+                }
+
+            }
+        }
 }
+void response(int choice)
+{
+        srand(time(0)); // random number
+                int choreList;
+                char listOfChores[4][100] =
+                {
+                "cleaned his cage and bowls","cut his nails and as well broomed..thank yewww", "you refilled his hay and gave him strawberries","uhhh you kinda just stood there the whole time"};// array
+
+                switch(choice)
+                {
+                        case 1:
+                                printf("You try to feed him.....he thumps his feet angrily. Seems you didnt remember what i told you.... Atleast one of you can follow instructions\n\n");
+                                break;
+                        case 2:
+                                printf("He seems to like you. YAY I knew to trust you\n\n");
+                                break;
+                        case 3:
+                                choreList = rand() % 4;
+                                printf("Today you did: %s\n\n", listOfChores[choreList]);
+                                break;
+                        case 4:
+                                printf("you scatter the toy play cups and hide treats in them\n");
+                                printf("He approaches intrigued...\n");
+                                printf("He starts to stack the cups\n");
+                                printf("You find this cute so you sit with him doing this until he gets bored\n\n");
+                                break;
+                        case 5:
+                                printf("IT'S OKAY... you've noticed I started to knock on the door since I forgot my keys..\n\n");
+                                printf("I AM BACK...finally\n");
+                                break;
+                }
+}
+// end of DairasBrain
+
+
 void room12game(void)
 {
 	printf("cscuser12 :)\n");
