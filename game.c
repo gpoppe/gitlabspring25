@@ -4123,7 +4123,107 @@ void room16game(void)
 
 void ryanRoom38(void)
 {
-	printf("Ryan cscuser38\n");
+    int choice = 0;
+    int planet = 0;
+    int shake = 0;
+    srand(time(0));
+    int y = (rand() % 100) + 1; // random number generated
+    char reportings[5][47] = {"Rocks, Plants, Lightsaber, Stillsuit, Telescope"}; // array used
+    int answer = 7;
+    int guess = 0;
+    
+    
+    printf("Earth is decaying!\nNASA has sent you on a mission and you are all aboard the Starship Cardinal.\nYou are the capatain in charge of fidning a habital planet for humans to continue living.\nThe human race depends on you!\n");
+    printf("What will you do?\n");
+    printf("1.Explore Planets\n");
+    printf("2.Communicate Findings\n");
+    printf("3.Continue Traveling\n");
+    printf("4.Refuel on Gas\n");
+    printf("5.Go Back Home\n");
+    printf("Enter a number: ");
+    scanf("%d",&choice);
+    
+    switch(choice){
+        case 1:
+            printf("Explore planets\n");
+            printf("Planet 1: A Green Planet\n");
+            printf("Planet 2: A Desert Planet\n");
+            printf("Planet 3: A Water Planet\n");
+            printf("Planet 4: A Grey Planet\n");
+            printf("Planet 5: A Fire Planet\n");
+            printf("Which planet will you explore?\n");
+            printf("Enter a number: ");
+            scanf("%d",&planet);
+            switch(planet){
+                case 1:
+                    printf("Green Planet\n");
+                    printf("The green planet id filled with trees and oxygen.\nIt is a safe place to inhabit.\n Humanity is saved\n");
+                    break;
+                case 2:
+                    printf("Desert Planet");
+                    printf("The desert planet is full of sand and heat.\nIt is a safe place to inhabit but at what cost.\n. There is no water but there is food and air. Is Humanity is saved?\n");
+                    break;
+                case 3:
+                    printf("Water Planet");
+                    printf("The wter planet is full of water and is inhabitabal.\nHumanity is not saved\n");
+                    break;
+                case 4:
+                    printf("Grey Planet");
+                    printf("The planet you arrive on is a futuristic city!\n It is filled with skyscrappers and flying cars.\n You go to meet with its ruler and they decide to help humanity.\n THE WORLD IS SAVED!\n");
+                    break;
+                case 5:
+                    printf("YOU CHOSE THE FIRE PLANET\n"); // for loop being used
+                    for(int i = 0; i < planet; i++)
+                    {
+                    printf("MAYDAY \n");
+                    }
+                    printf("The planet is inhabitabl and we lost you....\n");
+                    break;
+                default:
+                    printf("You aborted the mission");
+                    break;
+                   }
+            break;
+        case 2:
+            printf("You have decided to communicate findings\n");
+            printf("This is your captain on Starship Cardinal, this is what I have found\n");
+            for(int i = 0; i < 5; i++)
+            {
+                printf("%s\n", reportings[i]);
+            }
+            break;
+        case 3:
+            printf("Continue Exploration\n");
+            printf("While exploring you get bored and speak to the AI computer ELLE.\nYou decide to play a number guessing game.\nELLE knows the number now guess: ");
+            scanf("%d", &guess);
+            while(guess != answer) // while loop is used as my own feature
+            {
+                printf("Wrong answer keep guessing!: ");
+                scanf("%d", &guess);
+            }
+            printf("You made the right guess %d\n", guess);
+            
+            
+            break;
+        case 4:
+            printf("You have landed at an international space gas station.\nWhen you land you find an old relic of earth sitting on the floor.\nIt appears to be a random 8 ball but its different, instead of messgaes it gernates numbers.\nYou feel intrigued, do you let it dictate how many gallons of gas you put into the ship?\n");
+            printf("Enter your option. 1 is yes, 2 is no:  ");
+            scanf("%d",&shake);
+            if(shake == 1)
+            {
+                printf("You decide to take a chance and shake the random 8 ball.\nHere is what it generates %d",y);
+                printf("\nHopefully this amount of gas last a long\n");
+                
+            }
+            else
+            {
+                printf("You decide to put the ball down and pay for 100 gallons of fuel to continue the trip\n");
+            }
+            break;
+        case 5:
+            printf("You have left humanity down and reported back home.\n");
+            break;
+    }
 }
 
 void carlosroom60(void)
