@@ -8,12 +8,16 @@
 // Jessenia Hernandez Mora
 //Gerard McCallion
 
+//Alex Pham
+
+
 //Jared Hernandez
 
 
 // Omar Salem
 
 // Stanley Navarrete
+
 
 // Nanu Panchamurthy
 
@@ -68,6 +72,10 @@ void userRoom50Ending2Path(int choices[], int index);
 void userRoom50Ending3Path(int choices[], int index);
 void userRoom50Stats(int choices[]);
 
+void alexGameRoom56(void);
+int countSuccesses(int successArray[]);
+void checkDoorStatus(int successCount);
+void printResults(int successArray[]);
 
 void room12game(void);
 void room31(void);
@@ -1192,7 +1200,12 @@ int main(int argc, char *argv[])
 				puts("room55");
 				break;
 			}
-
+			case 56:
+			{
+				puts("Entering Room 56...");
+                		alexGameRoom56();
+                		break;
+			}
 			case 59:
 			{
 				puts("room59");
@@ -4573,6 +4586,214 @@ void gameFuncHenry41(void)
 }
 
 
+//Special Feature: Text boxes around the surrounding dialogue to make it more readable for the player.
+void alexGameRoom56(void)
+{
+    printf("                                                 ╔════════════════════════════╗\n");
+    printf("                                                  Welcome to 'Stealth Strike'!\n");
+    printf("                                                 ╚════════════════════════════╝\n");
+
+    printf("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n");
+    printf("   You are hired by bounty hunters to retrieve some intel from a heavily guarded science base in the mountains called Mt. Santiss.");
+    printf("\n   You are armed with a silenced pistol and a tactical knife, and you have some medical equipment in case of injury.");
+    printf("\n   You also have a cloaking device to go invisible; every use will last 5 minutes each use, and it will take 15 minutes to recharge.");
+    printf("\n   Lastly, you are disguised as one of the base's troopers.");
+    printf("\n   The bounty hunters have requested that you succeed in at least 3 tasks to provide enough data for a strategic raid.");
+    printf("\n   If you are unable to succeed 3 times, you will not be compensated and will not escape...\n");
+    printf("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+    printf("╔═══════════════════════════════════╗\n");
+    printf("   Your goal is to find 5 pieces:\n");
+    printf(" - The main datapad\n");
+    printf(" - Alien Specimens\n");
+    printf(" - The Base's location\n");
+    printf(" - The base's research goal\n");
+    printf(" - The password for The Vault\n");
+    printf("╚═══════════════════════════════════╝\n");
+
+    printf("Once you have finished all tasks within the military base, deposit the items into Room 56 and you will be able to leave!\n");
+
+    int tasksCompleted[5] = {0};
+    int correctGuesses[5] = {0};
+    int secretNumbers[5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        secretNumbers[i] = (rand() % 3) + 1;
+    }
+
+    int completedCount = 0;
+    int choice, guess;
+
+    while (completedCount < 5)
+    {
+        printf("\n╔═══════════════════════════════════════════════════════════════════════════════════════╗\n");
+        puts("   Choose a task to complete (Success = Item acquired | Failure = No Item from the Task):");
+        puts("   1. Download data from the main Datapad located in the top office");
+        puts("   2. Accessing the storage room to take a sample of a specimen");
+        puts("   3. Encrypting data to figure out the base's location");
+        puts("   4. Finding the base's databanks and determining what the goal is");
+        puts("   5. Figure out how to access The Vault, which houses the base's most important assets");
+        printf("╚════════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+        printf("\nEnter a task 1-5: ");
+        scanf("%d", &choice);
+
+        if (choice < 1 || choice > 5)
+        {
+            puts("Invalid task choice. Try again.");
+            continue;
+        }
+
+        if (tasksCompleted[choice - 1])
+        {
+            puts("You already completed this task! Pick another.");
+            continue;
+        }
+
+        printf("\n╔══════════════════════════════════════════════════════════════════════════╗\n");
+        printf("   Guess a number between 1 and 3 to complete the task: ");
+        scanf("%d", &guess);
+        printf("╚══════════════════════════════════════════════════════════════════════════╝\n");
+
+        if (guess == secretNumbers[choice - 1])
+        {
+            printf("Good work, you guessed the right number and have completed task since- %d!\n", choice);
+
+            switch (choice)
+            {
+                case 1:
+                        puts("You manage to get pass guards, troopers by using your disguise and are successfully able to extract the data from the office.");
+                        break;
+                case 2:
+                        puts("You are able to enter the storage and disable security. Using the known intel you successfully locate a sample and store it.");
+                        break;
+                case 3:
+                        puts("After decrypting some files, you figure out a method to get to the base, but are unable to obtain the coordinites.");
+                        break;
+                case 4:
+                        puts("You uncover classified files detailing the base's main goal: to weaponize alien DNA and terroize the world.");
+                        break;
+                case 5:
+                        puts("You stole a Vault card from an officer while they were distracted, you copy the card and store the copied card with the Vault Code.");
+                        break;
+            }
+            correctGuesses[choice - 1] = 1;
+        }
+        else
+        {
+            printf("Better luck next task. The correct number was %d. Task %d still completed! However you will not have your items/intel from the task since-\n", secretNumbers[choice - 1], choice);
+
+            switch (choice)
+            {
+                case 1:
+                    puts("While sneaking to the main office, you tripped a security sensor. You escape the area but there is increased security around that office. ");
+                    break;
+                case 2:
+                    puts("You get spotted while searching for a suitable specimen sample, you are temporarliy detained but escape using your cloaking device.");
+                    break;
+                case 3:
+                    puts("Encrypting the location proved more difficult than anticipated, eventually the system clocks out.");
+                    break;
+                case 4:
+                    puts("You are caught messing with the files, you fight your way out but the only accessible terminal is destroyed.");
+                    break;
+                case 5:
+                    puts("A high ranking officer notices you sneaking up to pickpocket a Vault Key since you miscalculated your cloak device time.");
+                    break;
+            }
+        }
+
+        tasksCompleted[choice - 1] = 1;
+        completedCount++;
+    }
+
+    int successCount = countSuccesses(correctGuesses);
+    printResults(correctGuesses);
+    checkDoorStatus(successCount);
+}
+
+int countSuccesses(int successArray[])
+{
+    int successCount = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        if (successArray[i] == 1)
+            successCount++;
+    }
+    return successCount;
+}
+
+void checkDoorStatus(int successCount)
+{
+    if (successCount == 5)
+    {
+        printf("\n╔══════════════════════════════════════════════════════════╗\n");
+        printf("   You are a master at stealth ops and have successfully\n");
+        printf("   finished all 5 tasks successfully. Well Done!\n");
+        printf("╚════════════════════════════════════════════════════════════╝\n");
+
+        printf("________$$$$\n");
+        printf("_______$$__$\n");
+        printf("_______$___$$\n");
+        printf("_______$___$$\n");
+        printf("_______$$___$$\n");
+        printf("________$____$$\n");
+        printf("________$$____$$$\n");
+        printf("_________$$_____$$\n");
+        printf("_________$$______$$\n");
+        printf( "__________$_______$$\n");
+        printf("____$$$$$$$________$$\n");
+        printf("__$$$_______________$$$$$$\n");
+        printf("_$$____$$$$____________$$$\n");
+        printf("_$___$$$__$$$____________$$\n");
+        printf("_$$________$$$____________$\n");
+        printf("__$$____$$$$$$____________$\n");
+        printf("__$$$$$$$____$$___________$\n");
+        printf("__$$_______$$$$___________$\n");
+        printf("___$$$$$$$$$__$$_________$$\n");
+        printf("____$________$$$$_____$$$$\n");
+        printf("____$$____$$$$$$____$$$$$$\n");
+        printf("_____$$$$$$____$$__$$\n");
+        printf("_______$_____$$$_$$$\n");
+        printf("________$$$$$$$$$$\n");
+
+    }
+
+
+    if (successCount >= 3)
+    {
+        printf("\n╔══════════════════════════════════════════════════════════╗\n");
+        printf("   Mission Accomplished! You completed %d tasks correctly.\n", successCount);
+        printf("   You transfer your items to the bounty hunters...\n");
+        printf("   They accept your items and give you a key to escape.\n");
+        printf("   The door will open and you can escape!\n");
+        printf("╚════════════════════════════════════════════════════════════╝\n");
+    }
+    else
+    {
+        printf("\n╔══════════════════════════════════════════════════════════════╗\n");
+        printf("   Mission failed. You only completed %d task(s) correctly.\n", successCount);
+        printf("   You transfer your items to the bounty hunters...\n");
+        printf("   They are disgruntled with your failure and hang up on you.\n");
+        printf("   The door will not open and you will be trapped inside...\n");
+        printf("╚════════════════════════════════════════════════════════════════╝\n");
+    }
+}
+
+void printResults(int successArray[])
+{
+    printf("\n╔════════════════════════════╗\n");
+    printf("          RESULTS          \n");
+    printf("╚════════════════════════════╝\n");
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Task %d: %s\n", i + 1, successArray[i] == 1 ? "SUCCESS" : "FAILURE");
+    }
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+
 void rayFunct(void)
 {
 	int hp = 100;	
@@ -5359,4 +5580,5 @@ void stanleysRoom(void)
 
 	printf("Returning to the main hall...\n");
 }
+
 
