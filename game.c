@@ -7,7 +7,7 @@
 //Yoonhong Min
 // Jessenia Hernandez Mora
 //Gerard McCallion
-
+// Stanley Navarrete
 // Nanu Panchamurthy
 
 // carlos acevedo
@@ -33,7 +33,7 @@ void jovannyFunction(int jovannyNum);
 
 void room25game(void);
 
-void room57G(void);
+void room57G(char *name);
 
 void user36Cafe(void);
 
@@ -47,6 +47,13 @@ void room59game(void);
 
 void room22RandomTime(void);
 
+
+void stanleysRoom(void);
+
+//room3
+void room3(void);
+void encounterPredator(char name[], int dangerType);
+//room3 end
 
 void userRoom50(void);
 void userRoom50Ending1Path(int choices[], int index);
@@ -109,6 +116,7 @@ void room1game(void);
 
 void PedroFunctionRoom(void);
 void gameFuncHenry41(void);
+void room34game(void);
 
 int main(int argc, char *argv[])
 {
@@ -143,6 +151,7 @@ int main(int argc, char *argv[])
 			case 3:
 			{
 				puts("room3");
+				room3();
 				break;
 			}
 			case 4:
@@ -312,11 +321,13 @@ int main(int argc, char *argv[])
 			case 33:
 			{
 				puts("room33");
+				stanleysRoom();
 				break;
 			}
 			case 34:
 			{
 				puts("room35");
+				room34game();
 				break;
 			}
 			case 36:
@@ -1160,7 +1171,7 @@ int main(int argc, char *argv[])
 			case 57:
 			{
 				puts("room57");
-				room57G();
+				room57G(name);
 				break;
 			}
 
@@ -1228,6 +1239,128 @@ void room12game(void)
 {
 	printf("cscuser12 :)\n");
 }
+void encounterPredator(char name[], int dangerType)
+{
+    char *dangers[] = {
+        "a sneaky pack of velociraptors",
+        "a towering T-Rex",
+        "a swooping Pteranodon",
+        "a lurking Dilophosaurus",
+        "a charging Triceratops"
+    };
+
+    printf("\n%s encounters %s!\n", name, dangers[dangerType]);
+
+    int reaction = rand() % 3;
+    if (reaction == 0)
+        printf("You evade just in time!\n");
+    else if (reaction == 1)
+        printf("You hide in thick foliage and hold your breath...\nIt works!\n");
+    else
+        printf("You distract it with a flare and run!\n");
+}
+
+void room3(void)
+{
+    char name[30];
+    int steps = 0, health = 100, decision;
+    srand(time(NULL));
+
+    printf("Enter your name, dinosaur keeper: ");
+    scanf("%s", name);
+
+    printf("\nWelcome, %s. You're lost in the jungle after a containment breach.\n", name);
+    printf("Your mission: survive the jungle and return to Camp Saurus.\n");
+
+    while (health > 0 && steps < 5)
+    {
+        printf("\n%s's Health: %d | Progress to camp: %d/5\n", name, health, steps);
+        printf("Choose your next move:\n");
+        printf("1. Move through the dense jungle\n");
+        printf("2. Climb a hill to scout\n");
+        printf("3. Check your gear\n");
+        printf("4. Hide and rest\n");
+        printf("5. Try calling for help\n");
+        printf("6. Give up and exit\n");
+
+        scanf("%d", &decision);
+
+        if (decision == 6)
+        {
+            printf("\nYou sit down and accept your fate... The jungle is quiet now.\n");
+            break;
+        }
+
+        int danger = rand() % 5;
+
+        switch (decision)
+        {
+            case 1:
+                printf("\nYou push through thick vines...\n");
+                encounterPredator(name, danger);
+                health -= rand() % 15;
+                steps++;
+                break;
+            case 2:
+                printf("\nYou climb a rocky ridge to spot the camp...\n");
+                if (rand() % 2)
+                {
+                    printf("You spot smoke! You're heading the right way!\n");
+                    steps++;
+                }
+                else
+                {
+                    printf("The view is blocked by fog.\n");
+                }
+                break;
+            case 3:
+            {
+                char *gear[] = {"flare gun", "medkit", "knife", "radio (broken)", "dino whistle"};
+                printf("You check your pack:\n");
+                for (int i = 0; i < 5; i++)
+                    printf("- %s\n", gear[i]);
+                printf("Using medkit to heal 10 health.\n");
+                health += 10;
+                if (health > 100) health = 100;
+                break;
+            }
+            case 4:
+                printf("\nYou find a bush to hide and rest...\n");
+                health += 5;
+                if (health > 100) health = 100;
+                printf("Recovered some strength.\n");
+                if (rand() % 3 == 0)
+                {
+                    printf("But a predator finds you while resting!\n");
+                    encounterPredator(name, danger);
+                    health -= rand() % 20;
+                }
+                break;
+            case 5:
+                printf("\nYou try the broken radio...\n");
+                if (rand() % 4 == 0)
+                {
+                    printf("A faint signal responds: 'We’re coming for you, hang on!'\n");
+                    steps += 2;
+                }
+                else
+                {
+                    printf("Static. Nothing...\n");
+                }
+                break;
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+
+    if (health <= 0)
+        printf("\nYou collapse... the jungle claims another victim.\n");
+    else if (steps >= 5)
+        printf("\nYou break through the trees and see Camp Saurus ahead!\nYou survived, %s!\n", name);
+
+    printf("\nReturning to the main menu...\n");
+}
+
 
 void room30game(void)
 {
@@ -1608,6 +1741,76 @@ void cameronDOOMFn(void)
 	printf("cscuser7/ Cameron");
 }
 
+void room34game(void)
+{
+    const char *actions[5] = {
+        "Train with the warhammer",
+        "Drink a strength potion",
+        "Fight a goblin",
+        "Challenge the ogre boss",
+        "Rest and regain stamina"
+    };
+
+    int decision = 0;
+    int strength = 5 + rand() % 6; // Start with 5-10 strength
+    int stamina = 10;
+    int loopCounter = 0;
+
+    printf("\nWelcome to Room 34: Medieval Gym of Might!\n");
+    printf("You must grow stronger to face the monsters ahead.\n");
+
+    while (loopCounter < 5) {
+        printf("\nYour current strength: %d | Stamina: %d\n", strength, stamina);
+        printf("Choose your training/fighting action (%d/5):\n", loopCounter + 1);
+        for (int i = 0; i < 5; i++) {
+            printf("%d. %s\n", i + 1, actions[i]);
+        }
+
+        scanf("%d", &decision);
+
+        switch (decision) {
+            case 1:
+                printf("You swing the heavy warhammer repeatedly!\n");
+                strength += 2;
+                stamina -= 2;
+                break;
+            case 2:
+                printf("You chug a glowing strength potion.\n");
+                strength += rand() % 4 + 1;
+                break;
+            case 3:
+                printf("You fight a goblin with fierce roars!\n");
+                if (strength > 8) {
+                    printf("You crush the goblin effortlessly.\n");
+                } else {
+                    printf("You barely survive, but gain fighting experience.\n");
+                    strength += 1;
+                    stamina -= 1;
+                }
+                break;
+            case 4:
+                printf("You charge the ogre boss!\n");
+                if (strength > 12) {
+                    printf("You SLAY the ogre boss in a glorious battle!\n");
+                } else {
+                    printf("The ogre tosses you aside. You live... barely.\n");
+                    stamina -= 3;
+                }
+                break;
+            case 5:
+                printf("You meditate and stretch.\n");
+                stamina += 3;
+                break;
+            default:
+                printf("Invalid choice, try again.\n");
+                continue;
+        }
+        loopCounter++;
+    }
+
+    printf("\nYou’ve completed your gym training. Time to move on to new adventures.\n\n");
+}
+
 void room59game(void)
 {
 	printf("%s\n", "cscuser59");
@@ -1620,9 +1823,287 @@ void kobesRoom(void)
 	printf("CSCUSER24\n");
 }
 
-void room57G(void) 
+void room57G(char *name)
 {
-	printf("\ncscuser57 ");
+	printf("\n%s, you enter and all you find is a table with a 6 sided dice with a paper next to it. It reads: \n", name);
+	sleep(2);
+	printf("***Behold adventurer! You will now embark on a thrilling and harrowing journey to claim \ntreasure of " 
+			"your wildest dreams! Make careful decisions because one wrong move could be the end for you, "  
+			"stay safe and hope you have some luck...***\n");
+	sleep(2);
+	printf("\nAfter reading, you wonder what to do next as you're looking at the dice. There are no instructions " 
+			"or any sort of description.\nYou look back and see that the door you came in from has disappeared "
+			"and all there is left is a wall.\nRealizing the only way out is to go through with "  
+			"the adventure, you pick up the dice to throw.\n");
+	sleep(4);
+	printf("\nSuddenly, a floating screen appears in front of you.\nIt reads: ***Dice roll dictates your starting class and weapon.\nPossible classes:\n"
+			"1:WARRIOR(SWORD)\n2:ARCHER(BOW)\n3:MAGE(STAFF)\n4:ROGUE(DAGGERS)\n5:BERSERKER(AXE)\n6:BRUISER(HAMMER)\n\n" "You only have 1 reroll. " 
+			"You can choose to reroll or stay with the result. Continue.***\nWith that, you roll the dice. " 
+			"Press Enter to continue...");
+	getchar();
+	getchar();
+	srand(time(NULL));
+	char reroll;
+
+	int diceResult = (rand() % 6) + 1;
+	do 
+	{
+		printf("Dice result: %d \nReroll?(Y/N): ", diceResult);
+		scanf(" %s", &reroll);
+		reroll = toupper(reroll);
+	} while (reroll != 'Y' && reroll != 'N');
+	
+	if (reroll == 'Y') 
+	{
+		diceResult = (rand() % 6) + 1;
+		printf("You chose to reroll.\nNew result: %d\n", diceResult);
+	} else {
+		printf("No reroll. Continuing...\n");	
+	}
+
+	sleep(2);
+
+	printf("\n\nA screen appears...\nIt shows your health and inventory space\n-----------------------------------------\nHEALTH: 100\n"
+			"INVENTORY: [ ] [ ] [ ] [ ] [ ]\n-----------------------------------------\n\n\n");
+	int playerHealth = 100;
+	char *inventory[5] = {"", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
+	char ability[20];
+	
+	switch(diceResult)
+	{
+		case 1:
+			printf("Your number was 1.\nDesignated class: [WARRIOR]\nYou have received: SWORD\n"
+					"Abilities: OVERHEAD SLASH\n");
+			inventory[0] = "Sword";
+			strcpy(ability, "OVERHEAD SLASH");
+			break;
+		case 2: 
+			printf("Your number was 2.\nDesignated class: [ARCHER]\nYou have received: BOW\n"
+					"Abilities: HEAVY SHOT\n");
+			inventory[0] = "Bow";
+			strcpy(ability,"HEAVY SHOT");
+			break;
+		case 3:
+			printf("Your number was 3.\nDesignated class: [MAGE]\nYou have received: STAFF\n"
+					"Abilities: FIREBALL\n");
+			inventory[0] = "Staff";
+			strcpy(ability, "FIREBALL");
+			break;
+		case 4:
+			printf("Your number was 4.\nDesignated class: [ROUGE]\nYou have received: DAGGERS\n"
+					"Abilities:  BACKSTAB\n");
+			inventory[0] = "Daggers";
+			strcpy(ability, "BACKSTAB");
+			break;
+		case 5:
+			printf("Your number was 5.\nDesignated class: [BERSERKER]\nYou have received: AXE\n"
+					"Abilities: ANGRY CLEAVE\n");
+			inventory[0] = "Axe";
+			strcpy(ability, "ANGRY CLEAVE");
+			break;
+		case 6:
+			printf("Your number was 6.\nDesignated class: [BRUISER]\nYou have received: HAMMER\n"
+					"Abilities: SMASH\n");
+			
+			inventory[0] = "Hammer";
+			strcpy(ability, "SMASH");
+			break;
+
+	}
+	
+	char dir[10];
+	printf("\n\nAmazed, you hold out your hand on the first slot of your inventory where your weapon is:\n[%s] and you grab and pull. Your %s appears. ", inventory[0], inventory[0]);
+	printf("With weapon in hand, you see a flash of light as you are teleported out of the room with the table\nand immediately appear in front of twin passageways."
+			" A fork in the road.\nDo you go left or right?: ");
+	scanf("%s", dir);
+	if (strcmp(dir, "left") == 0) 
+	{
+		printf("Chose to go left...\nYou fell into a pit of lava and died!\n");
+		playerHealth = 0;
+		sleep(1);
+		return;
+	} else if (strcmp(dir, "right") == 0) 
+	{
+		printf("Chose to go right...\nYou encounter a monster gorilla wielding brass knuckles. There is no turning back. You have to fight!\n");
+		printf("You use %s to kill the gorilla while sustaining some damage(-25), good job on surviving.\nYou received: DIAMOND\n", ability);
+		playerHealth -= 25;
+		printf("HEALTH: %d\n",playerHealth);
+		inventory[1] = "Diamond";
+		int i;
+		printf("----INVENTORY----\n");
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(1);
+	}
+	
+	char choice;
+	printf("You move forward in and find a large room with a golden chest in the middle and a passageway behind it. You don't know if you should open it or keep it closed and continue...\n");
+	printf("Do you open it?(Y/N): ");
+	scanf("%s", &choice);
+	choice = toupper(choice);
+	
+	if (choice == 'Y') 
+	{
+		printf("\nYou open the chest and received ENCHANTED AMULET(Raises your health to 150)\n");
+		playerHealth = 150;
+		printf("HEALTH: %d\n",playerHealth);
+		inventory[2] = "Enchanted Amulet";
+		printf("----INVENTORY----\n");
+		int i;
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(1);
+
+		sleep(1);
+	} else 
+	{
+		printf("\nYou leave the chest alone and continue onwards, having felt that you may have missed out on something important...\n");
+		sleep(1);
+	}
+	
+	
+	printf("\nAs you continue through the dungeonlike adventure, the air turns cold...\n");
+	sleep(1);
+	printf("A congregation of dark clouds appear in front of you and a hooded being emerges from them, effectively blocking your path\n");
+	sleep(1);
+	printf("It says: ***Answer me this, mortal...\n");
+	sleep(1);
+	
+	printf("You're driving your car late at night. Suddenly, an old man and a child both step onto the road.\n" 
+		"What do you hit first? Answer wisely, mortal***\n");
+	getchar();
+	char response[100];
+	fgets(response, sizeof(response), stdin);
+	
+	int j;
+	for (j = 0; response[j]; j++)
+	{
+		response[j] = tolower(response[j]);
+	}
+
+	if (strstr(response, "brakes") != NULL) 
+	{
+		printf("\nThe entity nods approvingly.\nENTITY:***Correct. Wow finally someone with some common sense\n");
+		sleep(1);
+		printf("Here you go.***\n It holds out its frail ghastly hand and in its palm, contains a key. You take it.\n");
+		printf("RECEIVED: NECROTIC KEY\n");
+		inventory[3] = "Necrotic Key";
+		printf("----INVENTORY----\n");
+		int t;
+		for (t = 0; t < 5; t++) 
+		{
+			if(inventory[t][0] != '\0') 
+			{
+				printf("[%s] ", inventory[t]);
+			}
+		}
+		printf("\n");
+		sleep(1);
+	} else
+	{
+		printf("\nThe entity scoffs in disgust.\n ENTITY:***You hit the brakes...psycho***\n");
+		printf("It flashes its hand at you, making you feel weaker as it takes away 75 of your health and disappears.\n");
+		playerHealth -= 70;
+		printf("HEALTH: %d\n",playerHealth);
+		sleep(2);
+	
+	}
+	
+	int spikeChoice;
+	printf("Continuing onwards, you find a door. Hoping that this would be the last part of your adventure, you open it...\n");
+	sleep(1);
+	printf("The door reveals a large chamber. You see a line running from the right side to the left side of the room a couple feet ahead of you."
+		"\nThere is another line a few feet as well in front of the door out of the room on the other side."
+		"\nWhat could that mean, you wonder? As you approach the line, suddenly the room starts shaking.\n"
+		"You stop in your tracks as the floor past the line drops, revealing a chasm of spikes rising. The chasm separates you from the door ahead.\n");
+	sleep(1);
+	printf("You look behind you and see the door behind you disappeared and a wall of spikes is closing in on you.\n\n");
+	sleep(1);
+	printf("You only have mere seconds to act. You have 3 choices: \n");
+	printf("1) Attempt a running jump across the gap\n");
+	printf("2) Shimmy carefully along a narrow ledge on the side wall\n");
+	printf("3) Use the grooves on the wall high above the ledge to climb to cross the chasm\n");
+	printf("What will you do?: ");
+	scanf("%d", &spikeChoice);
+
+	switch(spikeChoice) 
+	{
+		case 1:
+			printf("\nYou try for a sprinting jump but can't clear the chasm, falling to a spikey death\n"
+			"YOU DIED!\n");
+			sleep(2);
+			return;
+		case 2:
+			printf("\nYou inch sideways across the thin ledge on the wall, death gripping every crack you can...\n");
+			sleep(1);
+			printf("You slip once, cutting your arm and catching a spike on your foot but you make it across\n-20 HP\n");
+			playerHealth -= 20;
+			printf("HEALTH: %d\n", playerHealth);
+			break;
+		case 3:
+			printf("\nYou grab hold of the grooves and pull yourself along above the chasm...\n");
+			sleep(1);
+			printf("Your arms scream in pain, eventually cutting your palms on some sharp grooves,"
+				 "but you make it across without touching the floor\n-15 HP\n");
+			playerHealth -= 15;
+			printf("HEALTH: %d\n", playerHealth);
+			break;
+		default:
+			printf("\nYou freeze in terror. The spikes don't freeze.\n");
+			printf("YOU DIED!\n");
+			sleep(2);
+			return;
+	}
+	
+	if(playerHealth == 0) 
+	{
+		printf("Your injuries were too severe!\n YOU DIED!");
+		sleep(2);
+		return;	
+	} else
+	{
+		printf("\nYou survived - barely. You open the door to finally escape that hellhole.\n");
+		printf("You received: BAG OF GOLD COINS \n");
+		inventory[4] = "Bag of Gold Coins";
+		printf("----INVENTORY----\n");
+		int i;
+		for (i = 0; i < 5; i++) 
+		{
+			if(inventory[i][0] != '\0') 
+			{
+				printf("[%s] ", inventory[i]);
+			}
+		}
+		printf("\n...");
+		sleep(2);
+	}
+
+	
+	printf("Forging ahead, you find a giant, ivory door. This had to be the last room, right?\n");
+	sleep(2);
+	printf("Pushing the doors open, you find a big golden chest, a lot more welcoming than the last chest.\n");
+	sleep(2);
+	printf("Realizing this had to be the end, a screen appears.\n");
+	sleep(2);
+	printf("***Congratulations! You have successfully survived the dungeon. Open the chest to receive your reward!***\n");
+	sleep(1);
+	printf("\nYou open the chest. Within contains a ROPE! You can use it to get out of the dungeon.\n");
+	printf("Yep. Your final reward is simply your FREEDOM! Oh, and your inventory also escapes with you transforming into real life items/currency.\n");
+	printf("YOU WON and are transported back into reality.\n\n");
+	sleep(3);
+
 }
 
 void user36Cafe(void)
@@ -1768,6 +2249,79 @@ void user36Cafe(void)
 void stevenFirst(void)
 {
 	printf("Steven >_< \n");
+	int coins = 420;
+    	char inventory[2][20] = {"Iron Sword", ""};
+    	int decision;
+    	bool exitRoom = false;
+    	char *itemsInRoom[3] = {"Notch Apple", "Torch", "Diamond"};
+    	bool itemTaken[3] = {false, false, false};
+    	int trapTriggered = rand() % 2; // 0 or 1
+
+    	printf("You enter Steven's Evil Lair: A dim chamber with walls made out of mossy cobblestone.\n");
+    	printf("There are some items scattered, and strange noises echo around.\n");
+
+    	while (!exitRoom) {
+        	printf("\nWhat do you want to do?\n");
+        	printf("1: Look around the room\n");
+        	printf("2: Pick up an item\n");
+        	printf("3: Open the old wooden chest\n");
+        	printf("4: Check Inventory\n");
+        	printf("5: Leave through the door\n");
+        	printf("Enter your choice: ");
+        	scanf("%d", &decision);
+
+        	switch(decision) {
+            	case 1:
+                	printf("You spot a Notch Apple, a Torch, and a Diamond.\n");
+                	break;
+            	case 2: {
+			int itemChoice;
+                	printf("Which item do you want to pick up?\n");
+                	for (int i = 0; i < 3; i++) {
+                    	if (!itemTaken[i])
+                        	printf("%d: %s\n", i+1, itemsInRoom[i]);
+                	}
+                	scanf("%d", &itemChoice);
+                	if (itemChoice >= 1 && itemChoice <= 3 && !itemTaken[itemChoice - 1]) {
+                    		strcpy(inventory[1], itemsInRoom[itemChoice - 1]);
+                    		itemTaken[itemChoice - 1] = true;
+                    		printf("You picked up: %s\n", inventory[1]);
+                	}
+			else {
+                    		printf("Invalid choice or item already taken.\n");
+                	}
+                	break;
+            	}
+            	case 3:
+                	if (trapTriggered) {
+                    		printf("A dart shoots out from the chest! You lose 100 coins.\n");
+                    		coins -= 100;
+                    		if (coins < 0) coins = 0;
+                	} else {
+                    		printf("You found 69 coins inside the chest!\n");
+                    		coins += 69;
+                	}
+                	break;
+            	case 4:
+                	printf("Inventory:\n- %s\n", inventory[0]);
+                	if (strlen(inventory[1]) > 0) printf("- %s\n", inventory[1]);
+			// itemTaken means you took the item from the room so that means you have it 
+			for (int u = 0; u < 3; u++)
+			{
+				if (itemTaken[u]) {
+            				printf("- %s\n", itemsInRoom[u]);
+        			}
+			}
+                	printf("Coins: %d\n", coins);
+                	break;
+            	case 5:
+                	printf("You exit the room and return to the hallway...\n");
+                	exitRoom = true;
+                	break;
+            	default:
+                	printf("Invalid choice. Try again.\n");
+		}
+	}
 }
 
 void amoralesRoom9(void)
@@ -3407,4 +3961,367 @@ void gameFuncHenry41(void)
 		}
 	}
 	EXIT_SUCCESS;
+}
+
+void stanleysRoom(void) 
+{
+	printf("Welcome to Stanley's Adventure Room!\n");
+	printf("You enter a mysterious chamber with glowing runes on the walls...\n");
+	int keepPlaying = 1;
+	int choice;
+	int randomNumber;
+	int coins = 0;
+	int inventory[5] = {0, 0, 0, 0, 0};
+	char* itemNames[5] = {"Sword", "Shield", "Potion", "Key", "Treasure"};
+	int dungeonLevel = 1;
+	int hasSecretCode = 0;
+	while(keepPlaying)
+	{
+		printf("\n=== LEVEL %d OF STANLEY'S DUNGEON ===\n", dungeonLevel);
+		printf("You have %d coins.\n", coins);
+		printf("Your inventory: ");
+		for(int i = 0; i < 5; i++)
+		{
+			if(inventory[i])
+				printf("%s, ", itemNames[i]);
+		}
+		printf("\n\n");
+
+		printf("What would you like to do?\n");
+		printf("1. Search for treasure\n");
+		printf("2. Fight a monster\n");
+		printf("3. Buy an item\n");
+		printf("4. Solve a riddle\n");
+		printf("5. Explore deeper in the dungeon\n");
+		printf("6. Leave the room\n");
+
+		scanf("%d", &choice);
+
+		switch(choice)
+		{
+			case 1:
+				printf("You begin searching the dimly lit corners of the dungeon...\n");
+				randomNumber = rand() % 10 + 1;
+				if(randomNumber > 7)
+				{
+					printf("You found a treasure chest! You gain %d coins.\n", 5 * dungeonLevel);
+					coins += 5 * dungeonLevel;
+					if(!inventory[4])
+					{
+						printf("You also found a rare treasure for your inventory!\n");
+						inventory[4] = 1;
+					}
+					if(randomNumber == 10 && !hasSecretCode)
+					{
+						printf("Wait! You find a piece of parchment with a secret code!\n");
+						hasSecretCode = 1;
+					}
+				}
+				else
+				{
+					printf("You searched but found nothing of value.\n");
+					if(randomNumber == 1)
+					{
+						printf("Oh no! You triggered a trap! You lose 1 coin.\n");
+						if(coins > 0)
+							coins--;
+					}
+				}
+				break;
+
+			case 2:
+				printf("A shadow lurks in the corner, eyes glowing in the darkness...\n");
+				randomNumber = rand() % 10 + 1;
+
+				int monsterPower = dungeonLevel * 2;
+				if(inventory[0]) 
+				{
+					printf("You draw your sword to fight the level %d monster!\n", dungeonLevel);
+
+					int playerPower = randomNumber;
+					if(inventory[1]) {
+						playerPower += 2;
+					}
+
+					if(playerPower > monsterPower)
+					{
+						printf("You defeated the monster and gained %d coins!\n", 3 * dungeonLevel);
+						coins += 3 * dungeonLevel;
+						printf("The monster drops something shiny!\n");
+						if(randomNumber == 10 && !inventory[3])
+						{
+							printf("It's a key! You add it to your inventory.\n");
+							inventory[3] = 1;
+						}
+					}
+					else
+					{
+						printf("The monster was too strong! You lost %d coins running away.\n", dungeonLevel);
+						if(coins >= dungeonLevel)
+							coins -= dungeonLevel;
+						else
+							coins = 0;
+					}
+				}
+				else
+				{
+					printf("You don't have a sword to fight with!\n");
+					if(randomNumber > 7)
+					{
+						printf("You managed to escape unharmed.\n");
+					}
+					else
+					{
+						printf("You got injured and lost %d coins.\n", dungeonLevel + 1);
+						if(coins >= dungeonLevel + 1)
+							coins -= dungeonLevel + 1;
+						else
+							coins = 0;
+
+						if(inventory[2])
+						{
+							printf("You drink your healing potion, recovering some strength!\n");
+							coins += dungeonLevel;
+							inventory[2] = 0;
+							printf("Your potion is now empty.\n");
+						}
+					}
+				}
+				break;
+
+			case 3:
+				printf("A mysterious merchant appears from the shadows...\n");
+				printf("\"What would you like to buy, traveler?\" the merchant asks.\n");
+				printf("1. Sword (%d coins)\n", 5);
+				printf("2. Shield (%d coins)\n", 3);
+				printf("3. Potion (%d coins)\n", 2);
+				printf("4. Key (%d coins)\n", 7);
+				printf("5. Cancel\n");
+
+				if(hasSecretCode)
+				{
+					printf("6. Special item (10 coins) - UNLOCKED WITH SECRET CODE\n");
+				}
+
+				int buyChoice;
+				scanf("%d", &buyChoice);
+
+				switch(buyChoice)
+				{
+					case 1:
+						if(coins >= 5 && !inventory[0])
+						{
+							printf("\"A fine weapon,\" the merchant says. \"Use it wisely.\"\n");
+							inventory[0] = 1;
+							coins -= 5;
+						}
+						else if(inventory[0])
+						{
+							printf("\"You already have a sword, brave one!\"\n");
+						}
+						else
+						{
+							printf("\"Come back when you have more coins, traveler.\"\n");
+						}
+						break;
+					case 2:
+						if(coins >= 3 && !inventory[1])
+						{
+							printf("\"This shield has protected many heroes before you.\"\n");
+							inventory[1] = 1;
+							coins -= 3;
+						}
+						else if(inventory[1])
+						{
+							printf("\"One shield is all you need for your journey.\"\n");
+						}
+						else
+						{
+							printf("\"Not enough gold in your pouch, I'm afraid.\"\n");
+						}
+						break;
+					case 3:
+						if(coins >= 2 && !inventory[2])
+						{
+							printf("\"Drink this when your need is greatest.\"\n");
+							inventory[2] = 1;
+							coins -= 2;
+						}
+						else if(inventory[2])
+						{
+							printf("\"You already carry my finest potion!\"\n");
+						}
+						else
+						{
+							printf("\"Return with more coins, adventurer.\"\n");
+						}
+						break;
+					case 4:
+						if(coins >= 7 && !inventory[3])
+						{
+							printf("\"This key opens a path unknown to most...\"\n");
+							inventory[3] = 1;
+							coins -= 7;
+						}
+						else if(inventory[3])
+						{
+							printf("\"The key you possess is all you require.\"\n");
+						}
+						else
+						{
+							printf("\"Such rare items demand more coin, I'm afraid.\"\n");
+						}
+						break;
+					case 5:
+						printf("\"Perhaps next time,\" the merchant says, fading back into the shadows.\n");
+						break;
+					case 6:
+						if(hasSecretCode && coins >= 10)
+						{
+							printf("\"Ah, you know the secret code! Very well...\"\n");
+							printf("The merchant hands you a strange amulet that glows with power.\n");
+							printf("\"This will help you on your journey. Your dungeon level will now increase twice as fast!\"\n");
+							coins -= 10;
+							hasSecretCode = 2;
+						}
+						else if(!hasSecretCode)
+						{
+							printf("\"I don't understand what you're asking for,\" the merchant says with suspicion.\n");
+						}
+						else
+						{
+							printf("\"Even with the code, you need more coins for such a treasure!\"\n");
+						}
+						break;
+					default:
+						printf("The merchant looks confused by your request.\n");
+				}
+				break;
+
+			case 4:
+				printf("A magical stone tablet on the wall begins to glow...\n");
+				randomNumber = rand() % 3;
+				printf("It poses a riddle:\n");
+
+				int answer;
+				switch(randomNumber)
+				{
+					case 0:
+						printf("I'm tall when I'm young, and short when I'm old. What am I?\n");
+						printf("1. A human\n2. A candle\n3. A tree\n");
+						scanf("%d", &answer);
+						if(answer == 2)
+						{
+							printf("The tablet glows green! \"Correct!\" echoes a voice.\n");
+							coins += 3;
+							printf("3 coins appear before you!\n");
+						}
+						else
+						{
+							printf("The tablet turns red. \"Wrong!\" booms a voice.\n");
+							printf("The answer was: A candle\n");
+						}
+						break;
+					case 1:
+						printf("What has keys but no locks, space but no room, and you can enter but not go in?\n");
+						printf("1. A keyboard\n2. A map\n3. A dream\n");
+						scanf("%d", &answer);
+						if(answer == 1)
+						{
+							printf("The tablet glows green! \"Correct!\" echoes a voice.\n");
+							coins += 3;
+							printf("3 coins appear before you!\n");
+						}
+						else
+						{
+							printf("The tablet turns red. \"Wrong!\" booms a voice.\n");
+							printf("The answer was: A keyboard\n");
+						}
+						break;
+					case 2:
+						printf("What gets wetter as it dries?\n");
+						printf("1. Ice\n2. A sponge\n3. A towel\n");
+						scanf("%d", &answer);
+						if(answer == 3)
+						{
+							printf("The tablet glows green! \"Correct!\" echoes a voice.\n");
+							coins += 3;
+							printf("3 coins appear before you!\n");
+						}
+						else
+						{
+							printf("The tablet turns red. \"Wrong!\" booms a voice.\n");
+							printf("The answer was: A towel\n");
+						}
+						break;
+				}
+				break;
+
+			case 5:
+				printf("You decide to venture deeper into the dungeon...\n");
+				if(inventory[3])
+				{
+					printf("You use your key to unlock a mysterious door!\n");
+					dungeonLevel++;
+					printf("You've descended to dungeon level %d!\n", dungeonLevel);
+					printf("The monsters will be tougher, but the rewards greater!\n");
+					randomNumber = rand() % 4;
+					if(randomNumber == 0)
+					{
+						printf("Unfortunately, your key breaks in the lock!\n");
+						inventory[3] = 0;
+					}
+
+					int bonus = dungeonLevel * 2;
+					printf("You find %d coins as you enter the new area!\n", bonus);
+					coins += bonus;
+				}
+				else
+				{
+					printf("You find a locked door blocking your path downward.\n");
+					printf("You'll need to find a key to progress deeper.\n");
+
+					randomNumber = rand() % 10 + 1;
+					if(randomNumber > 7)
+					{
+						printf("You discover a hidden passage around the door!\n");
+						dungeonLevel++;
+						printf("You've descended to dungeon level %d!\n", dungeonLevel);
+						printf("The journey was treacherous though - you lost 2 coins.\n");
+						if(coins >= 2)
+							coins -= 2;
+						else
+							coins = 0;
+					}
+				}
+				break;
+
+			case 6:
+				printf("You decide it's time to leave Stanley's Dungeon...\n");
+				if(dungeonLevel > 1)
+				{
+					printf("You reached dungeon level %d and collected %d coins!\n", dungeonLevel, coins);
+					printf("The spirits of the dungeon are impressed by your courage.\n");
+				}
+				else
+				{
+					printf("You barely scratched the surface of the dungeon's mysteries.\n");
+				}
+				printf("You return to the main hall with %d coins and your collected items.\n", coins);
+				keepPlaying = 0;
+				break;
+
+			default:
+				printf("The dungeon doesn't understand your intentions. Try again.\n");
+		}
+
+		if(hasSecretCode == 2 && choice == 5)
+		{
+			printf("Your magical amulet glows! You descend an additional level!\n");
+			dungeonLevel++;
+			printf("You are now at dungeon level %d!\n", dungeonLevel);
+		}
+	}
+
+	printf("Returning to the main hall...\n");
 }
