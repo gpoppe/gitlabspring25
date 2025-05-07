@@ -3215,6 +3215,585 @@ void room39game(void)
 void HubertRoom(void)
 {
 	printf("Hubert: hnguyen296 \n");
+	srand(time(NULL));
+    int playerDiceRoll = 1 + (rand() %6);
+    int MrDiceDiceRoll = 1 + (rand() %6);
+    int choice;
+    const char *pokerHand[] = {"High", "Pair", "Two Pair", "Three of Kind", "Straight", "Flush", "Full House", "Four of Kind", "Straight Flush", "Royal Flush"};
+    int playerScore = 0;
+    int MrDiceScore = 0;
+    int wallet = 100;
+    printf("You went to room 44... You enter the room and suddenly the door closes behind you.\n");
+    printf("You walk around aimless in the dark for a minute until you see a light. It's like a spotlight shining on something.\n");
+    printf("You walk closer to the light and see a console plugged in to a tv. It's a console you never seen before and it's running a game called 'Mr.Dice Casino' and it shows a man with a die as a head and a nice suit and tie.\n");
+    printf("You looked at the screen and said 'You feeling lucky?' and highlights the only option 'Yes'. You also realized that the controller only has one button.\n");
+    printf("You picked up the controller and...\n");
+    printf("1. Press yes to play.\n");
+    printf("2. Drop the controller and walk away.\n");
+    scanf("%d", &choice);
+
+    while(choice == 2)
+    {
+        printf("You decided to drop the controller and walk a bit more.\n");
+        printf("As you walk in darkness for another minute, you start to see the light again. You came closer and see that it is the same console and game. You were confused because you walked passed by it and now its in front of you, beckoning for you to play his game.\n");
+        printf("You pick up the controller again and...\n");
+        printf("1. Press yes to play.\n");
+        printf("2. Drop the controller and walk away.\n");
+        scanf("%d", &choice);
+    }
+
+    if(choice == 1)
+    {
+	printf("All of the sudden, a portal has formed in front of you and sucks you into the video game. You started falling from the sky until you slammed onto the ground unconscious.\n");
+	printf("As you black out, a mysterious voice speaks to you.\n\n\n");
+	printf("IF YOU ARE LISTENING, YOU MUST PLAY SOME GAMES TO WIN. WIN SOME MONEY. IT CAN HELP YOU IF YOU LOSE TO MR.DICE'S GAME...\n\n\n");
+	printf("As you wake up, you realized you have landed in front of the entrance of 'Mr.Dice Casino'.\n");
+	printf("You walk inside and notice people having fun! They are playing many games like poker, blackjack, slots and more. \n");
+	printf("Although you are freaking out of what just happened, you feel your pockets and see that you have $100.\n");
+	printf("You remember that a mysterious voice advice you to play some games to earn money. It didn't say how much to get, but you corner your resolve and decide to test your luck.\n");
+	printf("You decide to...\n");
+	printf("1. Go to the poker table \n");
+	printf("2. Get on the slots.\n");
+        printf("3. Get to the Blackjack table.\n");
+	printf("4. Ask for help.\n");
+	scanf("%d", &choice);
+
+	while(choice == 1 || choice == 2 || choice == 3)
+	{
+	    if(choice == 1)
+	    {
+ 		printf("You arrived at a poker table. The buy in is $20. Let see if you have the funds.\n");
+
+		if(wallet >= 20)
+		{
+		    wallet -= 20;
+
+		    printf("You can play! It's 5 draw poker. You and the dealer are given a hand. Whoever gets the highest hand win!\n");
+		    const char *playerHand = pokerHand[1+rand()%9];
+		    const char *dealerHand = pokerHand[1+rand()%9];
+
+		    printf("Press 1 to see what you get: ");
+		    scanf("%d", &choice);
+
+		    printf("Your hand: %s  ||  dealer hand: %s \n", playerHand, dealerHand);
+
+
+		    if(playerHand > dealerHand)
+		    {
+			wallet += 40;
+			printf("You win! Now you have $%d \n", wallet);
+		    }
+		    else if(playerHand < dealerHand)
+		    {
+			printf("You lose. Now you have $%d \n", wallet);
+		    }
+		    else
+		    {
+			    wallet += 20;
+			    printf("You tied. Now you have $%d \n", wallet);
+		        }
+
+		    printf("Do you want to play again? \n");
+		    printf("1. Yes\n");
+		    printf("2. No\n");
+		    scanf("%d", &choice);
+
+		    while(choice == 1)
+		    {
+			if(wallet >= 20)
+			{
+			    wallet -= 20;
+			    const char *playerHand = pokerHand[1+rand()%9];
+                            const char *dealerHand = pokerHand[1+rand()%9];
+			    printf("Press 1 to see what you get: ");
+                            scanf("%d", &choice);
+
+                            printf("Your hand: %s  ||  dealer hand: %s \n", playerHand, dealerHand);
+
+
+                            if(playerHand > dealerHand)
+                            {
+                                wallet += 40;
+                                printf("You win! Now you have $%d \n", wallet);
+                            }
+                            else if(playerHand < dealerHand)
+                            {
+                                printf("You lose. Now you have $%d \n", wallet);
+                            }
+                            else
+                            {
+                                wallet += 20;
+                                printf("You tied. Now you have $%d \n", wallet);
+                            }
+
+                            printf("Do you want to play again? \n");
+                            printf("1. Yes\n");
+                            printf("2. No\n");
+                            scanf("%d", &choice);
+			 }
+			 else
+		         {
+			    printf("You can't play. Not enough funds.\n");
+			    printf("Now what...\n");
+                            printf("1. Go to the poker table \n");
+                            printf("2. Get on the slots.\n");
+                            printf("3. Get to the Blackjack table.\n");
+                            printf("4. Ask for help.\n");
+                            scanf("%d", &choice);
+		         }
+		    }
+
+		    printf("Now what...\n");
+                    printf("1. Go to the poker table \n");
+                    printf("2. Get on the slots.\n");
+                    printf("3. Get to the Blackjack table.\n");
+                    printf("4. Ask for help.\n");
+                    scanf("%d", &choice);
+
+		}
+		else
+		{
+		    printf("You don't have enough. You can't play.\n");
+		    printf("Now what...\n");
+		    printf("1. Go to the poker table \n");
+        	    printf("2. Get on the slots.\n");
+        	    printf("3. Get to the Blackjack table.\n");
+        	    printf("4. Ask for help.\n");
+        	    scanf("%d", &choice);
+		}
+	    }
+	    else if(choice == 2)
+	    {
+		printf("You arrived to a slot machine. It's $5 to play. Let see if you have the funds\n");
+
+		if(wallet >= 5)
+		{
+		    wallet -= 5;
+		    printf("You can play! Simple, try to get all three numbers. You can get double for 3 of same number and 2 of same number.\n");
+
+		    int slot1 = 1 + (rand()%9);
+		    int slot2 = 1 + (rand()%9);
+		    int slot3 = 1 + (rand()%9);
+
+		    printf("Press 1 to start the slots: ");
+		    scanf("%d", &choice);
+
+		    printf("%d|%d|%d \n", slot1, slot2, slot3);
+
+		    if(slot1 == slot2 && slot2 == slot3 && slot1 == slot3)
+		    {
+			wallet += 10;
+			printf("You got all 3! Now you have $%d \n", wallet);
+		    }
+		    else if(slot1 == slot2 || slot2 == slot3 || slot1 == slot3)
+		    {
+			wallet += 7;
+			printf("You got 2 of the same. Now you have $%d \n", wallet);
+		    }
+		    else
+		    {
+			printf("No matches. Now you have $%d \n", wallet);
+	 	    }
+
+		    printf("Do you want to play again? \n");
+                    printf("1. Yes\n");
+                    printf("2. No\n");
+                    scanf("%d", &choice);
+
+		    while(choice == 1)
+		    {
+
+			if(wallet >= 5)
+			{
+			    wallet -= 5;
+			    int slot1 = 1 + (rand()%9);
+                            int slot2 = 1 + (rand()%9);
+                            int slot3 = 1 + (rand()%9);
+
+                            printf("Press 1 to start the slots: ");
+                            scanf("%d", &choice);
+
+                            printf("%d|%d|%d \n", slot1, slot2, slot3);
+
+                            if(slot1 == slot2 && slot2 == slot3 && slot1 == slot3)
+                            {
+                                wallet += 10;
+                                printf("You got all 3! Now you have $%d \n", wallet);
+                            }
+                            else if(slot1 == slot2 || slot2 == slot3 || slot1 == slot3)
+                            {
+                                wallet += 7;
+                                printf("You got 2 of the same. Now you have $%d \n", wallet);
+                            }
+                            else
+                            {
+                                printf("No matches. Now you have $%d \n", wallet);
+                            }
+
+                            printf("Do you want to play again? \n");
+                            printf("1. Yes\n");
+                            printf("2. No\n");
+                            scanf("%d", &choice);
+			}
+			else
+			{
+			    printf("Sorry, not enough to play.\n");
+			    printf("Now what...\n");
+                            printf("1. Go to the poker table \n");
+                            printf("2. Get on the slots.\n");
+                            printf("3. Get to the Blackjack table.\n");
+                            printf("4. Ask for help.\n");
+                            scanf("%d", &choice);
+			}
+		    }
+
+		    printf("Now what...\n");
+                    printf("1. Go to the poker table \n");
+                    printf("2. Get on the slots.\n");
+                    printf("3. Get to the Blackjack table.\n");
+                    printf("4. Ask for help.\n");
+                    scanf("%d", &choice);
+
+		}
+		else
+		{
+		    printf("You don't have enough. You can't play.\n");
+                    printf("Now what...\n");
+                    printf("1. Go to the poker table \n");
+                    printf("2. Get on the slots.\n");
+                    printf("3. Get to the Blackjack table.\n");
+                    printf("4. Ask for help.\n");
+                    scanf("%d", &choice);
+		}
+	    }
+	    else if(choice == 3)
+	    {
+		printf("You have arrived to the Blackjack table. The buy in is $10. Let see if you can play.\n");
+
+		if(wallet >= 10)
+	 	{
+		    wallet -= 10;
+
+		    printf("You can play! This is a short-fast pace blackjack. You and the dealer get a hand. You win if you get the higher number than the dealer or get 21. You lose if you get a lower number than the dealer or get over 21 (bust).\n");
+
+		    int yourHand = (rand()%(25-12)+12);
+		    int dealerHand = (rand()%(25-12)+12);
+
+		    printf("Press 1 to see what you get: ");
+		    scanf("%d", &choice);
+
+		    printf("You: %d  ||  Dealer: %d\n", yourHand, dealerHand);
+
+		    if(yourHand > 21 && dealerHand <= 21)
+		    {
+			printf("You busted. You lose. Now you have $%d\n", wallet);
+		    }
+		    else if(yourHand <= 21 && dealerHand > 21)
+		    {
+			wallet += 20;
+			printf("Dealer busted. You win! Now you have $%d\n", wallet);
+		    }
+		    else if(yourHand > 21 && dealerHand > 21)
+		    {
+			printf("You both busted. You still technically lose. Now you have $%d\n", wallet);
+		    }
+		    else
+		    {
+			if(yourHand == dealerHand)
+			{
+			    wallet += 10;
+			    printf("You tied. You win your money back. Now you have $%d\n", wallet);
+			}
+			else if(yourHand == 21 && dealerHand < 21)
+			{
+			    wallet += 20;
+			    printf("You got 21! You win! Now you have $%d\n", wallet);
+			}
+			else if(yourHand < 21 && dealerHand == 21)
+			{
+			    printf("Dealer got 21. You lose. Now you have $%d\n", wallet);
+			}
+			else if(yourHand > dealerHand)
+			{
+			    wallet += 20;
+			    printf("You have the higher number. You win! Now you have $%d\n", wallet);
+			}
+			else
+			{
+			    printf("Dealer have the higher number. You lose. Now you have $%d\n", wallet);
+			}
+		    }
+
+		    printf("Do you want to play again?\n");
+		    printf("1. Yes\n");
+		    printf("2. No\n");
+		    scanf("%d", &choice);
+
+		    while(choice == 1)
+		    {
+			if(wallet >= 10)
+			{
+			    wallet -= 10;
+
+			    int yourHand = (rand()%(25-12)+12);
+			    int dealerHand = (rand()%(25-12)+12);
+
+			    printf("Press 1 to see what happens: ");
+			    scanf("%d", &choice);
+
+			    printf("You: %d  ||  Dealer: %d\n", yourHand, dealerHand);
+
+			    if(yourHand > 21 && dealerHand <= 21)
+			    {
+			        printf("You busted. You lose. Now you have $%d\n", wallet);
+			    }
+			    else if(yourHand <= 21 && dealerHand > 21)
+			    {
+			 	wallet += 20;
+				printf("Dealer busted. You win! Now you have $%d\n", wallet);
+			    }
+			    else if(yourHand > 21 && dealerHand > 21)
+			    {
+				printf("You both busted. You still technically still lose. Now you have $%d\n", wallet);
+			    }
+			    else
+			    {
+				if(yourHand == dealerHand)
+				{
+				    wallet += 10;
+				    printf("You tied. You win your money back. Now you have $%d\n", wallet);
+				}
+				else if(yourHand == 21 && dealerHand < 21)
+				{
+				    wallet += 20;
+				    printf("You got 21! You win! Now you have $%d\n", wallet);
+				}
+				else if(yourHand < 21 && dealerHand == 21)
+				{
+				    printf("Dealer got 21. You lose. Now you have $%d\n", wallet);
+				}
+				else if(yourHand > dealerHand)
+				{
+				    wallet += 20;
+				    printf("You have the higher number! You win! Now you have $%d\n", wallet);
+				}
+				else
+				{
+				    printf("Dealer got the higher number. You lose. Now you have $%d\n", wallet);
+				}
+			    }
+			    printf("Do you to play again?\n");
+			    printf("1. Yes\n");
+			    printf("2. No\n");
+			    scanf("%d", &choice);
+			}
+			else
+			{
+			    printf("You don't have enough. You can't play.\n");
+                            printf("Now what...\n");
+                            printf("1. Go to the poker table \n");
+                            printf("2. Get on the slots.\n");
+                            printf("3. Get to the Blackjack table.\n");
+                            printf("4. Ask for help.\n");
+                            scanf("%d", &choice);
+			}
+		    }
+
+		    printf("Now what...\n");
+                    printf("1. Go to the poker table \n");
+                    printf("2. Get on the slots.\n");
+                    printf("3. Get to the Blackjack table.\n");
+                    printf("4. Ask for help.\n");
+                    scanf("%d", &choice);
+		}
+		else
+		{
+		    printf("You don't have enough. You can't play.\n");
+                    printf("Now what...\n");
+                    printf("1. Go to the poker table \n");
+                    printf("2. Get on the slots.\n");
+                    printf("3. Get to the Blackjack table.\n");
+                    printf("4. Ask for help.\n");
+                    scanf("%d", &choice);
+		}
+
+	    }
+
+
+	}
+
+	if(choice == 4)
+	{
+	    printf("You proceed to ask a man who's playing poker. You ask them where they are but no answer. All of the sudden all the guests stopped what they are doing and started to stare at you.\n\n");
+	    printf("The next thing you know, the guests starts grabbing you. You try to fight it, but it was not use as there were too many of you. They carried you to a room called 'Mr.Dice Challenge Room'. They proceed to forcely carry you inside.\n\n");
+
+	    printf("The guests dropped you off to MrDice's office and went away. The chair turns towards you and Mr.Dice presents himself.\n\n");
+
+	    printf("Mr.Dice: Welcome to my casino! I see you are interested in playing my game. HAHAHA!\n\n");
+
+	    printf("1. What?! No I was sucked into this casino nightmare!\n");
+	    printf("2. Heck yea I'm ready!\n");
+	    scanf("%d", &choice);
+
+	    if(choice == 1)
+	    {
+		printf("Mr.Dice: Well too bad! You basically wanted to be here by pressing 'Yes' in the beginning.\n");
+	    }
+	    else
+	    {
+		printf("Mr.Dice: HAHAHA! I love your enthusiasm!\n");
+	    }
+
+	    printf("Anyway, you are doomed to become a guest in my casino forever unless you play my game. If you win, you are free. But if you don't, you will be mine!\n");
+	    printf("Now then... Do you feel lucky? Are you ready to play my game?\n");
+
+	    printf("1. Yes\n");
+	    printf("2. No\n");
+	    scanf("%d", &choice);
+
+	    if(choice == 1)
+	    {
+		printf("Mr.Dice: Great!\n\n");
+	    }
+	    else
+	    {
+		printf("Mr.Dice: No? Well you're forced to play anyway XD\n\n");
+	    }
+
+	    printf("Mr.Dice: The game we will play is Dice Battle. We roll a die and whoever gets the highest number gets a point. First to 5 points wins the game.\n\n");
+	    printf("Mr.Dice: Now I feel so lucky, I'm willing to give you an advantage. You can have a die that rolls 2 to 7. Of course, you can always play with the fair die. Either way, I'm going to win...\n");
+	    printf("1. Yes, give me the advantage\n");
+            printf("2. No, I'm fine\n");
+            scanf("%d", &choice);
+
+	    if(choice == 1)
+	    {
+		printf("Alright the advantage is yours. Let's play and may luck be in your favor.\n");
+		while(playerScore <= 4 && MrDiceScore <= 4)
+		{
+		    int playerDiceRoll = (1+(rand()%6)) + 1;
+		    int MrDiceDiceRoll = 1 + (rand()%6);
+
+		    printf("Press 1 to roll: ");
+		    scanf("%d", &choice);
+
+		    printf("You rolled: %d\n", playerDiceRoll);
+		    printf("Mr.Dice rolled: %d\n", MrDiceDiceRoll);
+
+		    if(playerDiceRoll > MrDiceDiceRoll)
+		    {
+			playerScore++;
+			printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+		    }
+		    else if(playerDiceRoll < MrDiceDiceRoll)
+		    {
+			MrDiceScore++;
+			printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+		    }
+		    else
+		    {
+			printf("It's a tie\n");
+			printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+		    }
+		    printf("------------------------------\n");
+		}
+		if(playerScore > MrDiceScore)
+		{
+		    printf("Mr.Dice: What?! You won?! I never lose!\n");
+		    printf("Mr.Dice: *sigh* As promised, you are free to go keep all the money you earned...\n");
+		    printf("Then, a portal formed behind you and you proceed to walk into it. After some time, you are back where you started. You let a sigh of relief as this nightmare is over.\n");
+		}
+		else
+		{
+		    printf("Mr.Dice: MWAHAHAHA! You lost and you are stuck here forever!\n");
+	    	    printf("As he was laughing, you started to freak out. You begged Mr.Dice if there is any other way to get out of here.\n");
+		    printf("Mr.Dice stopped laughing and thought about it.\n");
+		    printf("Mr.Dice: You know what there is. Remember that $100 you had? You must've played one or two games before coming here to grow your wealth, right?\n");
+		    printf("Mr.Dice: If you have more than what you started, I will take that money and I'll let you go. Anything less and you will be mine. Now give me your wallet!\n");
+		    printf("You proceed to give your wallet to him...\n\n");
+		    printf("Mr.Dice: Well it looks like you have $%d\n\n", wallet);
+
+		    if(wallet > 100)
+		    {
+			printf("Well since you have more than $100, I'll let you go...\n");
+			printf("Then, a portal formed behind you and you proceed to walk into it. After some time, you are back where you started. You let a sigh of relief as this nightmare is over.\n");
+		    }
+		    else
+		    {
+			printf("Well since you have less than $100, you are stuck here forever! MWAHAHAHA!\n");
+			printf("As he laughed, a portal suddenly appear and sucks you in.\n");
+			printf("Mr.Dice stopped and yelled: 'Hey, get back here! You lost and suppose to stay here!!!!'\n");
+			printf("The portal closes just as Mr.Dice tries to grab you. The next thing you know, you are back where you started and out of the video game.\n");
+			printf("You have no idea how you got out or who helped you... But you collapse and laughed as you just escaped your fate...\n");
+		    }
+		}
+	    }
+	    else
+	    {
+		printf("really? I like your confidence. Let's play and may luck be in your favor.\n");
+                while(playerScore <= 4 && MrDiceScore <= 4)
+                {
+                    int playerDiceRoll = 1 + (rand()%6);
+                    int MrDiceDiceRoll = 1 + (rand()%6);
+
+                    printf("Press 1 to roll: ");
+                    scanf("%d", &choice);
+
+                    printf("You rolled: %d\n", playerDiceRoll);
+                    printf("Mr.Dice rolled: %d\n", MrDiceDiceRoll);
+
+                    if(playerDiceRoll > MrDiceDiceRoll)
+                    {
+                        playerScore++;
+                        printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+                    }
+                    else if(playerDiceRoll < MrDiceDiceRoll)
+                    {
+                        MrDiceScore++;
+                        printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+                    }
+                    else
+                    {
+                        printf("It's a tie\n");
+                        printf("You: %d  ||  Mr.Dice: %d\n", playerScore, MrDiceScore);
+                    }
+                    printf("------------------------------\n");
+                }
+                if(playerScore > MrDiceScore)
+                {
+                    printf("Mr.Dice: What?! You won?! I never lose!\n");
+                    printf("Mr.Dice: *sigh* As promised, you are free to go keep all the money you earned...\n");
+                    printf("Then, a portal formed behind you and you proceed to walk into it. After some time, you are back where you started. You let a sigh of relief as this nightmare is over.\n");
+                }
+                else
+                {
+                    printf("Mr.Dice: MWAHAHAHA! You lost and you are stuck here forever!\n");
+                    printf("As he was laughing, you started to freak out. You begged Mr.Dice if there is any other way to get out of here.\n");
+                    printf("Mr.Dice stopped laughing and thought about it.\n");
+                    printf("Mr.Dice: You know what there is. Remember that $100 you had? You must've played one or two games before coming here to grow your wealth, right?\n");
+                    printf("Mr.Dice: If you have more than what you started, I will take that money and I'll let you go. Anything less and you will be mine. Now give me your wallet!\n");
+                    printf("You proceed to give your wallet to him...\n\n");
+                    printf("Mr.Dice: Well it looks like you have $%d\n\n", wallet);
+
+                    if(wallet > 100)
+                    {
+                        printf("Well since you have more than $100, I'll let you go...\n");
+                        printf("Then, a portal formed behind you and you proceed to walk into it. After some time, you are back where you started. You let a sigh of relief as this nightmare is over.\n");
+                    }
+                    else
+                    {
+                        printf("Well since you have less than $100, you are stuck here forever! MWAHAHAHA!\n");
+                        printf("As he laughed, a portal suddenly appear and sucks you in.\n");
+                        printf("Mr.Dice stopped and yelled: 'Hey, get back here! You lost and suppose to stay here!!!!'\n");
+                        printf("The portal closes just as Mr.Dice tries to grab you. The next thing you know, you are back where you started and out of the video game.\n");
+                        printf("You have no idea how you got out or who helped you... But you collapse and laughed as you just escaped your fate...\n");
+                    }
+                }
+	    }
+
+        }
+
+    }
 }
 
 void room25game(void)
@@ -6429,5 +7008,4 @@ void stanleysRoom(void)
 
 	printf("Returning to the main hall...\n");
 }
-
 
