@@ -24,7 +24,7 @@ void FarStarTrader(void);
 
 void room8game(void);
 
-void room10game(void);
+void savePrincessInRoom10();
 
 void omarsUniqueFn(void);
 
@@ -96,8 +96,8 @@ int main(int argc, char *argv[])
 			}
 			case 10:
 			{
-				puts("room10");
-				room10game();
+				puts("Save Princess in Room 10");
+				savePrincessInRoom10();
 				break;
 			}
 			case 11:
@@ -362,11 +362,6 @@ void room8game(void)
 	printf("cscuser8 \n");
 }
 
-void room10game(void)
-{
-        printf("cscuser10\n");
-}
-
 void FarStarTrader(void)
 {
 	printf("cscuser11\n");
@@ -377,7 +372,47 @@ void omarsUniqueFn(void)
 	printf("Omar");
 }
 
+void savePrincessInRoom10() {
+    char *rooms[] = {"a dark dungeon", "a fiery hall", "a haunted library", "a treasure vault", "the princess’s tower"};
+    int rescued = 0, trap = 0;
 
+    printf("\nWelcome to Princess Rescue: Save the Princess!\n");
+    printf("You must survive 5 rooms to find and save the princess.\n");
 
+    srand(time(NULL));
 
+    for (int i = 0; i < 5; i++) {
+        printf("\nRoom %d: You enter %s...\n", i + 1, rooms[i]);
+
+        int event = rand() % 4;
+        switch (event) {
+            case 0:
+                printf("It's a trap! You lose 10 HP(Healing potion).\n");
+                trap += 10;
+                break;
+            case 1:
+                printf("A monster attacks! You fight and win.\n");
+                break;
+            case 2:
+                printf("You found a healing potion. Gain 10 HP.\n");
+                trap -= 10;
+                if (trap < 0)
+		{
+			trap = 0;
+		}
+                break;
+            case 3:
+                printf("Hooray! You found the princess and rescued her!\n");
+                rescued = 1;
+                break;
+        }
+    }
+
+    if (rescued)
+        printf("\n You saved the princess and escaped with %d HP lost!\n", trap);
+    else
+        printf("\nYou could not find the princess. Try again!\n");
+
+    printf("Returning to the main menu...\n");
+}
 
