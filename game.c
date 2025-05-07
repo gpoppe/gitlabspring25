@@ -2136,6 +2136,57 @@ void room30game(void)
 void cameronDOOMFn(void)
 {
 	printf("cscuser7/ Cameron");
+	 int choice = 0;
+    int attempts = 0;
+
+    const char *actions[] = {
+        "Tiptoe carefully across the room",
+        "Throw a rock at the vials (what could go wrong?)",
+        "Try to collect a vial for later use",
+        "Yell really loud and see what happens",
+        "Do a backflip for dramatic effect"
+    };
+
+    const char *results[] = {
+        "A vial explodes and covers you in glitter. Harmless, but humiliating.",
+        "The entire room shakes! One vial explodes, revealing confetti. That was close.",
+        "You successfully collect a vial labeled 'Definitely Not Dangerous'.",
+        "All the vials start to vibrate. Nothing explodes... yet.",
+        "You land the backflip, but knock over a shelf. Miraculously, nothing breaks."
+    };
+
+    printf("\n--- Room 7: VIAL MAYHEM ---\n");
+    printf("You step into Room 7... and instantly regret it.\n");
+    printf("The floor is covered wall to wall with explosive red vials.\n");
+    printf("They're bubbling, humming, and inexplicably labeled 'DO NOT TOUCH'.\n");
+    printf("Whatever you do... don't screw this up. You have 5 actions.\n");
+
+    while (attempts < 5)
+    {
+        printf("\nWhat will you do? (%d/5)\n", attempts + 1);
+        for (int i = 0; i < 5; i++)
+        {
+            printf("%d. %s\n", i + 1, actions[i]);
+        }
+
+        printf("Enter your choice (1-5): ");
+        scanf("%d", &choice);
+
+        if (choice >= 1 && choice <= 5)
+        {
+            printf("\nYou decide to: %s\n", actions[choice - 1]);
+            int randEvent = rand() % 5;
+            printf("Result: %s\n", results[randEvent]);
+            attempts++;
+        }
+        else
+        {
+            printf("That's not a valid move. The vials gurgle disapprovingly...\n");
+        }
+    }
+
+    printf("\nYou've survived the Vial Mayhem... for now.\n");
+    printf("You tiptoe backward and return to the hallway.\n");
 }
 
 void room34game(void)
