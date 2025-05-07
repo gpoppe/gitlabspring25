@@ -140,6 +140,9 @@ void cscuser1(void);
 void PedroFunctionRoom(void);
 void gameFuncHenry41(void);
 
+void user14room(void);
+
+
 
 //room 35
 void rayFunct(void);
@@ -151,6 +154,7 @@ int rayFight(int hp);
 void room51game(void);
 
 void room34game(void);
+
 
 
 int main(int argc, char *argv[])
@@ -249,6 +253,7 @@ int main(int argc, char *argv[])
 			case 14:
 			{
 				puts("room14");
+				user14room();
 				break;
 			}
 			case 15:
@@ -1272,6 +1277,120 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+void user14room(void)
+{
+	char input[4];     
+    int yesCounter = 0;  
+
+    // Event 1
+    printf("As you enter the room. You find yourself along a path with only one way to go. Enter 99 at any point to exit. \nYou find an injured donkey. Help it as best as you can? (yes/no): ");
+    scanf("%s", input);
+    
+    if (strcmp(input, "99") == 0) 
+    {
+    printf("You have chosen to exit the game early.\n");
+    return;  
+    }
+    else if (strcmp(input, "yes") == 0) 
+    {
+        yesCounter++;
+    }
+
+    // Event 2
+    printf("Event 3: You're thirsty and find a seemingly clean pool of water near an ogre's home. Do you drink it? (yes/no): ");
+    scanf("%s", input);
+    if (strcmp(input, "99") == 0) 
+    {
+    printf("You have chosen to exit the game early.\n");
+    return; 
+}
+    else if (strcmp(input, "yes") == 0) 
+    {
+        yesCounter++;
+    }
+    // Event 3
+    printf("You find yourself in a room full of treasure. Take as much treasure as you can? (yes/no): ");
+    scanf("%s", input);
+    if (strcmp(input, "99") == 0) 
+    {
+    printf("You have chosen to exit the game early.\n");
+    return;  
+}
+    else if (strcmp(input, "yes") == 0) 
+    {
+        yesCounter++;
+    }
+
+    // Event 4
+    printf("You find a man dehydrated and on the brink of death. Share some of your limited water with him?: ");
+    scanf("%s", input);
+    if (strcmp(input, "99") == 0) 
+    {
+    printf("You have chosen to exit the game early.\n");
+    return; 
+}
+    else if (strcmp(input, "yes") == 0) 
+    {
+        yesCounter++;
+    }
+    
+     // Event 5
+    printf("You suddenly find yourself in a mythical land. Seemingly barren. As you wander along, you come across a colony of mythical miniature creatures. \nThey seem completely unaware of your presence. You exist outside of their reality and cannot interact with them in any way. A sign is posted reading: If you roll this die and roll under 10, you will be set free. \nHowever if you roll 10 and up, all the creatures will die. Do you leave the die alone?: ");
+    scanf("%s", input);
+
+    if (strcmp(input, "99") == 0) {
+        printf("You have chosen to exit the game early.\n");
+        return;
+    }
+
+    if (strcmp(input, "yes") == 0) {
+        yesCounter++;
+        printf("You leave the die untouched and move on. \n");
+    } else {
+        // Roll a 20-sided die
+        int dieRoll = (rand() % 20) + 1;
+        printf("You roll the dice. It lands on %d.\n", dieRoll);
+
+        if (dieRoll < 10) {
+            printf("You roll under 10. The creatures become aware of your prescence and are disgusted by your existence. You are not set free regardless of the outcome\n");
+        } else {
+            printf("All the creatures burn alive as they shout your name. You are disguted with yourself.\n");
+        }
+    }
+    
+      int sacrificeCounter;
+
+printf("A ghast appears in front of you. It asks how many people you'd be willing to sacrifice in order to obtain freedom. Enter a number between 1 and 10: ");
+scanf("%d", &sacrificeCounter);
+
+if (sacrificeCounter == 99) 
+{
+    printf("You have chosen to exit the game early.\n");
+    return;
+}
+
+if (sacrificeCounter < 1 || sacrificeCounter > 10) 
+{
+    printf("Invalid input. You must enter a number between 1 and 10.\n");
+} else 
+{
+    for (int i = 0; i < sacrificeCounter; i++) 
+    {
+        printf("You will forever be haunted by my soul!\n");
+    }
+}
+
+    if(yesCounter >= 3)
+    {
+        printf("You soul is pure. Although you are back where you started, you feel a buff on yourself, invigorating you with extra luck.");
+    }
+        else printf("Your soul is corrupt. A -100 debuff has been applied to you. What have you learned about yourself today?");
+        
+        return;
+
+}
+
+
 void joshRoom4(void)
 {
 	printf("cscuser4 \n");
