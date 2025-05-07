@@ -116,6 +116,7 @@ void cscuser1(void);
 
 void PedroFunctionRoom(void);
 void gameFuncHenry41(void);
+void room34game(void);
 
 int main(int argc, char *argv[])
 {
@@ -326,6 +327,7 @@ int main(int argc, char *argv[])
 			case 34:
 			{
 				puts("room35");
+				room34game();
 				break;
 			}
 			case 36:
@@ -1737,6 +1739,76 @@ void room30game(void)
 void cameronDOOMFn(void)
 {
 	printf("cscuser7/ Cameron");
+}
+
+void room34game(void)
+{
+    const char *actions[5] = {
+        "Train with the warhammer",
+        "Drink a strength potion",
+        "Fight a goblin",
+        "Challenge the ogre boss",
+        "Rest and regain stamina"
+    };
+
+    int decision = 0;
+    int strength = 5 + rand() % 6; // Start with 5-10 strength
+    int stamina = 10;
+    int loopCounter = 0;
+
+    printf("\nWelcome to Room 34: Medieval Gym of Might!\n");
+    printf("You must grow stronger to face the monsters ahead.\n");
+
+    while (loopCounter < 5) {
+        printf("\nYour current strength: %d | Stamina: %d\n", strength, stamina);
+        printf("Choose your training/fighting action (%d/5):\n", loopCounter + 1);
+        for (int i = 0; i < 5; i++) {
+            printf("%d. %s\n", i + 1, actions[i]);
+        }
+
+        scanf("%d", &decision);
+
+        switch (decision) {
+            case 1:
+                printf("You swing the heavy warhammer repeatedly!\n");
+                strength += 2;
+                stamina -= 2;
+                break;
+            case 2:
+                printf("You chug a glowing strength potion.\n");
+                strength += rand() % 4 + 1;
+                break;
+            case 3:
+                printf("You fight a goblin with fierce roars!\n");
+                if (strength > 8) {
+                    printf("You crush the goblin effortlessly.\n");
+                } else {
+                    printf("You barely survive, but gain fighting experience.\n");
+                    strength += 1;
+                    stamina -= 1;
+                }
+                break;
+            case 4:
+                printf("You charge the ogre boss!\n");
+                if (strength > 12) {
+                    printf("You SLAY the ogre boss in a glorious battle!\n");
+                } else {
+                    printf("The ogre tosses you aside. You live... barely.\n");
+                    stamina -= 3;
+                }
+                break;
+            case 5:
+                printf("You meditate and stretch.\n");
+                stamina += 3;
+                break;
+            default:
+                printf("Invalid choice, try again.\n");
+                continue;
+        }
+        loopCounter++;
+    }
+
+    printf("\nYou’ve completed your gym training. Time to move on to new adventures.\n\n");
 }
 
 void room59game(void)
