@@ -1,18 +1,6 @@
-//contributors
-//GP
-
-//Joel Castro
-
-
-//Ryan A
-
-//Yoonhong Min
-
-// Jessenia Hernandez Mora
-
-
-//
-
+// Johnny Hernandez
+// CSC321 
+// Final Project
 
 
 
@@ -25,91 +13,7 @@
 #include <unistd.h>
 
 //place function prototypes here
-void dairasBrain(void);
-
-void jovannyFunction(void);
-
-void room25game(void);
-
-void room57G(void);
-
-void user36room(void);
-
-void amoralesRoom9(void);
-
-void room30game(void);
-
-void joshRoom4(void);
-
-void room59game(void);
-
-void room22RandomTime(void);
-
-
-void userRoom50(void);
-
-
-
-void room12game(void);
-
-void room31(void);
-
-
-
-
-void room39game(void);
-
-
-void stevenFirst(void);
-void room53game(void);
-
-
-void room6game(void);
-void FarStarTrader(void);
-
-
-void room15game(void);
-void room17(void);
-
-
-void room8game(void);
-
-void room29game(void);
-void room28game(void);
-void AzizHaouchineFn(void);
-
-
-
-void room16game(void);
-
-void jessiesFunRoom(void);
-
-void vicCompRoom(void);
-
-
-
-void brentTestRoom(void);
-
-void omarsUniqueFn(void);
-void HubertRoom(void);
-
-void ryanRoom38(void);
-
-
-
-void kobesRoom(void);
-
-void angelasRoom26(void);
-
-
-void cameronDOOMFn(void);
-
-void lab13nanup(void);
-
-
-void Function23fbabonjo(void);
-
-void cscuser1(void);
+void room45(void);
 
 int main(int argc, char *argv[])
 {
@@ -129,346 +33,10 @@ int main(int argc, char *argv[])
 		scanf("%d",&choice);
 		switch(choice)
 		{
-			case 1:
-			{
-				puts("room1");
-				break;
-				cscuser1();
-			}
-			case 2:
-			{
-				puts("room2");
-				dairasBrain();
-				break;
-			}
-			case 3:
-			{
-				puts("room3");
-				break;
-			}
-			case 4:
-			{
-				puts("room4");
-				joshRoom4();
-				break;
-			}
-			case 5:
-			{
-				puts("room5");
-				break;
-			}
-			case 6:
-			{
-				puts("room6");
-				room6game();
-				break;
-			}
-			case 7:
-			{
-				puts("room7");
-				cameronDOOMFn();
-				break;
-			}
-			case 8:
-			{
-				puts("room8");
-				room8game();
-				break;
-			}
-			case 9:
-			{
-				puts("room9");
-				amoralesRoom9();
-				break;
-			}
-			case 10:
-			{
-				puts("room10");
-				break;
-			}
-			case 11:
-			{
-				puts("room11");
-				FarStarTrader();
-				break;
-			}
-			case 12:
-			{
-				puts("room12");
-				room12game();
-				break;
-			}
-			case 13:
-			{
-				puts("room13");
-				break;
-			}
-			case 14:
-			{
-				puts("room14");
-				break;
-			}
-			case 15:
-			{
-				puts("room15");
-				room15game();
-				break;
-			}
-			case 16:
-			{
-				puts("room16");
-				room16game();
-				break;
-			}
-			case 17:
-			{
-				puts("room17");
-				room17();
-				break;
-			}
-			case 18:
-			{
-				puts("room18");
-				break;
-			}
-			case 19:
-			{
-				puts("room19");
-				break;
-			}
-			case 20:
-			{
-				puts("room20");
-				break;
-			}
-			case 21:
-			{
-				puts("room21");
-				break;
-			}
-			case 22:
-			{
-				puts("room22");
-				room22RandomTime();
-				break;
-			}
-			case 23:
-			{
-				puts("room23");
-				Function23fbabonjo();
-				break;
-			}
-			case 24:
-			{
-				puts("room24");
-				kobesRoom();
-				break;
-			}
-			case 25:
-			{
-				puts("room25");
-				room25game();
-				break;
-			}
-			case 26:
-			{
-				puts("room26");
-				angelasRoom26();
-				break;
-			}
-			case 27:
-			{
-				puts("room27");
-				lab13nanup();
-				break;
-			}
-			case 28:
-			{
-				puts("room28");
-				room28game();
-				break;
-			}
-			case 29:
-			{
-				puts("room29");
-				room29game();
-				break;
-			}
-			case 30:
-			{
-				puts("room30");
-				room30game();
-				break;
-			}
-			case 31:
-			{
-				puts("room31");
-				room31();
-				break;
-			}
-			case 32:
-			{
-				puts("room32");
-				break;
-			}
-			case 33:
-			{
-				puts("room33");
-				break;
-			}
-			case 34:
-			{
-				puts("room35");
-				break;
-			}
-			case 36:
-			{
-				puts("room36");
-				user36room();
-				break;
-			}
-			case 37:
-			{
-				puts("room37");
-				break;
-			}
-			case 38:
-			{
-				puts("room38");
-				ryanRoom38();
-				break;
-			}
-			case 39:
-			{
-				puts("room39");
-				room39game();
-				break;
-			}
-			case 40:
-			{
-				puts("room40");
-				break;
-			}
-			case 41:
-			{
-				puts("room41");
-				break;
-			}
-			case 42:
-			{
-				puts("room42");
-				jovannyFunction();
-				break;
-			}
-			case 43:
-			{
-				puts("room43");
-				break;
-			}
-			case 44:
-			{
-				puts("room44");
-				HubertRoom();
-				break;
-			}
 			case 45:
 			{
 				puts("room45");
-				break;
-			}
-			case 46:
-			{
-				puts("room46");
-				break;
-			}
-			case 47:
-			{
-				puts("room47");
-				jessiesFunRoom();
-				break;
-			}
-			case 48:
-			{
-				puts("room48");
-				AzizHaouchineFn();
-				break;
-			}
-			case 49:
-			{
-				puts("room49");
-				vicCompRoom();
-				break;
-			}
-			case 50:
-			{
-				puts("room50");
-				userRoom50();
-				break;
-			}
-			case 51:
-			{
-				puts("room51");
-				break;
-			}
-			case 52:
-			{
-				puts("room52");
-				break;
-			}
-			case 53:
-			{
-				puts("room53");
-				room53game();
-				break;
-			}
-			case 54:
-			{
-				puts("room54");
-				break;
-			}
-			case 55:
-			{
-				puts("room55");
-				break;
-			}
-
-			case 59:
-			{
-				puts("room59");
-				room59game();
-				break;
-			}
-
-
-			case 57:
-			{
-				puts("room57");
-				room57G();
-				break;
-			}
-
-
-			case 58:
-			{
-				puts("room58");
-				stevenFirst();
-				break;
-			}
-
-
-			case 61:
-			{
-				puts("room61");
-				omarsUniqueFn();
-				break;
-			}
-
-
-
-			case 62:
-			{
-				puts("room62");
-				brentTestRoom();
+				room45();
 				break;
 			}
 
@@ -488,200 +56,126 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
-void joshRoom4(void)
+void room45(void)
 {
-	printf("cscuser4 \n");
-}
+	char options[5][75] = 
+	{
+		"Tell a Gryffindor they're brave because they lack common sense",
+		"Challengea Hufflepuff to a productivity contest.",
+		"Borrow a Ravenclaw's book and return it with 'helpful notes'.",
+		"Ask a Slytherin if betrayal is a hobby or a career path.",
+		"Demand a refund from the sorting Hat."
+	};
+	char outcome[5][150] = 
+	{
+		"The Gryffindor jumped into acion. Straight into a broom cloete. You got hit by the door.(-15 health)",
+		"The Hufflepuff baked you a pie. It was cursed. You now havemagical indigestion.(-10 health)",
+		"The Ravenclaw hexed you. Your brain hurts from random trivia.(-20 health)",
+		"The Slytherin smilled, patted your shoulder, and pickpocketed a healing potion.(+0 health, but you feel violated)",
+		"The sorting hat reassigned you to the janitorial staff. You slipped on a mop bucket.(-5 health)"
+	};
+	int choice;
+	int health = 100;
+	
+	printf("\nLoading Room 45: The Sorting Hat’s Regrets...\n");
+    	sleep(1);
+    	printf(".\n");
+    	sleep(1);
+    	printf("..\n");
+    	sleep(1);
+    	printf("...\n");
+    	sleep(1);
+
+	printf("\nWelcome to Room 45: The Sorting Hat's Regrets\n.");
+
+	printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                              printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠀⠀⠀⠀⠀⣼⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠠⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣇⠀⠀⠀⣷⠈⣿⣿⡇⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀⢨⣿⡀⣿⣿⡇⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⡆⠀⢸⣿⣇⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⢠⠀⠀⠀⠀⠀⠀⣿⣿⣿⠁⠀⢸⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⣾⡄⠀⠀⠀⠀⠀⣿⣿⣿⡆⠀⢸⣿⣿⣿⣿⣿⣿⡇⠀⢀⣦⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⢰⣿⡇⢰⡆⠀⢀⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣾⣿⠀⠀⠀⠰⠆⠀\n");                                                                             printf("⣸⡿⣇⣸⣟⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n");                                                                             printf("⢻⣿⣿⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⢠⣾⣄⠀\n");                                                                             printf("⢸⣿⣿⣿⣿⢸⣏⣿⣹⣏⣿⣹⣏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣿⣿⣿⠂\n");                                                                             printf("⢸⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⣿⣿⣿⣷\n");                                                                             printf("⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁\n");                                                                             printf("⠈⠉⠉⠉⠉⠉⠉⣉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⢸⡇⣿⣀⡠⡀⣴⢲⢀⡄⡀⡄⠖⣦⢸⠒⣾⠂⣠⡀⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⢺⡗⣿⠸⡇⡇⠧⢸⠘⣧⢇⠇⠻⠿⠸⠀⣿⢀⣳⡅⠀⠀⠀⠀⠀\n");                                                                             printf("⠀⠀⠀⠀⠀⠘⠃⠿⠀⠀⠀⣄⠜⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠁⠀⠀⠀⠀⠀⠀\n");
+
+	printf("your current health: %d\n", health);
+
+	for (int i = 0; i < 5; ++i)
+	{
+		printf("\nConsulting the Sorting Hat for your next disaster...\n");
+        	sleep(1);
+        	printf(".\n");
+        	sleep(1);
+        	printf("..\n");
+        	sleep(1);
+        	printf("...\n");
+       		sleep(1);
+		
+		printf("\nDecision %d: choose your social tragedy:\n", i + 1);
+
+		for (int j = 0; j < 5; ++j)
+		{
+			printf("%d. %s\n", j + 1, options[j]);
+		}
+
+		printf("Enter your choice (1-5): ");
+		scanf("%d", &choice);
+
+		if(choice < 1 || choice > 5)
+		{
+			printf("Invalid choice. Even the ghost at Hogwarts are judging you.\n");
+			i--;
+			continue;
+		}
+
+		printf("\nOutcome: %s\n", outcome[choice - 1]);
+
+		int sideEffect = rand() % 3;
+
+		if(sideEffect == 0)
+		{
+			printf("A passing ghost shakes its head in dissappointment.\n");
+		}
+		else if(sideEffect == 1)
+		{
+			printf("Peeves the Poltergiest laughs at your choice.\n");
+		}
+		else
+		{
+			printf("A nearby portrait sighs, 'It's always the First years..'\n");
+		}
+
+		int damage = 0;
+
+		if(choice == 1)
+		{
+			damage = 15;
+		}
+		if(choice == 1)
+                {
+                        damage = 15;
+                }
+		if(choice == 2)
+                {
+                        damage = 10;
+                }
+		if(choice == 3)
+                {
+                        damage = 20;
+                }
+		if(choice == 4)
+                {
+                        damage = 0;
+                }
+		if(choice == 5)
+                {
+                        damage = 5;
+                }
+
+		health -= damage;
+		printf("You lost %d health points. Current health: %d\n", damage, health);
+
+		if(health <= 0)
+		{
+			printf("\nYour questionable decisions have finally caught up to you.\n");
+			printf("the sorting hat delcares you unfit for wizarding society.\n");
+			return;
+		}
+	}
 
 
-void dairasBrain(void)
-{
-	printf("cscuser2\n");
-}
-void room12game(void)
-{
-	printf("cscuser12 :)\n");
-}
-
-void room30game(void)
-{
-	printf("cscuser30\n");
-}
-
-void cameronDOOMFn(void)
-{
-	printf("cscuser7/ Cameron");
-}
-
-void room59game(void)
-{
-	printf("%s\n", "cscuser59");
-}
-
-
-
-void kobesRoom(void)
-{
-	printf("CSCUSER24\n");
-}
-
-void room57G(void) 
-{
-	printf("\ncscuser57 ");
-}
-
-void user36room(void)
-{
-        printf("cscuser36\n");
-}
-
-void stevenFirst(void)
-{
-	printf("Steven >_< \n");
-}
-
-void amoralesRoom9(void)
-{
-	printf("cscuser9: anthony morales\n");
-}
-
-void room22RandomTime(void)
-{
-	printf("\nRyan - Room 22\n\n");
-}
-
-void userRoom50(void)
-{
-	printf("cscuser50\n");
-}
-
-void room31(void)
-{
-	printf("Yoonhong Min ");
-}
-
-void room39game(void)
-{
-	printf("Jess\n");
-
-}
-void HubertRoom(void)
-{
-	printf("Hubert: hnguyen296 \n");
-}
-
-void room25game(void)
-{
-	printf("Joel - cscuser25\n");
-}
-
-void jovannyFunction(void)
-{
-	printf("cscuser42\n");
-
-}
-
-void room53game(void)
-{
-	printf("cscuser53\n");
-}
-
-void room6game(void)
-{
-	printf("cscuser6\n");
-}
-
-
-void room8game(void)
-{
-	printf("cscuser8 \n");
-}
-
-
-void room29game(void)
-{
-	printf("cscuser29\n");
-}
-void room15game(void)
-{
-	printf("cscuser15 \n");
-
-}
-
-void FarStarTrader(void)
-{
-	printf("cscuser11\n");
-}
-
-void omarsUniqueFn(void)
-{
-	printf("Omar");
-}
-void AzizHaouchineFn(void)
-{
-	printf("Aziz\n");
-}
-
-void Function23fbabonjo(void)
-{
-	printf("Episode 23: Fatoma Babonjo ");
-}
-void room17(void)
-{
-	puts("cscuser17");
-}
-
-void vicCompRoom(void)
-{
-        printf("cscuser49");
-}
-
-void room16game(void)
-{
-	printf("cscuser16\n");
-}
-
-
-void ryanRoom38(void)
-{
-	printf("Ryan cscuser38\n");
-}
-
-
-
-void brentTestRoom(void)
-{
-	printf("Brent's Room \n");
-}
-
-void angelasRoom26(void)
-{
-	printf("cscuser26\n");
+	printf("\nYou have survived room 45. The houses will speak of your embarrassment for generations to come.\n");
 
 }
-
-void room1game(void) 
-{
-	printf("cscuser1\n");
-}
-
-
-
-void room28game(void)
-{
-	printf("Cscuser28:did not compile and test his code before he made a pull request or he would have seen he did not define his function using a function prototype. This adds extra work for everyone else.");
-}
-
-void jessiesFunRoom(void)
-{
-        printf("cscuser47");
-}
-
-void lab13nanup(void)
-{
-	printf("nanu");
-
-}
-
-
-
