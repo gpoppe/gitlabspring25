@@ -130,7 +130,7 @@ void HubertRoom(void);
 
 void ryanRoom38(void);
 
-
+void gameroom19(void);
 
 void kobesRoom(void);
 
@@ -291,6 +291,7 @@ int main(int argc, char *argv[])
 			case 19:
 			{
 				puts("room19");
+				gameroom19();
 				break;
 			}
 			case 20:
@@ -3055,6 +3056,110 @@ void user36Cafe(void)
                         }
 
                 }
+        }
+}
+
+void gameroom19(void)
+{
+        int choice19;
+        int move;
+        int fight;
+        int chest;
+        int poke;
+        printf("Welcome to the dungeon\n");
+        printf("You awaken in a dimly light room, you see a big yellow rat as you approach it you see its a pikachu!\n");
+        printf("You see pikachu is hurt, yoou check your pockets and find a super potion, ");
+        printf("Do you 1. help pikachu, 2. attack the giant rat, 3. exit and go back to the main\n");
+        scanf("%d", &choice19);
+
+        switch(choice19)
+        {
+                case 1:
+                        printf("You use your super potion and pikachu is thankful and decides to help you guide the dungeon\n");
+                        printf("Pika pi, meaning i got you homie follow me\n");
+                        printf("As you follow pikachu he leads you in a room with the boss MAgikarp. There is no way around him\n");
+                        printf("WHat do you do?, 1.Fight the magikarp, or 2.Run around him\n");
+                        scanf("%d", &fight);
+                        if(fight == 1)
+                        {
+                                printf("A hud pops over pikachu with moves 1.Thunderbolt, 2.Quickattack 3.Iron tail 4.Rock Smash\n");
+                                printf("pikachu awaits your command\n");
+                                scanf("%d", &move);
+                                switch(move){
+                                        case 1:
+                                                printf("Its super effective and magikarp faints\n");
+                                                printf("Pikachu leads you further into the dungeon\n");
+                                                break;
+                                        case 2:
+                                                printf("Pikachu launches himself at Magikarp\n");
+                                                printf("Magikarp is unable to continue the battle\n");
+                                                break;
+                                        case 3:
+                                                printf("Pikachu tail turn into iron smacking magikarp\n");
+                                                printf("Magikarp head hurts and doesnt want to continue fighting and swims away\n");
+                                                break;
+                                        case 4:
+                                                printf("Pikachu punches magikarp and the fish goes flying\n");
+                                                printf("Pikachu is smug now and continues leading you out\n");
+                                                break;
+                                }
+
+
+                        }
+                        else
+                        {
+                                printf("Its a big fish... So yeah  he cant attack so you make it past him\n");
+                        }
+
+                        printf("As you and pikachu walk further into the dungeon you both find a ches\n");
+                        printf("Do you open and risk another pokemon ambush, 1.Open the mysterious chest, 2. ignore the possible trap\n");
+                        scanf("%d", &chest);
+
+                        if(chest == 1)
+                        {
+                                printf("You open the chest...\n");
+                                printf("You find a pokeball\nDO you take it with you in your journey\n");
+                                printf("1.do you take it with you, 2. do you leave it\n");
+                                scanf("%d", &poke);
+                                if(poke == 1)
+                                {
+                                        printf("You add the pokeball into your inventory\n");
+                                        printf("as you walk with pikachu you bond as you fight and make your way out the dungeon\n");
+                                        printf("you make it to a large door, pikachu uses rocksmash to force th door open\n");
+                                        printf("your journey has come to an end, you turn back and see pikachu wave goodbye\n");
+                                        printf("You look at the pokeball in your pocket, do you catch pikachu and contiue your journey\n");
+                                        printf("Yes you do you do not get a choice, you catch pikachu and your journey contunues\n");
+
+                                }
+                                else
+                                {
+                                        printf("Smarty pants, could have been a voltorb and iy was gam over\n");
+                                        printf("YOur journey comes to and end as pikachu shows you the exit\n");
+                                        printf("Pikachu opens the door for you, waves goodbye as you two bonded\n");
+                                        printf("Too bad you didnt take the pokeball you could have caught pikachu. Hint Hint\n");
+
+                                }
+                        }
+                        else
+                        {
+                                printf("you are a smarty pants, that chest couldve been a gimighoul\n");
+                                printf("You tred foward seeing all sort of pokemons, after a few hours pikachu leads you to a large door\n");
+                                printf("you did it, Pikachu uses iron tail to open the door for you\n");
+                                printf("As you exit you look at pikachu, the doors slowly close as you stare at pikachus sad eyes\n");
+                                printf("Pikachus only friend is leaving him, if only you had a pokeball\n");
+                        }
+
+                        break;
+                case 2:
+                        printf("pikachu is spooked and uses thunderbolt on you\n");
+                        printf("Sorry you aint built like Ash, GAME OVER");
+                        break;
+                case 3:
+                        printf("boo youre no fun bye");
+                        break;
+                default:
+                        printf("Invalid choice");
+                        break;
         }
 }
 
