@@ -77,7 +77,7 @@ void room45(void)
 	int choice;
 	int health = 100;
 	
-	printf("\nLoading Room 45: The Sorting Hat’s Regrets...\n");
+	printf("\nLoading Room 45: The Sorting Hat's Regrets...\n");
     	sleep(1);
     	printf(".\n");
     	sleep(1);
