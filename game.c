@@ -1768,10 +1768,6 @@ void room55game(void){
             break;
         }
     }
-
-    return 0;
-}
-
 }
 
 void user14room(void)
