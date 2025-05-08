@@ -7,7 +7,7 @@
 //Yoonhong Min
 // Jessenia Hernandez Mora
 //Gerard McCallion
-
+//Bryant Garcia
 // Angela Jovanovic
 
 
@@ -1570,6 +1570,7 @@ int main(int argc, char *argv[])
 			case 55:
 			{
 				puts("room55");
+				room55game();
 				break;
 			}
 			case 56:
@@ -1643,6 +1644,136 @@ int main(int argc, char *argv[])
 }
 
 //place functions here
+void room55game(void){
+    int choice;
+    int totalMoney = 1000;
+    bool puzzleSolved = false;
+    char rooms[5][20] = {
+        "Treasure Room",
+        "Puzzle Room",
+        "Battle Arena",
+        "Mystery Box",
+        "Exit Room"
+    };
+    bool playing = true;
+
+    while (playing) {
+        printf("\n=== Room 55 ===\n");
+        printf("Current Money: $%d\n\n", totalMoney);
+        printf("Choose a room to enter:\n");
+
+        for (int i = 0; i < 5; i++) {
+            if (i == 1 && puzzleSolved) {
+                printf("%d. Puzzle Room (Already Solved)\n", i + 1);
+            } else if (i == 4 && totalMoney < 3000) {
+                printf("%d. Exit Room (Locked - Need $3000)\n", i + 1);
+            } else {
+                printf("%d. %s\n", i + 1, rooms[i]);
+            }
+        }
+
+        printf("\nEnter your choice (1-5): ");
+        scanf("%d", &choice);
+
+        while (choice < 1 || choice > 5 || (choice == 2 && puzzleSolved)) {
+            if (choice == 2 && puzzleSolved) {
+                printf("You've already solved this puzzle! Choose another option: ");
+            } else {
+                printf("Invalid choice. Please enter 1-5: ");
+            }
+            scanf("%d", &choice);
+        }
+
+        if (choice == 5) {
+            if (totalMoney >= 3000) {
+                printf("\nCongratulations! You reached $%d and exited the room!\n", totalMoney);
+                break;
+            } else {
+                printf("\nYou need at least $3000 to exit the room. Keep playing!\n");
+                continue;
+            }
+        }
+
+        switch (choice) {
+            case 1: {
+                printf("\n=== Treasure Room ===\n");
+                int guess, treasure = rand() % 10 + 1;
+                printf("Guess a number between 1-10 to find treasure: ");
+                scanf("%d", &guess);
+
+                if (guess == treasure) {
+                    int reward = 1000;
+                    printf("You found the treasure! Earn $%d!\n", reward);
+                    totalMoney += reward;
+                } else {
+                    printf("Wrong guess! The treasure was hidden under %d.\n", treasure);
+                }
+                break;
+            }
+            case 2: {
+                printf("\n=== Puzzle Room ===\n");
+                printf("Solve this riddle to earn $800!\n");
+                printf("Riddle: What has hands but cannot clap?\n");
+                char answer[50];
+                printf("Your answer: ");
+                scanf(" %[^\n]", answer);
+
+                for (int i = 0; answer[i]; i++) {
+                    answer[i] = tolower(answer[i]);
+                }
+
+                if (strstr(answer, "clock") != NULL) {
+                    printf("Correct! The answer is 'a clock'. You earn $800!\n");
+                    totalMoney += 800;
+                    puzzleSolved = true;
+                } else {
+                    printf("Sorry, that's not the correct answer. Try again later!\n");
+                }
+                break;
+            }
+            case 3: {
+                printf("\n=== Battle Arena ===\n");
+                int outcome = (rand() % 300);
+		    
+                if (outcome < 240) {
+                    printf("You won the battle! Earn $%d!\n", outcome);
+                    totalMoney += outcome;
+                } else {
+                    printf("You lost the battle! Pay $%d in damages.\n", outcome);
+                    totalMoney -= outcome;
+                }
+                break;
+            }
+            case 4: { // Mystery Box
+                printf("\n=== Mystery Box ===\n");
+                printf("This box could contain treasure or take your money!\n");
+		int outcome = (rand() % 11 - 5) * 100;
+
+                if (outcome > 0) {
+                    printf("You found $%d in the box!\n", outcome);
+                    totalMoney += outcome;
+                } else if (outcome < 0) {
+                    printf("Oh no! The box took $%d from you!\n", -outcome);
+                    totalMoney += outcome;
+                } else {
+                    printf("The box was empty. Better luck next time!\n");
+                }
+                break;
+            }
+        }
+
+        if (totalMoney <= 0) {
+            printf("\nYou've run out of money! No money for you.\n");
+            playing = false;
+            break;
+        }
+    }
+
+    return 0;
+}
+
+}
+
 void user14room(void)
 {
 	char input[4];     
