@@ -69,10 +69,10 @@ void room59game(void);
 void room22RandomTime(void);
 
 //room52
-void room52();
-void room52game();
+void room52(void);
+void room52game(void);
 void showLesson(int lesson);
-void showBathroomTip();
+void showBathroomTip(void);
 void bathArt(int item); 
 //room52ends
 
@@ -127,7 +127,7 @@ void room16game(void);
 
 void jessiesFunRoom(void);
 
-void vicCompRoom(void);ssh cscuser52@3.144.224.174
+void vicCompRoom(void);
 
 
 
@@ -2009,11 +2009,12 @@ void response(int choice)
 //Start of room 52
 //Aiman Haq
 //Functions
+void room52();
 void room52game();
 void showLesson(int lesson);
 void bathArt(int item);
 void showBathroomTip();
-void room52();
+
 
 void room52(){
         int choice;
@@ -2028,7 +2029,7 @@ void room52(){
         printf("______________________________________________\n\n");
 
         while(1){
-ssh cscuser52@3.144.224.174             printf("\nWelcome to the Reflective Bathroom. Choose a Reflector to interact with:\n");
+		printf("\nWelcome to the Reflective Bathroom. Choose a Reflector to interact with:\n");
                 printf("1. Sink\n");
                 printf("2. Mirror\n");
                 printf("3. Toilet\n");
@@ -2070,7 +2071,7 @@ void showLesson(int lesson){
                 printf("\n%s\n", lessons[lesson -1]);
         }
 }
-//art and meaning of eath reflective character.
+//art and meaning of each reflective character.
 //found ASCII characters online
 //please don't give me 0
 
@@ -2153,7 +2154,7 @@ void encounterPredator(char name[], int dangerType)
 
     int reaction = rand() % 3;
     if (reaction == 0)
-https://github.com/ahaq1206/gitlabspring25.git        printf("You evade just in time!\n");
+	    printf("You evade just in time!\n");
     else if (reaction == 1)
         printf("You hide in thick foliage and hold your breath...\nIt works!\n");
     else
