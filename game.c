@@ -28,7 +28,7 @@
 
 // Stanley Navarrete
 
-
+//Victor Gonzalez Bustillo
 
 // Nanu Panchamurthy
 
@@ -972,6 +972,154 @@ int main(int argc, char *argv[])
 			case 49:
 			{
 				puts("room49");
+
+				int choice =0;
+				printf("You find yourself in an unfamilar forest with thick vegetation.\n");
+				printf("Everything looks out of this world.......\n");
+				printf("!!!!!!!!!\n");
+				printf("You see a young man in a robe out of breath sitting near a tree. Want to talk to him?\n 1 = yes\n 0 = no\n");
+				scanf("%d",&choice);
+				switch (choice)
+				{
+				//Self note: choice starts here
+				case 1:
+					printf("you picked yes\n");
+
+					printf("Mysterious Man: Who are you?!?!?\n");
+					printf("You: Just a lost person, I am no threat\n");
+
+					printf("Mysterious Man: Sorry about that its just this place is a mess...\n");
+					printf("Do think you can help me find my ship..?\n 1 = yes\n 0 = no\n");
+					int choice2 = 0;
+					scanf("%d",&choice2);
+					switch(choice2)
+				//Self note: choice2 starts here
+					{
+					case 1:
+
+					printf("you picked yes\n");
+					printf("Mysterious Man: Thank you stranger\n");
+					printf("rustle*\nrustle*\nrustle*\nrustle*\nBOOM!\n");
+					printf("Mysterious Man:!!!!!Look out\n");
+					int i=0;
+
+					for(i=0;i<5;i++)
+					{
+						printf("pew*\n");
+
+					}
+					int robotCount = 10;
+					printf("10 robots emerge from the bushes and start blasting lazers at you\n(Blasters because why not :) )\n");
+
+					printf("As you duck from the initial shots you find a blaster in the floor \n (why? who knows but convenient huh :O )\n\n");
+
+					int y;
+					y = 1+rand()%9;
+
+					printf("You take a shot at the robots and %d of them are destroyed\n",y);
+
+					int remainingRobots = robotCount - y;
+
+					printf("%d robots run away\n",remainingRobots);
+
+					printf("Mysterious Man: Seems a robot dropped a map\n");
+					printf("The map leads you a fork in the road want to go left or right\n\n1 = left\n0 = Right\n");
+					int choice3 = 0;
+					scanf("%d",&choice3);
+
+					switch(choice3)
+					{
+					case 1:
+					printf("you picked left\n");
+					printf("You find a giant door with the remaining %d robots waiting in the front\n",remainingRobots);
+					printf("The you snipe the remaining robots with the ammo you had left\n");
+
+					printf("You have opened the door and found the ship!!!\n");
+					printf("Mysterious man: thank you for your help stranger in finding my ship\n\n You then get a ride home\n");
+
+					printf("congratulations you escaped this room\n");
+					break;
+
+					case 0:
+					printf("you picked right\n");
+					printf("You find a giant door with panel sitting in the front\n");
+					printf("The panel has a keypad with 6 buttons:\n");
+					int doorNums[] = {1,3,5,7,9,11};
+					int pin = 0;
+					int count = 0;
+
+					for(i=0;i<6;i++)
+					{
+						printf("%d\n",doorNums[i]);
+					}
+					printf("You have to enter a pin to open the door\n");
+					scanf("%d",&pin);
+					while(pin != doorNums[1]+doorNums[2]+doorNums[3]){
+						count++;
+					if(count ==2){
+						printf("Hint: doorNums[1]+doorNums[2]+doorNums[3] \n");
+					}
+						if(count == 3)
+						{
+							printf("You have failed to open the door\n");
+							printf("The robots have come back\n");
+
+							break;
+						}
+						else
+						{
+							printf("Try again\n");
+							scanf("%d",&pin);
+						}
+					}
+
+					printf("You have opened the door and found the ship!!!\n");
+					printf("Mysterious man: thank you for your help stranger in finding my ship\n\n I dont mind giving you a ride home\n");
+					printf("Do you want to go home?\n 1 = yes\n 0 = no\n");
+
+					int choice4 = 0;
+					scanf("%d",&choice4);
+					if(choice4 ==1){
+					printf("you picked yes\n");
+					printf("Mysterious Man: By the way my name is Lebron.\n(why? Because he the Goat)\n\n");
+
+					printf("congratulations you escaped this room\n");
+
+
+					}else{
+					printf("you picked yes (Because choice is just an illusion :) )\n");
+					printf("Mysterious Man: By the way my name is Lebron.\n (why? Because he the Goat)\n");
+
+					printf("congratulations you escaped this room\n");
+					}
+
+
+					break;
+
+
+					default:
+					   break;
+					}
+					break;
+
+					case 0:
+
+
+					printf("you picked no\n");
+					printf("You slipped on a flower and died. (why? Because no is boring)\n\n[Game Over] \n\n");
+
+					break;
+					}
+				break;
+				//Self note: choice2 ends here
+				case 0:
+					printf("you picked no\n");
+					printf("You fall into a hole. (why? who knows picking no is boring )\n [Game Over] \n");
+					break;
+				default:
+					break;
+				//Self note: choice ends here
+				}
 				vicCompRoom();
 				break;
 			}
@@ -6702,7 +6850,7 @@ int coinToss17(void)
 }
 void vicCompRoom(void)
 {
-        printf("cscuser49");
+         printf("cscuser49 AKA as me: Think of this a the credits that appear at the end of most video games- Victor Gonzalez\n");
 }
 
 void room16game(void)
