@@ -35,6 +35,7 @@
 
 //Jesse Navarro
 // Aziz Haouchine
+// Krish Mehta
 
 
 #include <stdlib.h>
@@ -64,6 +65,7 @@ void room30game(void);
 void joshRoom4(void);
 
 void room59game(void);
+void describeRandomEvent(void);
 
 void room22RandomTime(void);
 
@@ -2625,9 +2627,62 @@ void room34game(void)
     printf("\nYou’ve completed your gym training. Time to move on to new adventures.\n\n");
 }
 
-void room59game(void)
-{
-	printf("%s\n", "cscuser59");
+void room59game(void) {
+    const char *options[5] = {
+        "1) Search the dusty bookshelf",
+        "2) Open the creaky chest",
+        "3) Peer out the window",
+        "4) Inspect the strange painting",
+        "5) Go back to the hallway"
+    };
+    int choice = 0;
+
+    do {
+        printf("\n-- Room 59: The Abandoned Study --\n");
+        for (int i = 0; i < 5; ++i) {
+            puts(options[i]);
+        }
+        printf("Choose an action (1-5): ");
+        if (scanf("%d", &choice) != 1) {
+            // clear bad input
+            while (getchar() != '\n');
+            choice = 0;
+        }
+
+        switch (choice) {
+            case 1:
+                puts("You find an old journal filled with arcane symbols.");
+                describeRandomEvent();
+                break;
+            case 2:
+                puts("The chest creaks open, revealing a rusty key.");
+                describeRandomEvent();
+                break;
+            case 3:
+                puts("Moonlight filters through; you spot footprints below.");
+                describeRandomEvent();
+                break;
+            case 4:
+                puts("The painting's eyes seem to follow you.");
+                describeRandomEvent();
+                break;
+            case 5:
+                puts("You step back into the hallway.");
+                break;
+            default:
+                puts("Invalid choice. Try again.");
+        }
+    } while (choice != 5);
+}
+
+void describeRandomEvent(void) {
+    const char *events[] = {
+        "A sudden chill runs down your spine.",
+        "You hear a faint whisper behind you.",
+        "The floorboards groan as if someone just walked by."
+    };
+    int idx = rand() % (sizeof(events)/sizeof(events[0]));
+    printf(">> %s\n", events[idx]);
 }
 
 
