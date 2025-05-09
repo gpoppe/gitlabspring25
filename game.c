@@ -121,7 +121,8 @@ void jessiesFunRoom(void);
 
 void vicCompRoom(void);
 
-
+//room20
+void cscuser20(void);
 
 void brentRoom(void);
 
@@ -182,7 +183,11 @@ int main(int argc, char *argv[])
 		puts("As you look around you see the room has 55 doors, each labeled with a number.");
 		puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
 		puts("What door do you choose?");
-		scanf("%d",&choice);
+		if(scanf("%d",&choice)!=1){
+			while(getchar() != '\n');
+			choice=-1;
+		}
+		//scanf("%d",&choice);
 		switch(choice)
 		{
 			case 1:
@@ -296,7 +301,8 @@ int main(int argc, char *argv[])
 			}
 			case 20:
 			{
-				puts("room20");
+				puts("room20 DeathMatch!");
+				cscuser20();
 				break;
 			}
 			case 21:
@@ -1755,6 +1761,83 @@ if (sacrificeCounter < 1 || sacrificeCounter > 10)
         return;
 
 }
+//jc
+void cscuser20(void) {
+    int weapon_pick, play_again = 1;
+
+    char *weapon_list[] = {
+        "Military-Grade Rifle",
+        "Ghost Disruptor Blaster",
+        "Silver Bullet Revolver",
+        "Blessed Holy Water",
+        "Wooden Stake"
+    };
+
+    char *monster_list[] = {
+        "snarling zombie",
+        "flickering ghost",
+        "horned demon",
+        "pale vampire",
+        "feral werewolf"
+    };
+
+    int weapon_monster_match[] = {0, 1, 3, 4, 2};
+
+    while (play_again) {
+        printf("\nAs you enter the door, a blinding white light floods your vision.\n");
+        printf("You shield your eyes.\n");
+        printf("As your sight returns, you're standing in a pristine white chamber.\n");
+
+        printf("Five massive glass tubes stand before you, each holding a different creature:\n");
+        for (int i = 0; i < 5; i++) {
+            printf("- %s\n", monster_list[i]);
+        }
+
+        printf("Behind each one is a sealed door.\n");
+        printf("They begin pounding the glass, furious.\n");
+        printf("At the center of the room is a weapons case...\n");
+
+        printf("Choose ONE weapon to take with you:\n");
+        for (int i = 0; i < 5; i++) {
+            printf("%d. %s\n", i + 1, weapon_list[i]);
+        }
+
+        printf("Enter your weapon choice (1–5): ");
+        scanf("%d", &weapon_pick);
+
+        while (weapon_pick < 1 || weapon_pick > 5) {
+            printf("Come on, pick a number between 1 and 5: ");
+            scanf("%d", &weapon_pick);
+        }
+
+        weapon_pick--;
+
+        printf("\nYou grab the %s. The others vanish.\n", weapon_list[weapon_pick]);
+        printf("A loud hiss echoes through the chamber...\n");
+        printf("One of the glass chambers opens...\n");
+
+        int random_monster = rand() % 5;
+        printf("Out steps %s!\n", monster_list[random_monster]);
+
+        if (weapon_pick == weapon_monster_match[random_monster]) {
+            printf("You strike swiftly! The %s is defeated instantly. You survive.\n",
+                   monster_list[random_monster]);
+        } else {
+            printf("You fight back, but your weapon is useless against %s.\n",
+                   monster_list[random_monster]);
+            printf("You are overwhelmed and consumed in darkness...\n");
+        }
+
+        printf("\nWanna try again? (1 = Yes, 0 = No): ");
+        scanf("%d", &play_again);
+        printf("\n");
+    }
+
+    printf("You return back into the hallway...\n");
+}
+
+
+
 
 
 void joshRoom4(void)
