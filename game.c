@@ -7,12 +7,20 @@
 //Yoonhong Min
 // Jessenia Hernandez Mora
 //Gerard McCallion
+
 //Bryant Garcia
 // Angela Jovanovic
 
 
+
+
+// Angela Jovanovic
+//Josephine Kingslee
+
 //Fatoma Babonjo
 
+
+//Santiago Tecuanhuey Garcia 
 
 
 //Alex Pham
@@ -67,6 +75,8 @@ void room59game(void);
 
 void room22RandomTime(void);
 
+//Room10
+void savePrincessInRoom10();
 
 void stanleysRoom(void);
 
@@ -86,7 +96,15 @@ int countSuccesses(int successArray[]);
 void checkDoorStatus(int successCount);
 void printResults(int successArray[]);
 
+// room 12 functions.
+void room12Loading(const char *printOut, unsigned seconds);
+void room12desertScenario(void);
+void room12mountainScenario(void);
+void room12jungleScenario(void);
+void room12cosmicScenario(void);
 void room12game(void);
+
+
 void room31(void);
 void room39game(void);
 void stevenFirst(void);
@@ -144,7 +162,7 @@ void cameronDOOMFn(void);
 
 void lab13nanup(void);
 void Function23fbabonjo(void);
-void cscuser1(void);
+void room1game(void);
 
 
 void PedroFunctionRoom(void);
@@ -188,8 +206,8 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+				room1game();
 				break;
-				cscuser1();
 			}
 			case 2:
 			{
@@ -240,8 +258,9 @@ int main(int argc, char *argv[])
 			}
 			case 10:
 			{
-				puts("room10");
-				break;
+				puts("Save Princess in Room 10");
+                                savePrincessInRoom10();
+                                break;
 			}
 			case 11:
 			{
@@ -2124,11 +2143,877 @@ void response(int choice)
 }
 // end of DairasBrain
 
+// start of room 12(Santi's) room functions.
+
+void room12Loading( const char *printOut, unsigned seconds){ // user 12 (Santi's) own function for load time + added sentence(s).
+        printf("%s\n", printOut);
+        sleep(seconds);
+}
+
+
+// red portal -> desert.
+void room12desertScenario(void){
+        int choice, subChoice;
+        int waterSupply = 3;
+        bool hasCompass = false;
+        bool hasMap = false;
+        bool foundOasis = false;
+
+        printf("\n[DESERT OF SECRETS] The crimson portal deposits you onto burning sands.\n");
+        printf("Two suns blaze overhead as a voice whispers: \"Find the True Oasis to return...\"\n");
+        sleep(2);
+
+        while (!foundOasis && waterSupply > 0){
+            // stats overview.
+            printf("\n----- WATER REMAINING: %d UNITS -----\n", waterSupply);
+            if (hasCompass) printf("Your magical compass pulses steadily.\n");
+            if (hasMap) printf("The ancient map glows faintly.\n");
+
+            printf("\nWhat will you do?\n");
+            printf("1) Search for water (costs 1 water)\n");
+            printf("2) Follow strange dune formations (costs 1 water)\n");
+            printf("3) Climb the tallest dune to survey (costs 2 water)\n");
+            if (hasCompass) printf("4) Follow compass toward True Oasis (costs 1 water)\n");
+            if (hasMap) printf("5) Use ancient map for shortcut (costs 1 water)\n");
+            printf("\nYour choice: ");
+            scanf("%d", &choice);
+
+            // this processes the water cost.
+            switch (choice){
+                case 1: case 2: waterSupply -= 1; break;
+                case 3: waterSupply -= 2; break;
+                case 4: if (hasCompass) waterSupply -= 1; else continue; break;
+                case 5: if (hasMap) waterSupply -= 1; else continue; break;
+                default: printf("Choose again.\n"); continue;
+            }
+
+            // handle the main choices.
+            switch (choice){
+                case 1: // searches for water.
+                    printf("\nYou scan the horizon for any signs of moisture...\n");
+                    sleep(1);
+                    if (rand() % 10 < 3){
+                        printf("A mirage shimmers in the distance! You rush forward... it vanishes.\n");
+                    }
+                    else if (rand() % 10 < 6){
+                        printf("You find a water-rich cactus! +1 water unit!\n");
+                        waterSupply += 1;
+                    }
+                    else{
+                        printf("You meet desert nomads who gift you a strange compass.\n");
+                        hasCompass = true;
+                        sleep(2);
+                    }
+                    break;
+
+                case 2: // forms dunes.
+                    printf("\nYou follow the mysterious patterns in the dunes...\n");
+                    sleep(1);
+                    if (rand() % 2 == 0){
+                        printf("The dunes lead to buried ruins with ancient hieroglyphs!\n");
+                        printf("1) Search for treasures\n2) Study the hieroglyphs\n");
+                        scanf("%d", &subChoice);
+                        if (subChoice == 1){
+                            printf("You find a clockwork scarab that points the way!\n");
+                            hasCompass = true;
+                        }
+                        else{
+                            printf("You decipher symbols and copy a map from the wall.\n");
+                            hasMap = true;
+                        }
+                        sleep(2);
+                    }
+                    else{
+                        printf("A sandstorm approaches! You lose your bearings but find a tattered map!\n");
+                        hasMap = true;
+                    }
+                    break;
+
+                case 3: // allows user to climb the dunes.
+                    if (waterSupply <= 0){
+                        printf("You collapse from thirst before reaching the top...\n");
+                        break;
+                    }
+                    printf("\nYou struggle up the massive dune, scanning the horizon...\n");
+                    sleep(1);
+                    if (hasCompass || hasMap){
+                        printf("With your navigation aid, you spot the True Oasis!\n");
+                        sleep(2);
+                        printf("After hours of determined travel, you reach your destination!\n");
+                        foundOasis = true;
+                    }
+                    else{
+                        printf("You see several possible oases but can't tell which is real.\n");
+                        printf("You discover an abandoned camp with navigation tools!\n");
+                        if (rand() % 2 == 0) hasMap = true; else hasCompass = true;
+                    }
+                    break;
+
+                case 4: // allows user to follow the compass.
+                    printf("\nYou follow the ancient compass as it pulls you forward...\n");
+                    sleep(2);
+                    printf("Your faith in the compass leads you to the shimmering True Oasis!\n");
+                    foundOasis = true;
+                    break;
+
+                case 5: // user uses map.
+                    printf("\nYou study the ancient map's landmarks carefully...\n");
+                    sleep(2);
+                    printf("The map guides you perfectly to the hidden True Oasis!\n");
+                    foundOasis = true;
+                    break;
+            }
+
+            //last min emergency water depletion.
+            if (waterSupply <= 0 && !foundOasis){
+                printf("\nYour throat burns with thirst. A spectral figure approaches...\n");
+                sleep(2);
+                printf("\"Not your time yet.\" You awaken with 1 unit of water.\n");
+                waterSupply = 1;
+                hasCompass = false;
+            }
+        }
+
+        // oasis ending for desertPortal :)
+        if (foundOasis){
+            printf("\n----- THE TRUE OASIS -----\n");
+            printf("You stumble into the shade of towering palms. The central pool glows with magic.\n");
+            sleep(3);
+            printf("\nAs you touch the glowing waters, a tingling sensation spreads through you...\n");
+            printf("The oasis dissolves into swirling colors, returning you to the portal chamber.\n");
+        } else {
+            printf("\nYou collapse into the sand, defeated by the harsh desert...\n");
+            sleep(3);
+            printf("A swirl of red energy rescues you, returning you to the portal chamber.\n");
+        }
+    }
+
+// blue portal -> snowy mountain.
+void room12mountainScenario(void){
+
+        char friend1[50], friend2[50], friend3[50];
+        int oxygenLevel = 100, stamina = 100, altitude = 0;
+        bool hasRope = true, hasPickaxe = true;
+        bool foundSecretRoute = false;
+
+        printf("\n[MOUNTAIN OF WHISPERS] The azure portal deposits you onto an icy ledge.\n");
+        printf("A fierce wind cuts through your gear as you gaze at the treacherous peak.\n");
+        sleep(2);
+
+        printf("\nWho are the 2 or 3 friends climbing with you today?\n");
+        printf("Enter name of first friend: ");
+        scanf("%s", friend1);
+        printf("Enter name of second friend: ");
+        scanf("%s", friend2);
+        printf("Enter name of third friend (or type 'none'): ");
+        scanf("%s", friend3);
+
+        if (strcmp(friend3, "none") == 0 || strcmp(friend3, "NONE") == 0){
+            printf("\nYou check your gear with %s and %s, preparing for the climb.\n", friend1, friend2);
+        }
+        else{
+            printf("\nYou check your gear with %s, %s, and %s, preparing for the climb.\n", friend1, friend2, friend3);
+        }
+
+        // the main climbing loop.
+        while (altitude < 100 && oxygenLevel > 0 && stamina > 0){
+            // stats overview for this portal.
+            printf("\n----- CLIMBER STATUS -----\n");
+            printf("Altitude: %d%% | Oxygen: %d%% | Stamina: %d%%\n", altitude, oxygenLevel, stamina);
+
+            int choice;
+
+            if (altitude < 50){ // for lower/middle of the mountain.
+                printf("\nThe challenging climb continues:\n");
+                printf("1) Take the established route - safer but slower\n");
+                printf("2) Try a shortcut - faster but riskier\n");
+                printf("3) Make camp and rest to recover strength\n");
+                if (altitude > 20) printf("4) Explore a mysterious cave entrance\n");
+                printf("\nYour decision: ");
+                scanf("%d", &choice);
+
+                switch (choice){
+                    case 1: // the safe route.
+                        printf("\nYou follow the established route with proper technique.\n");
+                        printf("%s leads this section, securing the lines expertly.\n", friend2);
+                        altitude += 15;
+                        stamina -= 15;
+                        break;
+
+                    case 2: // the risky route.
+                        printf("\nYou opt for a treacherous ice chute that could save time.\n");
+                        sleep(2);
+                        if (rand() % 10 < 7){ // a 70% success rate.
+                            printf("Your team navigates the dangerous passage successfully!\n");
+                            altitude += 25;
+                            stamina -= 30;
+                        }
+                        else{
+                            printf("Disaster! %s slips on the ice! Everyone loses energy in the rescue.\n", friend1);
+                            altitude += 5;
+                            stamina -= 40;
+                            sleep(3);
+                        }
+                        break;
+
+                    case 3: // rest option.
+                        printf("\nYou set up a temporary camp to rest and acclimate.\n");
+                        stamina = stamina + 40 > 100 ? 100 : stamina + 40;
+                        oxygenLevel = oxygenLevel + 20 > 100 ? 100 : oxygenLevel + 20;
+                        break;
+
+                    case 4: // the cave exploration option.
+                        if (altitude > 20){
+                            printf("\nYou explore the mysterious cave in the mountainside...\n");
+                            sleep(2);
+                            if (rand() % 3 == 0){
+                                printf("Incredible! You find an ancient climber's journal with a secret route!\n");
+                                foundSecretRoute = true;
+                                sleep(2);
+                            }
+                            else{
+                                printf("You discover a hot spring! The warm waters rejuvenate everyone.\n");
+                                stamina = 100;
+                            }
+                        }
+                        else{
+                            printf("That's not an option yet. Choose again.\n");
+                            continue;
+                        }
+                        break;
+
+                    default:
+                        printf("That's not a valid choice. Choose again.\n");
+                        continue;
+                }
+            }
+            else{ // the death zone *dun, dun, duuuuuun*
+                printf("\nYou've reached the 'Death Zone' where oxygen is dangerously scarce:\n");
+                printf("1) Push straight for the summit - fastest but most dangerous\n");
+                printf("2) Take a measured pace with regular oxygen breaks\n");
+                if (foundSecretRoute) printf("3) Use the secret route from the journal\n");
+                printf("\nYour decision: ");
+                scanf("%d", &choice);
+
+                switch (choice){
+                    case 1: // user pushes the summit option.
+                        printf("\nYou make an aggressive push toward the summit...\n");
+                        sleep(2);
+                        if (oxygenLevel < 30 || stamina < 30){
+                            printf("Your vision blurs from oxygen deprivation! %s saves you!\n", friend2);
+                            stamina -= 50;
+                            oxygenLevel -= 30;
+                        }
+                        else{
+                            printf("The final climb tests your limits, but you reach the summit!\n");
+                            altitude = 100;
+                            stamina -= 40;
+                            oxygenLevel -= 30;
+                            sleep(3);
+                        }
+                        break;
+
+                    case 2: // user selects the pace option.
+                        printf("\nYou choose a measured approach with regular breaks.\n");
+                        if (rand() % 10 > 2) { // 80% success rate.
+                            printf("After hours of grueling effort, you reach the summit plateau!\n");
+                            altitude = 100;
+                            stamina -= 30;
+                            oxygenLevel -= 20;
+                            sleep(3);
+                        } else {
+                            printf("A sudden storm brings whiteout conditions, slowing progress.\n");
+                            altitude += 20;
+                            stamina -= 35;
+                            oxygenLevel -= 25;
+                        }
+                        break;
+
+                    case 3: // a secret route.
+                        if (foundSecretRoute){
+                            printf("\nYou follow the secret passage described in the journal...\n");
+                            sleep(2);
+                            printf("The hidden chimney bypasses the most dangerous section!\n");
+                            printf("You emerge near the summit with relatively little effort!\n");
+                            altitude = 100;
+                            stamina -= 20;
+                            oxygenLevel -= 15;
+                            sleep(3);
+                        }
+                        else{
+                            printf("That's not an option. Choose again.\n");
+                            continue;
+                        }
+                        break;
+
+                    default:
+                        printf("That's not a valid choice. Choose again.\n");
+                        continue;
+                }
+            }
+
+            // applies environmental effects.
+            oxygenLevel -= 5;
+            stamina -= 5;
+        }
+
+        // the possible endings for the mountainPortal.
+        if (altitude >= 100) {
+            printf("\n----- SUMMIT REACHED -----\n");
+            printf("You stand atop the world, gazing out over an ocean of clouds!\n");
+            printf("After celebrating with %s and %s, you begin the descent.\n", friend1, friend2);
+            sleep(3);
+            printf("\nBack at base camp, you notice the blue portal glowing behind your tent.\n");
+            printf("You step through the shimmering doorway, mission accomplished!\n");
+        }
+        else{
+            printf("\nThe mountain has defeated your team this time...\n");
+            sleep(2);
+            printf("As you descend, the blue portal appears to take you back to the chamber.\n");
+        }
+    }
+
+
+// green portal -> jungle.
+void room12jungleScenario(void){
+        int choice, subChoice;
+        int health = 100;
+        int time = 18; // starts at 6:00 PM (18:00).
+        bool hasMap = false;
+        bool hasWeapon = false;
+        bool foundShelter = false;
+        bool signalFire = false;
+
+        printf("\n[EMERALD JUNGLE] The verdant portal deposits you in a dense, humid rainforest.\n");
+        printf("Your satellite phone shows 6:00 PM. A rescue helicopter will arrive at 5:31 AM.\n");
+        printf("You must survive the night and reach the extraction point by morning.\n");
+        sleep(3);
+
+        // the main jungle loop.
+        while (time < 29 && health > 0) { // the user must survive until 5:00 AM (18 + 11 = 29).
+            int hours = time % 24;
+
+            // stats overview for this portal.
+            printf("\n----- STATUS UPDATE -----\n");
+            printf("Time: %02d:%02d %s | Health: %d%%\n",
+                   hours == 0 ? 12 : (hours > 12 ? hours - 12 : hours),
+                   0, // Simplified time display
+                   (hours >= 12 && hours < 24) ? "PM" : "AM",
+                   health);
+
+            // the nighttime vs. daytime options.
+            if (hours >= 19 || hours < 6) { // night time option.
+                printf("\nThe jungle is alive with mysterious sounds in the darkness:\n");
+                printf("1) %s\n", !foundShelter ? "Find shelter for the night" : "Reinforce your shelter");
+                printf("2) %s\n", !foundShelter ? "Continue moving toward extraction" : "Sleep to recover strength");
+                printf("3) %s\n", !foundShelter ? "Climb a tree for safety" : "Keep watch with a small fire");
+                printf("\nYour choice: ");
+                scanf("%d", &choice);
+
+                switch (choice){
+                    case 1: // the shelter actions.
+                        if (!foundShelter){
+                            printf("\nYou search for shelter as darkness falls...\n");
+                            sleep(2);
+                            if (rand() % 10 < 6){
+                                printf("You discover a small cave that offers perfect protection!\n");
+                                printf("Inside, you find a crude map scratched on the wall.\n");
+                                foundShelter = true;
+                                hasMap = true;
+                            }
+                            else{
+                                printf("You build a basic lean-to shelter against a large tree.\n");
+                                foundShelter = true;
+                            }
+                        }
+                        else{
+                            printf("\nYou reinforce your shelter with branches and thorny barriers.\n");
+                            if (rand() % 10 < 3){
+                                printf("While gathering materials, you find a useful machete!\n");
+                                hasWeapon = true;
+                            }
+                        }
+                        time += 2.0;
+                        break;
+
+                    case 2: // sleep and movement options.
+                        if (!foundShelter){
+                            printf("\nMoving at night is dangerous but might save time...\n");
+                            sleep(2);
+                            if (rand() % 10 < 5){
+                                printf("You fall in the darkness, collecting cuts and bruises!\n");
+                                health -= 15;
+                            }
+                            else{
+                                printf("You discover an old logging trail heading in the right direction!\n");
+                                hasMap = true;
+                            }
+                            time += 2.0;
+                        }
+                        else{
+                            printf("\nYou try to sleep, recovering strength for tomorrow.\n");
+                            sleep(2);
+                            int sleepQuality = rand() % 10;
+                            if (sleepQuality < 3){
+                                printf("Something prowls around your shelter all night!\n");
+                                health += 5;
+                            }
+                            else{
+                                printf("You get enough rest despite the strange jungle sounds.\n");
+                                health += 20;
+                                if (health > 100) health = 100;
+                            }
+                            time += 6.0;
+                        }
+                        break;
+
+                    case 3: // the tree & a fire options.
+                        if (!foundShelter){
+                            printf("\nYou climb a tall tree to stay safe during the night.\n");
+                            sleep(2);
+                            if (rand() % 2 == 0){
+                                printf("From your perch, you spot distant lights - the extraction point!\n");
+                                hasMap = true;
+                            }
+                            foundShelter = true;
+                            time += 6.0;
+                            health -= 10;
+                        }
+                        else{
+                            printf("\nYou maintain a small fire through the night, keeping watch.\n");
+                            sleep(2);
+                            if (rand() % 10 < 2){
+                                printf("A large predator stalks your camp! You keep it at bay with fire.\n");
+                                health -= 15;
+                                sleep(3);
+                            }
+                            else{
+                                printf("The night passes without major incidents.\n");
+                            }
+                            time += 6.0;
+                            signalFire = true;
+                        }
+                        break;
+
+                    default:
+                        printf("That's not a valid choice. Choose again.\n");
+                        continue;
+                }
+            }
+            else{ // day time.
+                printf("\nDaylight filters through the jungle canopy:\n");
+                printf("1) Push toward extraction point with urgency\n");
+                printf("2) Move carefully while gathering resources\n");
+                printf("3) Build a signal fire for the helicopter\n");
+                if (hours >= 4){
+                    printf("4) Find high ground to signal the approaching helicopter\n");
+                }
+                printf("\nYour decision: ");
+                scanf("%d", &choice);
+
+                switch (choice){
+                    case 1: // fast user movement.
+                        printf("\nYou move quickly through the jungle toward extraction.\n");
+                        sleep(1);
+                        if (hasMap){
+                            printf("Your map helps you avoid obstacles and make excellent progress!\n");
+                            time += 2.0;
+                        }
+                        else{
+                            if (rand() % 10 < 4){
+                                printf("Without a map, you get partially lost and waste time.\n");
+                                time += 3.5;
+                            }
+                            else{
+                                printf("You stumble upon a trail with directional markers!\n");
+                                hasMap = true;
+                                time += 2.0;
+                            }
+                        }
+                        break;
+
+                    case 2: // gather resources.
+                        printf("\nYou search for useful items while maintaining progress.\n");
+                        int finding = rand() % 10;
+                        if (finding < 3){
+                            printf("You identify several edible fruits that boost your energy!\n");
+                            health += 15;
+                            if (health > 100) health = 100;
+                        }
+                        else if (finding < 6 && !hasWeapon){
+                            printf("You craft a serviceable spear from a fallen branch.\n");
+                            hasWeapon = true;
+                        }
+                        else if (finding < 8){
+                            printf("You find a weathered sign pointing toward the extraction zone!\n");
+                            hasMap = true;
+                        }
+                        time += 3.0;
+                        break;
+
+                    case 3: // signal fire.
+                        printf("\nYou gather materials and build a signal fire on high ground.\n");
+                        sleep(2);
+                        printf("Thick smoke rises above the canopy - perfect for being spotted!\n");
+                        signalFire = true;
+                        time += 2.0;
+                        break;
+
+                    case 4: // ending extraction prep.
+                        if (hours >= 4){
+                            printf("\nWith extraction approaching, you climb to higher ground...\n");
+                            sleep(3);
+                            printf("You hear helicopter rotors in the distance!\n");
+
+                            if (time >= 28.5 && (signalFire || hasMap)){
+                                printf("The helicopter spots your position and begins its approach!\n");
+                                time = 29.5; // end scenario successfully.
+                            }
+                             else if (time < 28.0){
+                                printf("The helicopter is still searching, but you're now prepared!\n");
+                                signalFire = true;
+                                time += 1.0;
+                            }
+                        }
+                        else{
+                            printf("That's not a valid option now. Choose again.\n");
+                            continue;
+                        }
+                        break;
+
+                    default:
+                        printf("That's not a valid choice. Choose again.\n");
+                        continue;
+                }
+            }
+        }
+
+        // checks for the end conditions.
+        if (health <= 0){
+            printf("\n----- MEDICAL EMERGENCY -----\n");
+            printf("You collapse from injuries and exhaustion. As consciousness fades...\n");
+            sleep(3);
+            printf("You hear helicopter rotors... You awaken back in the portal chamber.\n");
+        }
+        else if (time >= 29){ // 5am+ extract time.
+            printf("\n----- EXTRACTION TIME: 5:31 AM -----\n");
+            sleep(2);
+
+            if (signalFire || hasMap){
+                printf("The rescue helicopter spots you and drops a harness!\n");
+                sleep(3);
+                printf("As you're pulled aboard, reality dissolves into swirling green light...\n");
+                printf("You step back into the chamber of portals, jungle trial complete.\n");
+            }
+            else{
+                printf("Without a signal, the helicopter searches but cannot find you.\n");
+                sleep(2);
+                printf("As hope fades, the jungle dissolves into green energy...\n");
+                printf("You find yourself back in the portal chamber, mission incomplete.\n");
+            }
+        }
+    }
+
+
+ // purple portal -> outer space.
+void room12cosmicScenario(void){
+        int choice, subChoice, alienGameRound = 0;
+        int oxygenLevel = 100;
+        int shipIntegrity = 100;
+        bool hasNavigation = false;
+        bool hasTranslator = false;
+        bool alienFriendly = false;
+        int alienGameScore = 0;
+
+        printf("\n[COSMIC FRONTIER] The violet portal hurls you through a kaleidoscope of stars...\n");
+        printf("You materialize in a spacesuit, floating outside a damaged space station.\n");
+        printf("Your mission: find a way back to Earth.\n");
+        sleep(3);
+
+        // the main space loop.
+        while (oxygenLevel > 0 && shipIntegrity > 0){
+            // stats overview for this portal.
+            printf("\n----- SPACE STATUS -----\n");
+            printf("Oxygen: %d%% | Ship Integrity: %d%%\n", oxygenLevel, shipIntegrity);
+            printf("Equipment: %s%s\n", hasNavigation ? "Navigation, " : "", hasTranslator ? "Translator" : "");
+            if (alienGameScore > 0) printf("Alien game progress: %d/3\n", alienGameScore);
+
+            // prompt different options for user to choose.
+            printf("\nYour options:\n");
+            printf("1) Explore the damaged space station\n");
+            printf("2) Study the nearby alien planet\n");
+            printf("3) %s\n", hasNavigation ? "Repair the escape pod" : "Search for navigation systems");
+            printf("4) %s\n", alienFriendly ? "Request alien assistance" :
+                             (alienGameScore > 0 ? "Continue the alien's challenge" : "Scan for life signs"));
+            printf("\nYour decision: ");
+            scanf("%d", &choice);
+
+            switch (choice){
+                case 1: // check space station.
+                    printf("\nYou enter the damaged station through an airlock...\n");
+                    printf("1) Search command center\n2) Check engineering\n3) Investigate lab noises\n");
+                    scanf("%d", &subChoice);
+
+                    if (subChoice == 1){
+                        printf("You access the main console to download navigation data...\n");
+                        sleep(2);
+                        if (rand() % 10 < 4){
+                            printf("Success! You download star charts showing Earth's position!\n");
+                            hasNavigation = true;
+                        }
+                        else{
+                            printf("You only get partial data, but it's better than nothing.\n");
+                        }
+                    }
+                    else if (subChoice == 2) {
+                        printf("You search engineering for useful technology...\n");
+                        if (rand() % 10 < 4){
+                            printf("You find components that enhance your suit's oxygen efficiency!\n");
+                            oxygenLevel += 20;
+                            if (oxygenLevel > 100) oxygenLevel = 100;
+                        }
+                        else{
+                            printf("You collect parts that might help repair an escape pod.\n");
+                            shipIntegrity += 10;
+                            if (shipIntegrity > 100) shipIntegrity = 100;
+                        }
+                    }
+                     else{
+                        printf("You investigate strange sounds in the science lab...\n");
+                        sleep(2);
+                        printf("A strange device pulses with energy similar to the portal!\n");
+                        if (rand() % 10 < 4){
+                            printf("It projects a hologram of a crystalline alien entity!\n");
+                            printf("It seems to want to challenge you to a game of some kind.\n");
+                            alienGameScore = 1;
+                        }
+                        else{
+                            printf("The device creates a translator attachment for your helmet!\n");
+                            hasTranslator = true;
+                        }
+                    }
+                    oxygenLevel -= 10;
+                    break;
+
+                case 2: // case for alien planet.
+                    printf("\nYou scan the alien planet below with your suit sensors.\n");
+                    sleep(1);
+                    if (rand() % 10 < 3){
+                        printf("You detect exotic materials perfect for repairs!\n");
+                        shipIntegrity += 20;
+                        if (shipIntegrity > 100) shipIntegrity = 100;
+                    }
+                    else if (rand() % 10 < 7){
+                        printf("You detect an energy signature similar to the portal!\n");
+                        hasNavigation = true;
+                    }
+                    else{
+                        printf("You detect what might be an alien communication beacon.\n");
+                        alienGameScore = 1;
+                    }
+                    oxygenLevel -= 10;
+                    break;
+
+                case 3: // navigation/escape options.
+                    if (hasNavigation){
+                        printf("\nYou work on repairing the station's escape pod...\n");
+                        sleep(2);
+                        printf("1) Fix propulsion\n2) Repair life support\n3) Calibrate navigation\n");
+                        scanf("%d", &subChoice);
+
+                        if (rand() % 10 < 7){
+                            printf("Your repairs are successful! The pod is nearly space-worthy.\n");
+                            shipIntegrity += 20;
+                            if (shipIntegrity > 100) shipIntegrity = 100;
+                        }
+                        else{
+                            printf("You make some progress, but more work is needed.\n");
+                            shipIntegrity += 10;
+                        }
+
+                        // checks if ready for launch.
+                        if (shipIntegrity >= 80){
+                            printf("\n----- ESCAPE POD LAUNCH SEQUENCE -----\n");
+                            sleep(3);
+                            printf("With repairs complete, you launch toward Earth!\n");
+                            printf("As Earth appears in your viewport, purple energy surrounds you...\n");
+                            printf("The portal returns you to the chamber, mission complete.\n");
+                            oxygenLevel = 0; // end the scenario successfully.
+                        }
+                    }
+                    else{
+                        printf("\nYou search for navigation data to find Earth's position...\n");
+                        sleep(2);
+                        if (rand() % 10 < 5) {
+                            printf("Success! You locate Earth's coordinates in the computer!\n");
+                            hasNavigation = true;
+                        } else {
+                            printf("You find only partial data. You'll need to keep searching.\n");
+                        }
+                    }
+                    oxygenLevel -= 10;
+                    break;
+
+                case 4: // case for alien interaction.
+                    if (alienFriendly){
+                        printf("\nThe crystalline entity helps you repair the escape pod...\n");
+                        sleep(3);
+                        printf("With its advanced knowledge, Earth's position is locked in!\n");
+                        printf("The alien's technology transports you directly to Earth orbit.\n");
+                        printf("Purple energy returns you to the portal chamber.\n");
+                        oxygenLevel = 0; // ends the scenario successfully.
+                    }
+                    else if (alienGameScore > 0){
+                        // game implementation.
+                        printf("\n----- ALIEN CHALLENGE: ROUND %d -----\n", alienGameScore);
+                        printf("The crystalline entity presents a cosmic pattern game:\n");
+                        printf("1) Choose Pattern Alpha(Rock)\n");
+                        printf("2) Choose Pattern Beta(Paper)\n");
+                        printf("3) Choose Pattern Gamma(Scissors)\n");
+                        scanf("%d", &subChoice);
+
+                        int alienChoice = rand() % 3 + 1;
+                        printf("The alien selects Pattern %d.\n", alienChoice);
+                        sleep(2);
+
+                        // the win conditions (rock-paper-scissors logic).
+                        if ((subChoice == 1 && alienChoice == 3) ||
+                            (subChoice == 2 && alienChoice == 1) ||
+                            (subChoice == 3 && alienChoice == 2)){
+                            printf("You win this round! The alien's colors shift approvingly.\n");
+                            alienGameScore++;
+                            sleep(2);
+                        }
+                        else if (subChoice == alienChoice){
+                            printf("A draw! The alien seems intrigued and offers another attempt.\n");
+                        }
+                         else{
+                            printf("You lose this round. The alien demonstrates the correct solution.\n");
+                        }
+
+                        if (alienGameScore >= 3){
+                            printf("\nYou've won all three challenges! The alien vibrates with delight.\n");
+                            sleep(3);
+                            printf("It activates a teleportation system that will return you to Earth.\n");
+                            printf("As you materialize in Earth orbit, purple energy pulls you back.\n");
+                            alienFriendly = true;
+                            oxygenLevel = 0; // ends the scenario successfully.
+                        }
+                    }
+                    else{
+                        printf("\nYou scan for intelligent life signs...\n");
+                        sleep(2);
+                        if (rand() % 10 < 5){
+                            printf("You detect a non-biological intelligence in the station!\n");
+                            printf("It manifests as a crystalline entity and seems curious about you.\n");
+                            alienGameScore = 1;
+                        }
+                        else{
+                            printf("You detect unusual energy patterns but nothing conclusive.\n");
+                        }
+                    }
+                    oxygenLevel -= 10;
+                    break;
+
+                default:
+                    printf("That's not a valid choice. The vacuum of space is unforgiving.\n");
+                    continue;
+            }
+
+            // checks for the end conditions.
+            if (oxygenLevel <= 0 || shipIntegrity <= 0) {
+                if (alienFriendly || (hasNavigation && shipIntegrity >= 80)) {
+                }
+                else{
+                    printf("\n----- EMERGENCY SITUATION -----\n");
+                    sleep(2);
+                    printf("As resources deplete, purple energy surrounds you...\n");
+                    printf("The portal returns you to the chamber before true harm occurs.\n");
+                }
+            }
+        }
+    }
+
 
 void room12game(void)
 {
-	printf("cscuser12 :)\n");
+	int userChoiceSelection = 0;
+
+        // introduce the user to my room :)
+        printf("You cautiously step into Santi's Abandoned Vault!\n");
+        sleep(2);
+
+        room12Loading("As you enter the room, you feel the air start to feel heavy. Shadows dance on the walls as a singular light bulb brightens the room from the middle.\n", 5);
+        room12Loading("Suddenly, gears grind and a circular platform rises, illuminating the entire room!\n", 3);
+        room12Loading("Four glowing portals emerge, each humming with a strange whisper-like sound.\n", 3);
+    
+        while (userChoiceSelection != 5){
+            printf("  +---------------------+  \n");
+            printf("  |        [ ^ ]        |  <-- Portal straight ahead\n");
+            printf("  |                     |  \n");
+            printf("  |                     |  \n");
+            printf("  |                     |  \n");
+            printf("[<]|                   |[>] <-- Portals left and right\n");
+            printf("  |        [ v ]        |  <-- Portal on the floor (below)\n");
+            printf("  |         o           |  \n");
+            printf("  |        /|\\          |  \n");
+            printf("  |        / \\          |  \n");
+            printf("  +---------------------+  \n");
+
+            // print out the decisions for the user.
+            puts("1) Left  — a blazing RED swirl");
+            puts("2) Right — an icy BLUE vortex");
+            puts("3) Ahead — a pulsating GREEN tunnel");
+            puts("4) Floor — a cosmic PURPLE rift");
+            puts("5) Chicken out and return to the main chamber -.- ");
+            printf("\nEnter a number (1–5): ");
+    
+            // check if the user input is valid.
+            while (scanf("%d", &userChoiceSelection) != 1 ||
+                   userChoiceSelection < 1 ||
+                   userChoiceSelection > 5) {
+                printf("Invalid choice. Please enter 1–5: ");
+                scanf("%*s");   // discard bad token
+            }
+    
+            // use switch-case to select specified function based on decision.
+            switch (userChoiceSelection){
+                case 1:
+                    printf("\n-- THE DESERT OF SECRETS --\n");
+                    room12desertScenario();
+                    break;
+    
+                case 2:
+                    printf("\n-- THE MOUNTAIN OF WHISPERS --\n");
+                    room12mountainScenario();
+                    break;
+    
+                case 3:
+                    printf("\n-- THE LOST ONE WITHIN THE AMAZON --\n");
+                    room12jungleScenario();
+                    break;
+    
+                case 4:
+                    printf("\n-- THE COSMIC FRONTIER --\n");
+                    room12cosmicScenario();
+                    break;
+    
+                case 5:
+                    printf("\nYou step back from the portals with caution and return to the main room.\n");
+                    break;
+            }
+    
+            // take a brief pause before re-showing menu(unless they chose 5).
+            if (userChoiceSelection != 5){
+                printf("\n(Reality blurs... you’re back at Santi's vault..)\n");
+                sleep(3);
+            }
+        }
+
 }
+
+//end of room 12. 
+
 void encounterPredator(char name[], int dangerType)
 {
     char *dangers[] = {
@@ -5956,9 +6841,15 @@ void room16game(void)
 {
 	srand(time(NULL));
 
-	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings"};
-	int numOfIngredients = 6;
-	int attemptsBeforeDrowning = 4;
+	char* ingredients[] = {"Gatorade", "Caffeine", "Tears", "Blood", "Goat Hair", "Wilt Chamberlain's nail clippings", "PEDs"};
+	char* knownCorrectGuesses[3] = {NULL, NULL, NULL};
+
+	int numOfIngredients = sizeof(ingredients) / sizeof(*ingredients);
+	int attemptsBeforeDrowning = 6;
+
+	char* winningIngredient1 = ingredients[rand() % numOfIngredients];
+	char* winningIngredient2 = ingredients[rand() % numOfIngredients];
+	char* winningIngredient3 = ingredients[rand() % numOfIngredients];
 	
 	printf("\nYou've entered Elon Musk's Lab Room!\n");
 	printf("To have a chance at escaping, you must recreate 'Michael's Secret Stuff'\n\n");
@@ -5972,30 +6863,137 @@ void room16game(void)
 		printf("4. See what you're working with\n");
 		printf("5. Try a mix of ingredients\n");
 		printf("6. I give up, take me back to the original room.\n");
-
 		int userChoice;
 		printf("Enter: ");
 		scanf("%d", &userChoice);
-
 		if (userChoice == 6)
 		{
 			printf("Returning to main room, hope you know how to swim!\n");
 			break;
 		}
-
 		switch (userChoice)
 		{
 			case 1:
 			{
 				int pickedVial = rand() % numOfIngredients;
+				printf("\nThere's something off about this '%s' vial, must be a clue!\n\n", ingredients[pickedVial]);
+				break;
+			}
+
+			case 2:
+			{
+				printf("\nLook! It's Phil Jackson's playbook. Open it, it looks like there's a note inside:\n\'You know MJ played clean, no ehnancements!\'\n\n");
+				break;
+
+			}
+
+			case 3:
+			{
+				int willScottiePickUp = rand() % 2;
+				if (willScottiePickUp == 0)
+				{
+					printf("\nOf course Scottie didn't pick up, I know Rodman would've.\n\n");
+				}
+				else
+				{
+					printf("\nMJ loved his Gatorade, try that.\n\n");
+				}
+				break;
 				printf("There's something off about this vial, must be a clue!\n");
 			}
 
+			case 4:
+			{
+				printf("\nNow we're getting somewhere. Take a look at what you're working with: \n");
+
+				for (int i = 1; i <= numOfIngredients; i++)
+				{
+					if (i == numOfIngredients)
+					{
+						printf("%d. '%s'\n\n", i, ingredients[i - 1]);
+						break;
+					}
+					printf("%d. '%s'\n", i, ingredients[i - 1]);
+				}
+
+				break;
+			}
+
+			case 5:
+			{
+				int playerGuess1, playerGuess2, playerGuess3;
+
+				printf("\nThese are the known ingredients: ");
+				for (int i = 0; i < 3; i++)
+				{
+					if (knownCorrectGuesses[i] != NULL)
+					{
+						printf("'%s' ", knownCorrectGuesses[i]);
+					}
+					else
+					{
+						printf("'???' ");
+					}
+				}
+
+				printf("\nNow that you've seen what you're working with, pick 3 ingredients to mix!\n\n");
+				printf("Ingredient 1: ");
+				scanf("%d", &playerGuess1);
+
+				printf("Ingredient 2: ");
+				scanf("%d", &playerGuess2);
+
+				printf("Ingredient 3: ");
+				scanf("%d", &playerGuess3);
+
+				printf("\nYou mixed: '%s', '%s', '%s'. Could it be the winning mix?\n\n", ingredients[playerGuess1 - 1],
+				ingredients[playerGuess2 - 1], ingredients[playerGuess3 - 1]);
+
+				char* guess1 = ingredients[playerGuess1 - 1];
+				char* guess2 = ingredients[playerGuess2 - 1];
+				char* guess3 = ingredients[playerGuess3 - 1];
+
+				if ( strcmp(winningIngredient1, guess1) == 0 )
+				{
+					printf("You guessed '%s' correctly!\n", winningIngredient1);
+					knownCorrectGuesses[0] = winningIngredient1;
+				}
+
+				if ( strcmp(winningIngredient2, guess2) == 0 )
+				{
+					printf("You guessed '%s' correctly!\n", winningIngredient2);
+					knownCorrectGuesses[1] = winningIngredient2;
+				}
+
+				if ( strcmp(winningIngredient3, guess3) == 0 )
+				{
+					printf("You guessed '%s' correctly!\n", winningIngredient3);
+					knownCorrectGuesses[2] = winningIngredient3;
+				}
+
+				if ( strcmp(winningIngredient1, guess1) == 0 && strcmp(winningIngredient2, guess2) == 0 && strcmp(winningIngredient3, guess3) == 0 )
+				{
+					printf("\nYou've recreated 'Michael's Secret Stuff' and saved yourself from drowning!\n\n");
+					return;
+				}
+				else
+				{
+					attemptsBeforeDrowning--;
+					printf("Oh no, that is the wrong mix. You've got %d attempts left!\n", attemptsBeforeDrowning);
+					if (attemptsBeforeDrowning == 0)
+					{
+						printf("\n\nYou've ran out of attempts at a winning mixture. DROWN!\n\n");
+						return;
+					}
+					break;
+				}
+				break;
+			}
 			default:
 			{
 				printf("Incorrect choice, try again\n");
+				break;
 			}
-	
 		}
 	}
 }
@@ -6594,10 +7592,150 @@ char room26Encounter(int random)
 	}
 }
 
-void room1game(void) 
+void room1game(void)
 {
-	printf("cscuser1\n");
+    printf("room1game\n");
+
+    int choices[5];
+    int decision;
+    int selection;
+    int i;
+
+    printf("\n You are in red Space Station \n");
+
+    for (i = 0; i < 5; i++)
+    {
+        printf("\nWhat do you choose? (%d of 5)\n", i + 1);
+        printf(" 1) A sealed door\n");
+        printf(" 2) A broken robot\n");
+        printf(" 3) A terminal asking for input\n");
+        printf(" 4) You find a mysterious glowing orb\n");
+        printf(" 5) A vending machine\n");
+
+        do
+        {
+            printf("Choose a path (1-5): ");
+            scanf("%d", &selection);
+        }
+        while (selection < 1 || selection > 5);
+
+        switch (selection)
+        {
+            case 1:
+                printf("The red blinking light flashes faster as you approach:\n");
+                printf(" 1) Press the emergency override button\n");
+                printf(" 2) Leave it alone and back away\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The door unlocks with a hiss... You gain access to the control room!\n");
+                }
+                else
+                {
+                    printf("You play it safe. The blinking gets annoying, but you feel secure.\n");
+                }
+                break;
+
+            case 2:
+                printf("A broken robot blocks the hallway:\n");
+                printf(" 1) Try to repair it\n");
+                printf(" 2) Climb over it carefully\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("You reconnect some wires and the robot thanks you with a salute.\n");
+                }
+                else
+                {
+                    printf("You trip slightly, but make it past. The robot sparks behind you.\n");
+                }
+                break;
+
+            case 3:
+                printf("The terminal screen flashes 'run diagnostics?':\n");
+                printf(" 1) Type 'yes'\n");
+                printf(" 2) Unplug the machine\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The system reveals the location of hidden pods to escape!\n");
+                }
+                else
+                {
+                    printf("The lights go dark. You’ve disabled life support briefly. Good job.\n");
+                }
+                break;
+
+            case 4:
+                printf("The glowing orb buzzes with power:\n");
+                printf(" 1) Touch the orb\n");
+                printf(" 2) Walk away slowly\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("You feel electricity surge through you. You now glow slightly.\n");
+                }
+                else
+                {
+                    printf("You avoid a mysterious fate. The orb vanishes anyway.\n");
+                }
+                break;
+
+            case 5:
+                printf("The vending machine has snacks:\n");
+                printf(" 1) Shake the machine\n");
+                printf(" 2) Insert money\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The machine beeps in anger and shocks you. The snack falls anyway.\n");
+                }
+                else
+                {
+                    printf("The machine dispenses the snack. You got your cosmic chips.\n");
+                }
+                break;
+        }
+        choices[i] = decision;
+    }
+
+    // Calculate score
+    int score = 0;
+    for (i = 0; i < 5; i++)
+    {
+        if (choices[i] == 1)
+        {
+            score += 10;
+        }
+        else
+        {
+            score += 5;
+        }
+    }
+
+    printf("\nScore: %d\n", score);
+    if (score > 40)
+    {
+        printf("You are a space hero! Command wants to put you on the next Mars mission!\n");
+    }
+    else if (score > 25)
+    {
+        printf("You survived the space station — good job, astronaut!\n");
+    }
+    else
+    {
+        printf("Maybe space isn't your thing. Stick to Earth-based missions for now.\n");
+    }
+
+    printf("You exit Room 1: Red Space Station Emergency and return to the main room.\n");
 }
+
+
 
 void PedroFunctionRoom(void)
 {
@@ -7883,6 +9021,52 @@ int rayFight(int hp)
 	}
 	return hp;
 }
+
+//Room10
+void savePrincessInRoom10() {
+    char *rooms[] = {"a dark dungeon", "a fiery hall", "a haunted library", "a treasure vault", "the princess’s tower"};
+    int rescued = 0, trap = 0;
+
+    printf("\nWelcome to Princess Rescue: Save the Princess!\n");
+    printf("You must survive 5 rooms to find and save the princess.\n");
+
+    srand(time(NULL));
+
+    for (int i = 0; i < 5; i++) {
+        printf("\nRoom %d: You enter %s...\n", i + 1, rooms[i]);
+
+        int event = rand() % 4;
+        switch (event) {
+            case 0:
+                printf("It's a trap! You lose 10 HP(Healing potion).\n");
+                trap += 10;
+                break;
+            case 1:
+                printf("A monster attacks! You fight and win.\n");
+                break;
+            case 2:
+                printf("You found a healing potion. Gain 10 HP.\n");
+                trap -= 10;
+                if (trap < 0)
+                {
+                        trap = 0;
+                }
+                break;
+            case 3:
+                printf("Hooray! You found the princess and rescued her!\n");
+                rescued = 1;
+break;
+        }
+    }
+
+    if (rescued)
+        printf("\n You saved the princess and escaped with %d HP lost!\n", trap);
+    else
+        printf("\nYou could not find the princess. Try again!\n");
+
+    printf("Returning to the main menu...\n");
+}
+
 
 void stanleysRoom(void) 
 {
