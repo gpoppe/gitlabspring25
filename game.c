@@ -144,7 +144,7 @@ void cameronDOOMFn(void);
 
 void lab13nanup(void);
 void Function23fbabonjo(void);
-void cscuser1(void);
+void room1game(void);
 
 
 void PedroFunctionRoom(void);
@@ -188,8 +188,8 @@ int main(int argc, char *argv[])
 			case 1:
 			{
 				puts("room1");
+				room1game();
 				break;
-				cscuser1();
 			}
 			case 2:
 			{
@@ -6467,10 +6467,150 @@ char room26Encounter(int random)
 	}
 }
 
-void room1game(void) 
+void room1game(void)
 {
-	printf("cscuser1\n");
+    printf("room1game\n");
+
+    int choices[5];
+    int decision;
+    int selection;
+    int i;
+
+    printf("\n You are in red Space Station \n");
+
+    for (i = 0; i < 5; i++)
+    {
+        printf("\nWhat do you choose? (%d of 5)\n", i + 1);
+        printf(" 1) A sealed door\n");
+        printf(" 2) A broken robot\n");
+        printf(" 3) A terminal asking for input\n");
+        printf(" 4) You find a mysterious glowing orb\n");
+        printf(" 5) A vending machine\n");
+
+        do
+        {
+            printf("Choose a path (1-5): ");
+            scanf("%d", &selection);
+        }
+        while (selection < 1 || selection > 5);
+
+        switch (selection)
+        {
+            case 1:
+                printf("The red blinking light flashes faster as you approach:\n");
+                printf(" 1) Press the emergency override button\n");
+                printf(" 2) Leave it alone and back away\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The door unlocks with a hiss... You gain access to the control room!\n");
+                }
+                else
+                {
+                    printf("You play it safe. The blinking gets annoying, but you feel secure.\n");
+                }
+                break;
+
+            case 2:
+                printf("A broken robot blocks the hallway:\n");
+                printf(" 1) Try to repair it\n");
+                printf(" 2) Climb over it carefully\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("You reconnect some wires and the robot thanks you with a salute.\n");
+                }
+                else
+                {
+                    printf("You trip slightly, but make it past. The robot sparks behind you.\n");
+                }
+                break;
+
+            case 3:
+                printf("The terminal screen flashes 'run diagnostics?':\n");
+                printf(" 1) Type 'yes'\n");
+                printf(" 2) Unplug the machine\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The system reveals the location of hidden pods to escape!\n");
+                }
+                else
+                {
+                    printf("The lights go dark. You’ve disabled life support briefly. Good job.\n");
+                }
+                break;
+
+            case 4:
+                printf("The glowing orb buzzes with power:\n");
+                printf(" 1) Touch the orb\n");
+                printf(" 2) Walk away slowly\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("You feel electricity surge through you. You now glow slightly.\n");
+                }
+                else
+                {
+                    printf("You avoid a mysterious fate. The orb vanishes anyway.\n");
+                }
+                break;
+
+            case 5:
+                printf("The vending machine has snacks:\n");
+                printf(" 1) Shake the machine\n");
+                printf(" 2) Insert money\n");
+                printf("Your choice: ");
+                scanf("%d", &decision);
+                if (decision == 1)
+                {
+                    printf("The machine beeps in anger and shocks you. The snack falls anyway.\n");
+                }
+                else
+                {
+                    printf("The machine dispenses the snack. You got your cosmic chips.\n");
+                }
+                break;
+        }
+        choices[i] = decision;
+    }
+
+    // Calculate score
+    int score = 0;
+    for (i = 0; i < 5; i++)
+    {
+        if (choices[i] == 1)
+        {
+            score += 10;
+        }
+        else
+        {
+            score += 5;
+        }
+    }
+
+    printf("\nScore: %d\n", score);
+    if (score > 40)
+    {
+        printf("You are a space hero! Command wants to put you on the next Mars mission!\n");
+    }
+    else if (score > 25)
+    {
+        printf("You survived the space station — good job, astronaut!\n");
+    }
+    else
+    {
+        printf("Maybe space isn't your thing. Stick to Earth-based missions for now.\n");
+    }
+
+    printf("You exit Room 1: Red Space Station Emergency and return to the main room.\n");
 }
+
+
 
 void PedroFunctionRoom(void)
 {
