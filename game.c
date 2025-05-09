@@ -67,9 +67,10 @@ void room30game(void);
 void joshRoom4(void);
 
 void room59game(void);
-
+//Room22
 void room22RandomTime(void);
-
+int room22Recursion(int num);
+//End Room22
 //Room10
 void savePrincessInRoom10();
 
@@ -4129,7 +4130,132 @@ void amoralesRoom9(void)
 
 void room22RandomTime(void)
 {
-	printf("\nRyan - Room 22\n\n");
+	int room22Choice;
+	
+	printf("\nWelcome to Room 22! The room has a weird, unexplainable feeling as you walk in.'\n\n");
+	printf("There is a table ahead of you with 5 different cards laying face down, each with a number on it from 1 to 5.\n");
+	printf("Which one do you pick up: 1, 2, 3, 4, or 5?");
+	scanf("%d",&room22Choice);
+	switch(room22Choice)
+	{
+		//Using a For Loop
+		case 1:
+			printf("You pick up the 1ST card...\n");
+			printf("For some reason, something starts speaking in your ear...");
+			int loop;
+			for(loop = 0; loop < 5; loop++)
+			{
+				printf("Please tell me you aren't a gambler...\n");
+			}
+			printf("Thinking of the time you lost $12,000 at a tavern gambling, you almost want to run, but decide to stay.\n\n");
+			break;
+		
+		//Using an Array
+		case 2:
+			printf("You pick up the 2ND card...\n");
+			printf("A sudden voice says, ''I have a list of numbers somewhere. Don't ask why at all.'");		
+			int funNumbers[] = {33, 44, 99, 103, 1391, 182};
+			
+			int loop2;
+			printf("LIST OF NUMBERS I HATE: ");
+			for(loop2 = 0; loop2 < 6; loop2++)
+			{
+				printf("%d", funNumbers[loop2]);
+			}
+			printf("\n'HEY, THAT'S MY LIST! GET OUT, THIEF!\n\n''");
+			break;
+		
+		//Using a Random Number
+		case 3:
+			int randNum;
+			srand(time(NULL));
+			randNum = 1 + rand() % 1000;
+			int userNum;
+			
+			printf("You pick up the 3RD card...\n");
+			printf("A high-pitched voice suddenly says, ''Guess my number and win a prize...'\n");
+			printf("\n'...what is my number, stranger?'\n");
+			scanf("%d", &userNum);
+			
+			if(userNum == randNum)
+			{
+				printf("The voice says,'You won, take this.' Suddenly, a large diamond drops onto your foot.\nYou leave the room with immense pain, but got a diamond at least...?\n");
+				printf("\nYOU GOT: Expensive Diamond!\n");
+			}
+			else
+			{
+				printf("The voice says,'Good try, my number was %d. Get out.'\n", randNum);
+			}
+			break;
+		
+		//Mixed feature: Playing with 'Strings' in C with hardcoded word
+		case 4:
+			char randWord[11] = "RUNFROMHERE";
+			int loopRoom22;
+			printf("You pick up the 4TH card...\n");
+			printf("On the front of the card, it says 'LOOK'... what does it mean by this?");
+			printf("A screechy voice seems to be whispering around you...\n");
+			
+			for(loopRoom22 = 0; loopRoom22 < 11; loopRoom22++)
+			{
+				printf("%c", randWord[loopRoom22]);
+			}
+			printf("\n");
+			printf("The moment you see this, you charge out the room as a horn pokes out of the card now as it glows.");
+			printf("The card is left in the room, maybe it won't happen again...?");
+			break;
+		
+		//Custom Feature: Recursion!
+		case 5:
+			int room22SecondChoice;
+			printf("You pick up the 5TH card...\n");
+			printf("As you pick it up, the card flashes bright until you're still holding the card, but you're suddenly in front of a tavern.\n");
+			printf("Suddenly, there's another room, but this time there's a person sitting at a table with a stack of similar-looking cards.\n");
+			printf("The person is covered in a lot of clothing and a mask to cover their face.\nThey offer you a seat in front of them and you sit down with them.\n");
+			printf("The obscured man offers the desk to you, but also a stack of cash next to it.");
+			printf("What should you do...?\n");
+			printf("1. Take another card...\n");
+			printf("2. Take the stack of cash!\n");
+			printf("What should you do...?");
+			scanf("%d", &room22SecondChoice);
+			
+			switch(room22SecondChoice)
+			{
+				case 1:
+					printf("You take a card from the deck, it being a Queen of Hearts.");
+					printf("You take another card, a King of Diamonds.");
+					printf("Another card, a Joker");
+					printf("The man seems to glance up at you and nods slowly.");
+					printf("He slides the cash further to you and you take it. Counting it, turns out to be...");
+					int cash; 
+					cash = room22Recursion(100);
+					printf("$ %d\n", cash);
+					
+					printf("Before you can thank the man, he leaves the tavern.\nThe card you had before glows again and takes you back to the original hall.");
+					break;
+					
+				case 2:
+					printf("You go for the stack of cash and the man seems to shake their head lightly.");
+					printf("He gets up and leaves the table, putting his hand in front of the stack of cash for a moment and he walks out.\n");
+					printf("You examine the stack and it's only...");
+					int cash2;
+					cash2 = room22Recursion(25);
+					printf("$ %d\n", cash2);
+					break;
+			}		
+	}
+}
+
+int room22Recursion(int num)
+{
+	if(num > 0)
+	{
+		return num + room22Recursion(num - 1);
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 void userRoom50(void)
