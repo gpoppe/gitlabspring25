@@ -4223,9 +4223,9 @@ void room22RandomTime(void)
 			{
 				case 1:
 					printf("You take a card from the deck, it being a Queen of Hearts.");
-					printf("You take another card, a King of Diamonds.");
-					printf("Another card, a Joker");
-					printf("The man seems to glance up at you and nods slowly.");
+					printf("You take another card, a King of Diamonds.\n");
+					printf("Another card, a Joker\n");
+					printf("The man seems to glance up at you and nods slowly.\n");
 					printf("He slides the cash further to you and you take it. Counting it, turns out to be...");
 					int cash; 
 					cash = room22Recursion(100);
@@ -4235,7 +4235,7 @@ void room22RandomTime(void)
 					break;
 					
 				case 2:
-					printf("You go for the stack of cash and the man seems to shake their head lightly.");
+					printf("You go for the stack of cash and the man seems to shake their head lightly.\n");
 					printf("He gets up and leaves the table, putting his hand in front of the stack of cash for a moment and he walks out.\n");
 					printf("You examine the stack and it's only...");
 					int cash2;
