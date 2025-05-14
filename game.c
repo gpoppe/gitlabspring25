@@ -7089,7 +7089,7 @@ void room16game(void)
 					}
 					else
 					{
-						printf("'???' ");
+						printf("'\?\?\?' ");
 					}
 				}
 
