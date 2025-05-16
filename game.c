@@ -168,7 +168,7 @@ void angelasRoom26(char *item);
 bool checkChekhov(char *mystery);
 char room26Encounter(int random);
 
-void carlosroom60(void);
+void carlosRm60(void);
 
 void cameronDOOMFn(void);
 
@@ -1988,12 +1988,12 @@ int main(int argc, char *argv[])
 
 			case 60:
 			{
-				puts("room60");
-				carlosroom60();
-				
+				puts("You open door 60....");
+				carlosRm60();
 				break;
-			}
+				
 
+			}
 
 			case 61:
 			{
@@ -7466,13 +7466,50 @@ void ryanRoom38(void)
             printf("You have left humanity down and reported back home.\n");
             break;
     }
+
 }
 
-void carlosroom60(void)
+
+void carlosRm60(void)
 {
-	printf("welcome user60\n");
-}
+    int door_choice;
+    int found_cat = 0;
 
+    while (!found_cat) {
+        printf("\nChoose a door (1=A, 2=B, 3=C, 4=D, 99=Give up): ");
+        if (scanf("%d", &door_choice) != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            // Clear bad input
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            continue;
+        }
+
+        switch (door_choice) {
+            case 1:
+                puts("You open Door A... It's a CAT!");
+                puts("The cat purrs and jumps into your arms. You found the way out!");
+                found_cat = 1;
+                break;
+            case 2:
+                puts("You open Door B... A CROCODILE snaps at you! You jump back.");
+                break;
+            case 3:
+                puts("You open Door C... A GORILLA roars! You slam the door shut.");
+                break;
+            case 4:
+                puts("You open Door D... An ANACONDA lunges toward you! You back away.");
+                break;
+            case 99:
+                puts("You give up and return to the main hallway.");
+                return;
+            default:
+                puts("That's not a valid door. Try again.");
+        }
+    }
+
+    puts("You exit Room 60 and return to the main hallway.\n");
+}
 
 void brentRoom(void)
 {
