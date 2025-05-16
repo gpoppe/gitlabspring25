@@ -11,7 +11,7 @@
 //Bryant Garcia
 // Angela Jovanovic
 
-
+//jessie flores
 
 
 // Angela Jovanovic
@@ -62,6 +62,8 @@ void jovannyFunction(int jovannyNum);
 void room25game(void);
 
 void room57G(char *name);
+
+void guessGame(void);
 
 void user36Cafe(void);
 
@@ -1066,8 +1068,120 @@ int main(int argc, char *argv[])
 			case 47:
 			{
 				puts("room47");
-				jessiesFunRoom();
+			
+				printf("You're playing a mythical adventure game. Excited to play this game you found a glitch that you saw online where you input a code. When you inserted this code you magically appear inside this game. As you are freaking out you manage to get yourself together and figure out how to get out. So then your adventure begins\n ");
+				printf(">>You enter a room and noticed a bright shiny object from afar. You walk towards it thinking its an escape, and BOOM, its a Magical Wolf! This wolf seems like he wants to rip your face off, but you notice a dagger next to you. Do you choose to face this magical beast or find another escape in that room?\n\n");
+				printf("You must choose an option - \n 1: Take the wolf head on! \n 2: RUNNN! (you coward xD)\n");
+				
+				int userChoice;
+				scanf("%d", &userChoice);
+
+				if(userChoice == 1)
+				{
+					printf("\nMY SOLDIERS RAGE! MY SOLDIERS YEILD! CHARGGGEEEE!");
+				}
+				else if(userChoice == 2)
+				{
+					printf("\nAs you run for your life you managed to escape but get hit by a booby trap. x_x \n");
+					break;
+					//return 0;
+				}
+				else{
+					printf("\nInvalid choice. gg's you're dead. x_x \n\n");
+					//return 0;
+					break;
+				}
+
+				int battleWon = 0;
+				while(!battleWon)
+				{
+					int playersCard;
+					int wolfsCard;
+					printf("To find out your fate before the battle begins, you must draw a card from a magical deck. \n");
+					printf("Please enter FATE: \n");
+					getchar();
+					getchar();
+					playersCard = (rand() % 13) + 1;
+					wolfsCard = (rand() % 13) + 1;
+
+					printf("\nYour Card: %i\nWolfs Card: %i\n", playersCard, wolfsCard);
+					if(playersCard < wolfsCard)
+					{
+						printf("Womp womp, the wolf drops kicks you. x_x");
+						//break;
+						//return 0;
+					}
+					else if(playersCard > wolfsCard)
+					{
+						printf("You slayed the wolf and are able to proceed to the next. \n");
+						battleWon = 1;
+					}
+					else {
+						printf("Both drew the same card. \n");
+						break;
+						//return 0;
+					}
+			}
+
+				guessGame();
+				//jessiesFunRoom();
+				printf("\nNow that you beaten the jester in his own game, the jester gives you a key for the door. AHHHH, you then stumble and fall into a tunnel.");
+				printf("\nAs you walk further into this tunnel you see a troll and you ask direction but before he helps you, he wants to play game. If you win he gives direction and a key, if you lose you become his dinner. ");
+				printf("\nThe game he wants to play is a simple ROCK PAPER SCISSOR game.");
+
+				//i think here i must implement a loop(while) so the user can go back when they lose
+				int trollsBeaten = 0;
+				while (!trollsBeaten) 
+				{
+					int trollsChoice = (rand() % 3) + 1;
+					int playerRPS;
+					printf(" 'Choose your move kid' says the troll ");
+					scanf("%d", &playerRPS);
+					if (trollsChoice == 1) printf("Rock\n");
+					if (trollsChoice == 2) printf("Paper\n");
+					if (trollsChoice == 3) printf("Scissors\n");
+					if(playerRPS == 1 && trollsChoice == 3 || playerRPS == 2 && trollsChoice == 1 || playerRPS == 3 && trollsChoice == 2)
+					{
+						printf(" 'Ahh dang it, you win, heres your key and the directions.' \n");
+						trollsBeaten = 1;
+					}
+					else if(playerRPS == trollsChoice)
+					{
+						printf("HAHAH it's a tie, nobody wins.\n");
+					}
+					else {
+						printf(" 'You lose! TIME FOR DINNER!' ");
+					}
+				}//end while loop for troll game
+				
+				int scavengerComplete = 0;
+				while(!scavengerComplete) {
+				printf("\nNow that you defeated the troll and he gave you what you neeeded, you manage to make it out the tunnel and noticed you are one room away from escaping the castle.");
+				printf("You use this key to enter this room and you hear a booming voice echoes: 'To escape, uncover the 3 ancient artifacts.'\n");
+				printf("Clue 1: 'I am sharp and forged in fire, wielded by warriors in battle.'\n");
+				printf("Clue 2: 'I rise at dawn and fall at dusk, giving life to all below.'\n");
+				printf("Clue 3: 'I am chained to the earth yet shine upon the sky.'\n");
+
+
+				//fix this part as it does continue once you win the challenge
+				printf("\nEnter your 3 answers (separated by spaces): ");
+				char ansClue1[20], ansClue2[20], ansClue3[20];
+				scanf("%s %s %s", ansClue1, ansClue2, ansClue3);
+
+				//strcasecmp - ignores uppercase and lower case
+				if(strcasecmp(ansClue1, "sword") == 0 && strcasecmp(ansClue2, "sun") == 0 && strcasecmp(ansClue3, "moon") == 0)
+				{
+					printf("The wall glows and a hidden passage opens. CONGRATS you’ve completed the scavenger hunt and escaped!");
+					scavengerComplete = 1;
+
+					
+				}
+				else {
+					printf("The room shakes and poison air comes out which leads you to your death");
+				}
+
 				break;
+				}
 			}
 			case 48:
 			{
@@ -8498,12 +8612,39 @@ void room28game(void)
 
 }	
 
-void jessiesFunRoom(void)
+void guessGame(void)
 {
-        printf("cscuser47");
+	printf("\nAfter defeating the big bad Magical Wolf, you stumble upon another mysterious room—its massive door sealed shut. Standing nearby, a mischievous jester appears, his eyes glinting with amusement. With a sly grin, he declares that the only way to unlock the door is to beat him in a game. Your next challenge awaits...\n");
+    printf("\nIf you win, you are able to continue your journey, but if you lose then you are gone.");
+	char *riddles[2] = {"I can store a lot but I'm not a box, I can hold both numbers and letters, and I'm essential for any program. What am I?", "Without a wallet, I still have bucks. Without a car, I still have horns. What am I?"};
+	char *ans[2] = {"memory", "goat"};
+	int index = rand() % 2;
+	int tries = 3;
+	char input[20];
+
+
+	printf("Riddle: %s\n", riddles[index]);
+
+	while (tries > 0) 
+	{
+    	printf("Your answer: ");
+    	scanf("%s", input);
+    	if (strcasecmp(input, ans[index]) == 0) {
+			printf("Correct! You win the challenge.\n");
+        	break;
+    	} else
+		{
+        	tries--;
+        	printf("Wrong! Tries left: %d\n", tries);
+    	}
+	}
+
+	if (tries == 0) 
+	{
+    	printf("The correct answer was: %s\n", ans[index]);
+	}
+
 }
-
-
 
 
 
