@@ -163,6 +163,18 @@ void ryanRoom38(void);
 void gameroom19(void);
 
 void kobesRoom(void);
+int oxygen = 100;
+void decreaseOxygen(int amount) {
+    oxygen -= amount;
+    if (oxygen <= 0) {
+        printf("\nYour oxygen levels have depleted...\n");
+        printf("You drift into unconsciousness, lost in the endless void of space.\n");
+        printf("GAME OVER: Lost in Space Ending.\n");
+        return;
+    } else {
+        printf("Oxygen remaining: %d%%\n", oxygen);
+    }
+}
 
 void angelasRoom26(char *item);
 bool checkChekhov(char *mystery);
@@ -4011,6 +4023,99 @@ void room59game(void)
 void kobesRoom(void)
 {
 	printf("CSCUSER24\n");
+	int oxygen = 100;
+        int discoveredTruth = 0;
+        int reachedEscapePod = 0;
+
+	printf("\n *** Kobe's Room: Black Mamba Space Mystery *** \n");
+	printf("You wake up in the command deck... Alarms blaring!...\n");
+	printf("The ship is stranded in the abyss of Space. The entire crew is missing. You must make a choice.\n");
+
+	while (oxygen > 0)
+	{
+		printf("\nChoose what you want to do from here: \n");
+		printf("1. Investigate the Cryo Chambers\n");
+		printf("2. Check the Security Logs\n");
+		printf("3. Search for an Escape Pod\n");
+
+		int choice;
+		scanf("%d", &choice);
+
+		decreaseOxygen(5);
+
+		switch(choice)
+		{
+			case 1:
+				printf("\nYou enter the Cryo Chambers.  \n");
+				decreaseOxygen(10);
+				printf("The pods are shattered. The crew is gone.\n");
+				printf("Something has happened here... but what happened exactly?\n");
+				discoveredTruth = 1;
+				break;
+			case 2:
+				printf("You decide to check the security logs...\n");
+				decreaseOxygen(8);
+				printf("Strange figures move in the dark... yet no one from the crew seems to be around.\n");
+				discoveredTruth = 1;
+				break;
+			case 3:
+				printf("\nYou rush toward the escape pod... \n");
+				decreaseOxygen(15);
+				printf("It is operational! You climb in and launch into space...\n");
+				reachedEscapePod = 1;
+				break;
+			case 4:
+        			printf("\nYou search for oxygen tanks...\n");
+        			if (rand() % 2 == 0) 
+				{
+            			printf("You found a half-full tank! You tried to switch tanks and lost more oxygen in the process");
+            			oxygen -= 20;
+				} 
+				else 
+				{
+            				printf("No oxygen tanks in sight...\n");
+        			}
+        			decreaseOxygen(5);
+        			break;
+        			
+    			case 5:
+        			printf("\nYou activate a distress signal...\n");
+        			printf("A mysterious transmission responds: 'Hold tight... help is coming?'\n");
+        			decreaseOxygen(12);
+        			break;
+			default:
+				printf("\n That choice is invalid.\n");
+				printf("Please try again.\n");
+		}
+
+		if(oxygen <= 0)
+		{
+			printf("\nYour oxygen levels have depleted...\n");
+			printf("You slowly drift into unconsciousness, lost in the endless void of Mamba Space.\n");
+			printf("Game Over: \n");
+			printf("You ran out of oxygen and never got to discover what happened.\n");
+			printf("Your body remains in space, never to be discovered again.\n");
+		}
+		else if (discoveredTruth && !reachedEscapePod)
+		{
+			printf("\nYou uncover the mystery behind the vanished crew...\n");
+			printf("While you were unconscious, they tried to awaken you but you were in a deep sleep...\n");
+			printf("You discover than they didn't try hard enough to awaken you and they all left in the escape pods without you...\n");
+			printf("Was the truth worth knowing?\n");
+			printf("GAME OVER\n");
+			printf("Amongst finding the truth, you feel the ultimate betrayal and are left to wait out your last days alive in space.\n");
+			return;
+		}
+		else if (reachedEscapePod)
+		{
+			printf("\nYou reach the escape pod just in time!\n");
+			printf("But as you launch into the unknown, questions remain unanswered...\n");
+			printf("GAME OVER\n");
+			printf("You immerse yourself into the escape pod and make your way back to Earth,\n");
+			return;
+		}
+
+	}
 }
 
 void room57G(char *name)
